@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.product.ProductCategoryMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="ProductCategoryResult" type="com.mlj.ecbiz.model.product.ProductCategory">
+        <result property="id" column="id"/>
+        <result property="catName" column="cat_name"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="sortOrder" column="sort_order"/>
+        <result property="isShow" column="is_show"/>
+        <result property="typeId" column="type_id"/>
+        <result property="depthPath" column="depth_path"/>
+    </resultMap>
+
+    <sql id="product_category_columns">
+        product_category.id,
+        product_category.cat_name,
+        product_category.parent_id,
+        product_category.sort_order,
+        product_category.is_show,
+        product_category.type_id,
+        product_category.depth_path
+    </sql>
+    
+    <sql id="product_category_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="id != null">
+        	and id=#{id} 
+        </if>
+        
+        <if test="catName != null and catName != ''">
+        	and cat_name=#{catName} 
+        </if>
+        <if test="parentId != null">
+        	and parent_id=#{parentId} 
+        </if>
+        <if test="sortOrder != null">
+        	and sort_order=#{sortOrder} 
+        </if>
+        <if test="isShow != null">
+        	and is_show=#{isShow} 
+        </if>
+        
+        <if test="typeId != null and typeId != ''">
+        	and type_id=#{typeId} 
+        </if>
+        
+        <if test="depthPath != null and depthPath != ''">
+        	and depth_path=#{depthPath} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="product_category_set_conditions">
+    	<set>
+        <if test="id != null">
+        	id=#{id},
+        </if>
+        <if test="catName != null">
+        	cat_name=#{catName},
+        </if>
+        <if test="parentId != null">
+        	parent_id=#{parentId},
+        </if>
+        <if test="sortOrder != null">
+        	sort_order=#{sortOrder},
+        </if>
+        <if test="isShow != null">
+        	is_show=#{isShow},
+        </if>
+        <if test="typeId != null">
+        	type_id=#{typeId},
+        </if>
+        <if test="depthPath != null">
+        	depth_path=#{depthPath},
+        </if>
+            id = id
+        </set>
+    </sql>
+
+    <sql id="product_category_properties">
+        #{id},
+        #{catName},
+        #{parentId},
+        #{sortOrder},
+        #{isShow},
+        #{typeId},
+        #{depthPath}
+    </sql>
+
+    <insert id="createProductCategory" parameterType="com.mlj.ecbiz.model.product.ProductCategory" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO product_category (<include refid="product_category_columns"/>) VALUES (<include refid="product_category_properties"/>)
+    </insert>
+	
+	<insert id="insertProductCategory" parameterType="com.mlj.ecbiz.model.product.ProductCategory" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into product_category
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        			id,
+    			</if>
+    			<if test="catName != null" >
+        			cat_name,
+    			</if>
+    			<if test="parentId != null" >
+        			parent_id,
+    			</if>
+    			<if test="sortOrder != null" >
+        			sort_order,
+    			</if>
+    			<if test="isShow != null" >
+        			is_show,
+    			</if>
+    			<if test="typeId != null" >
+        			type_id,
+    			</if>
+    			<if test="depthPath != null" >
+        			depth_path
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        		#{id},
+    		</if>
+    			<if test="catName != null" >
+        		#{catName},
+    		</if>
+    			<if test="parentId != null" >
+        		#{parentId},
+    		</if>
+    			<if test="sortOrder != null" >
+        		#{sortOrder},
+    		</if>
+    			<if test="isShow != null" >
+        		#{isShow},
+    		</if>
+    			<if test="typeId != null" >
+        		#{typeId},
+    		</if>
+    			<if test="depthPath != null" >
+        		#{depthPath}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteProductCategoryById" parameterType="Long">
+        delete from product_category
+        where
+            		id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteProductCategoryByObj" parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+        delete from product_category
+        <include refid="product_category_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteProductCategoryByIdList" parameterType="java.util.List">
+    	delete from product_category 
+        	where
+            id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateProductCategory" parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+        update product_category SET
+            id = #{id},
+            cat_name = #{catName},
+            parent_id = #{parentId},
+            sort_order = #{sortOrder},
+            is_show = #{isShow},
+            type_id = #{typeId},
+            depth_path = #{depthPath}
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateProductCategoryByObj" parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+        update product_category 
+        <include refid="product_category_set_conditions"/>
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateProductCategoryByObjAndConditions" parameterType="java.util.HashMap">
+        update product_category 
+        <set>
+        <if test="s.id != null">
+        	id=#{s.id},
+        </if>
+        <if test="s.catName != null">
+        	cat_name=#{s.catName},
+        </if>
+        <if test="s.parentId != null">
+        	parent_id=#{s.parentId},
+        </if>
+        <if test="s.sortOrder != null">
+        	sort_order=#{s.sortOrder},
+        </if>
+        <if test="s.isShow != null">
+        	is_show=#{s.isShow},
+        </if>
+        <if test="s.typeId != null">
+        	type_id=#{s.typeId},
+        </if>
+        <if test="s.depthPath != null">
+        	depth_path=#{s.depthPath},
+        </if>
+        </set>
+        <where>
+        <if test="c.id != null">
+        	id=#{c.id} AND 
+        </if>
+        <if test="c.catName != null">
+        	cat_name=#{c.catName} AND 
+        </if>
+        <if test="c.parentId != null">
+        	parent_id=#{c.parentId} AND 
+        </if>
+        <if test="c.sortOrder != null">
+        	sort_order=#{c.sortOrder} AND 
+        </if>
+        <if test="c.isShow != null">
+        	is_show=#{c.isShow} AND 
+        </if>
+        <if test="c.typeId != null">
+        	type_id=#{c.typeId} AND 
+        </if>
+        <if test="c.depthPath != null">
+        	depth_path=#{c.depthPath} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateProductCategory" parameterType="java.util.List">
+		update product_category
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.id!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.id}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="cat_name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.catName!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.catName}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="parent_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.parentId!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.parentId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="sort_order=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.sortOrder!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.sortOrder}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="is_show=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.isShow!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.isShow}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="type_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.typeId!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.typeId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="depth_path=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.depthPath!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.depthPath}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(id = #{i.id})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getProductCategoryById" resultMap="ProductCategoryResult" parameterType="Long">
+        select
+        <include refid="product_category_columns"/>
+        from product_category
+        where
+            id = #{value}
+    </select>
+    
+    <select id="getProductCategoryByObj" resultMap="ProductCategoryResult" parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+        select
+        <include refid="product_category_columns"/>
+        from product_category
+        <include refid="product_category_where_conditions"/>
+    </select>
+	
+    
+    <select id="getProductCategoryListByObj" resultMap="ProductCategoryResult"  parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+        select
+        <include refid="product_category_columns"/>
+        from product_category 
+        <include refid="product_category_where_conditions"/>
+         order by sort_order asc 
+    </select>
+    
+    <select id="getProductCategoryListByMap" resultMap="ProductCategoryResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="product_category_columns"/>
+        from product_category 
+        <include refid="product_category_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getProductCategoryCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+        select count(1) from product_category
+        <include refid="product_category_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getProductCategoryIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+        select       id               
+        from product_category
+        <include refid="product_category_where_conditions"/>
+    </select>
+	
+    <select id="getProductCategoryIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+       select       id                from product_category where 1=1 
+        id = #{value}
+    </select>
+    
+    <select id="getProductCategoryIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.product.ProductCategory">
+       select       id                from product_category 
+        <include refid="product_category_where_conditions"/>
+    </select>
+    
+    <select id="getProductCategoryIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       id                from product_category 
+        <include refid="product_category_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+     <!-- 自己编写的sql getProductCategoryListByParentId-->
+     <select id="getProductCategoryListByParentId" resultMap="ProductCategoryResult" parameterType="Long">
+        select * from product_category
+        where Parent_id=#{parentId} 
+        order by sort_order asc
+    </select>
+</mapper>

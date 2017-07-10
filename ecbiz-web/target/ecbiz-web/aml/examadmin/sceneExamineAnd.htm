@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>监督检查</title>
+<!--菜单-->
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="../../statics/js/menu.js"></script>
+<script language="javascript" src="../../statics/js/demur.js"></script>
+<script language="JavaScript" src="../../statics/js/selecttime.js"></script>
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+  <form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：监督检查 &gt;&gt; 现场检查 &gt;&gt; 新增现场检查项目表</span></div></td>
+    </tr>
+    <tr>
+      <td height=25 id=operation><div align="right">
+          <input name="Submit2" type="button" class="input-button" value="保 存" onClick="location.href='sceneExamineV.htm'">
+          <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+          <input name="Submit32" type="button" class="input-button" value="提 交" onClick="MM_popupMsg('你确定提交此信息嘛?','sceneExamineV.htm')">
+           <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+                 <input name="Submit2" type="button" class="input-button" value="返 回" onClick="javascrip:history.back()">&nbsp;&nbsp;&nbsp;
+        </div></td>
+    </tr>
+    <tr>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td valign="top" ><div>
+          <table width="90%" border="0" align="center" cellpadding="4" cellspacing="1" class="tbcolor">
+            <tr id="tbcolor">
+              <th align="center" id="list">新 增 现 场 检 查 项 目 表 </th>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFFFF"><table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+                <tbody>
+                  <tr>
+                    <td width="18%" align="right" >现场检查编号：</td>
+                    <td align="left" ><input name="textfield2" type="text" class="input-text" style="width: 200px" size="20"></td>
+                    <td width="18%" align="right" >项目名称：</td>
+                    <td align="left" ><input name="textfield23" type="text" class="input-text" style="width: 200px" size="20"></td>
+                  </tr>
+                  <tr>
+                    <td width="18%" align="right" >项目文件编号：</td>
+                    <td align="left" colspan="3" ><input name="textfield24" type="text" class="input-text" style="width: 200px" size="20"></td>
+                  </tr>
+                  <tr>
+                    <td width="18%" align="right" >检查依据：</td>
+                    <td colspan="3" align="left"><textarea name="textarea" cols="79" rows="3">
+</textarea></td>
+                  </tr>
+                  <tr>
+                    <td width="18%" align="right" >被检查金融<br>
+                      机构：</td>
+                    <td align="left" ><input name="textfield26" type="text" class="input-text" style="width: 200px" size="20"></td>
+                    <td width="18%" align="right" >被检查金融机构代码：</td>
+                    <td align="left" ><input name="textfield27" type="text" class="input-text" style="width: 200px" size="20"></td>
+                  </tr>
+                  <tr>
+                    <td align="right" >被检查金融机构类别:</td>
+                    <td colspan="3" align="left" ><select name="select">
+					       <option selected>    </option>
+                          <option>金融</option>
+                        </select></td>
+                  </tr>
+                  <tr>
+                    <td width="18%" align="right" >检查内容：</td>
+                    <td colspan="3" align="left"><textarea name="textarea" cols="79" rows="3">
+</textarea></td>
+                  </tr>
+                  <tr>
+                    <td align="right" >检查期间起<br>
+                      始日期：</td>
+                    <td align="left" nowrap><input name="publishTime1" type="text" class="input-text" id="publishTime12" style="width: 180px" size="10"  readonly="true">
+                      <img onClick=fPopCalendar(publishTime1,publishTime1) src="../../images/picture/in4_05.gif" width="17" height="16"></td>
+                    <td align="right" >检查期间终<br>
+                      止日期：</td>
+                    <td align="left" ><input name="publishTime2" type="text" class="input-text" id="publishTime2" style="width: 180px" size="10"  readonly="true">
+                      <img onClick=fPopCalendar(publishTime2,publishTime2) src="../../images/picture/in4_05.gif" width="17" height="16"></td>
+                  </tr>
+                  <tr>
+                    <td align="right" >现场检查开<br>
+                      始时间：</td>
+                    <td align="left" ><input name="publishTime3" type="text" class="input-text" id="publishTime3" style="width: 180px" size="10"  readonly="true">
+                      <img onClick=fPopCalendar(publishTime3,publishTime3) src="../../images/picture/in4_05.gif" width="17" height="16"></td>
+                    <td align="right" >现场检查结<br>
+                      束时间：</td>
+                    <td align="left"><input name="publishTime4" type="text" class="input-text" id="publishTime4" style="width: 180px" size="10"  readonly="true">
+                      <img onClick=fPopCalendar(publishTime4,publishTime4) src="../../images/picture/in4_05.gif" width="17" height="16"></td>
+                  </tr>
+				   <TR> 
+                      <TD align="right">附件：</TD>
+                      <TD colspan="3"align="left"><input type="file" name="file"></TD>
+					  </TR>
+
+                </tbody>
+              </table></td>
+            </tr>
+          </table>
+          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="25" id="operation"><div align="right">
+                  <input name="Submit" type="button" class="input-button" value="保 存" onClick="location.href='sceneExamineV.htm'">                
+                  <img src="../../images/line.gif" width="5" height="15" align="absmiddle">                  <input name="Submit3" type="button" class="input-button" value="提 交" onClick="MM_popupMsg('你确定提交此信息嘛?','sceneExamineV.htm')">
+                  <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+<input name="Submit2" type="button" class="input-button" value="返 回" onClick="javascrip:history.back()">&nbsp;&nbsp;&nbsp;
+              </div></td>
+            </tr>
+          </table>
+      </div>
+      </td>
+    </tr>
+	</form>
+  </table>
+</div>
+</body>
+</html>

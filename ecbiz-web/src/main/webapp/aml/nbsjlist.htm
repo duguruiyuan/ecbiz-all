@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>人民银行电子商务平台建设及管理软件</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	background-image: url(../images/seach_4.gif);
+}
+-->
+</style>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+<!--菜单-->
+<LINK REL="StyleSheet" HREF="../css/menu.css">
+<script language="javascript" src="../js/aml.js"></script>
+<!--菜单-->
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height=25 align="left" id=location ><img src="../images/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          您的位置：监督检查 &gt;&gt; 非现场监管 &gt;&gt; 金融机构反洗钱工作内部审计情况统计表</td>
+    </tr>
+	<tr>
+	  <td>
+	    <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+			<tr>
+			  <td><fieldset>
+				<legend>查询条件</legend>
+				<TABLE width="100%" border="0" align="center" cellpadding="2" cellspacing="2"  >
+				  <TBODY>
+					<TR>
+					  <TD align="center" width="20%">审计部门名称：</TD>
+					  <TD width="30%" align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></TD>	
+					  <TD width="20%" align="center">审计期限：</TD>
+					  <TD width="30%" align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></TD>		
+					</TR>
+				  </TBODY>
+				</TABLE></fieldset>
+			  </td>
+			</tr>
+        </table>
+		<br>
+	    <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+		  <tr>
+			<td align="right">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Submit" value="查 询" onclick="">
+				<img src="../images/line.gif" width="5" height="15" align="absmiddle">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear" value="清 空" onclick="">
+			</td>
+		  </tr>
+	    </table>
+		<table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend>内部审计情况</legend>
+				<table width="98%" border="0" align="center" cellspacing="0" >
+					<tr>
+					  <td width="10%" align="left"></td>
+					  <td width="10%" align="left"><html:text property="currentPage" maxLength="10 " size="5" style="display:none"/></td>
+					  <td width="10%" align="left"><html:text property="totalPage" maxLength="10 " size="5" style="display:none"/></td>
+					  <td width="70%" align="right"><label>
+				      第<span class="style1"></span>页1/5共页&nbsp;共45条记录</label>
+					  &nbsp;
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Frist" value="首 页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Forward" value="上一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Next" value="下一页" onclick="">
+					  <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Last" value="末 页" onclick=""></td></tr>
+				</table>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+		              <td width="20%" height="17" >金融机构代码</td>
+					  <td width="30%" >金融机构名称</td>
+					  <td width="30%" >审计部门名称</td>
+					  <td width="20%" >审计期限</td>
+					</tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="nbsj.htm">
+					  <td width="20%" >123456</td>
+					  <td width="30%" >中国人民银行浏阳市支行</td>
+					  <td width="30%" >审计部门</td>
+					  <td width="20%" >2006-12-31</td>							
+					  </a>				  </tr>					
+	<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="nbsj.htm">
+					  <td width="20%" >123456</td>
+					  <td width="30%" >中国人民银行浏阳市支行</td>
+					  <td width="30%" >审计部门</td>
+					  <td width="20%" >2006-12-31</td>							
+					  </a>				  </tr>		
+					  <tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="nbsj.htm">
+					  <td width="20%" >123456</td>
+					  <td width="30%" >中国人民银行浏阳市支行</td>
+					  <td width="30%" >审计部门</td>
+					  <td width="20%" >2006-12-31</td>							
+					  </a>				  </tr>		
+					  <tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="nbsj.htm">
+					  <td width="20%" >123456</td>
+					  <td width="30%" >中国人民银行浏阳市支行</td>
+					  <td width="30%" >审计部门</td>
+					  <td width="20%" >2006-12-31</td>							
+					  </a>				  </tr>							
+			  </table>
+			  </fieldset>
+			</td>
+          </tr>
+       </table>
+	  </td>
+	</tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

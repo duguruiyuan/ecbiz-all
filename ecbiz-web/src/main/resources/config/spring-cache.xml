@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:tx="http://www.springframework.org/schema/tx"   
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+    http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+">
+	
+	<!-- POOL配置   -->  
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">        
+	    <property name="maxTotal" value="${redis.pool.maxActive}" />  
+	    <property name="maxIdle" value="${redis.pool.maxIdle}" />  
+	    <property name="maxWaitMillis" value="${redis.pool.maxWait}" />  
+	    <property name="testOnBorrow" value="${redis.pool.testOnBorrow}" />    
+	</bean>    
+	<!-- jedis shard pool配置     -->
+	<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">        
+		<constructor-arg index="0" ref="jedisPoolConfig" />        
+		<constructor-arg index="1"> 
+			<list>    
+				<bean class="redis.clients.jedis.JedisShardInfo">              
+					<constructor-arg index="0" value="${redis.ip}" />  
+					<constructor-arg index="1" value="${redis.port}" type="int" /> 
+				</bean>             
+			</list>        
+		</constructor-arg>
+	</bean>
+	
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg index="0" ref="jedisPoolConfig"/>
+		<constructor-arg index="1" value="${redis.ip}"/>
+		<constructor-arg index="2" value="${redis.port}"/>
+	</bean>
+
+	<bean id="redisFactory" class="com.chexun.base.cache.redis.RedisFactory">
+		<property name="jedisPool" ref="jedisPool" />
+		<property name="enable" value="true" />
+	</bean> 
+	
+	<bean id="sessionCache" class="com.chexun.base.cache.redis.RedisCache">
+		<property name="redisFactory" ref="redisFactory"/>
+	</bean>
+	<bean id="sessionProvider" class="com.chexun.base.cache.impl.CacheSessionProvider">
+		<property name="sessionCache" ref="sessionCache"/>
+		<!-- 默认不用配置，默认时project.properties存放路径为 /project.properties-->
+		<property name="propertieFile" value="/production/project.properties"/>
+	</bean>
+	<bean id="queryCache" class="com.chexun.base.cache.impl.CacheQueryProvider">
+		<property name="sessionCache" ref="sessionCache"/>
+	</bean>
+	
+</beans>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>监督检查</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	background-image: url(../images/seach_4.gif);
+}
+-->
+</style>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<!--菜单-->
+<link href="../css/common.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="../js/aml.js"></script>
+<!--菜单-->
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+	<form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          您的位置：监督检查 &gt;&gt; 监管数据统计</div></td>
+    </tr>
+	<tr>
+	  <td>
+	    <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+			<tr>
+			  <td><fieldset>
+				<legend>查询条件</legend>
+				<TABLE width="100%" border="0" align="center" cellpadding="2" cellspacing="2"  >
+				  <TBODY>
+					<TR>
+					  <TD align="center" width="15%">金融机构名称：</TD>
+					  <TD width="35%" align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></TD>	
+					  <TD width="15%" align="center">起止时间：</TD>
+					  <TD width="35%" align="left" ><input type="text" name="textfield8" class="input-text" style="width: 90px" size="10">
+					  -				      
+				      <input type="text" name="textfield82" class="input-text" style="width: 90px" size="10"></TD>		
+					</TR>
+				  </TBODY>
+				</TABLE>
+			  </fieldset>
+			  </td>
+			</tr>
+        </table>
+		<br>
+	    <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+		  <tr>
+			<td align="right">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Frist22" value="新 增" onClick="location.href='absent.htm'">
+				<img src="../images/line.gif" width="5" height="15" align="absmiddle">
+<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Submit" value="查 询" onclick="">
+				<img src="../images/line.gif" width="5" height="15" align="absmiddle">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear" value="清 空" onclick="">
+			</td>
+		  </tr>
+	    </table>
+		<table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend>非现场监管</legend>
+				<table width="98%" border="0" align="center" cellspacing="0" >
+					<tr>
+					  <td align="left">&nbsp;</td>
+					  <td width="70%" align="right">&nbsp;<label>第<span class="style1"><%=currentPage%></span>页/共<span class="style1"><%=totalPage%></span>页&nbsp;共<span class="style1"><%=rowCount%></span>条记录</label>&nbsp;
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Frist" value="首 页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Forward" value="上一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Next" value="下一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Last" value="末 页" onclick=""></td>
+					</tr>
+				</table>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+					  <td width="8%" >删除</td>
+					  <td width="8%" >修改</td>
+					  <td width="12%" >类别</td>
+					  <td width="20%" >金融机构名称</td>
+					  <td width="20%" >填报单位</td>
+					  <td width="15%" >填报时间</td>
+					  <td width="13%" >联系电话</td>
+					</tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="demand.htm">
+					  <td width="8%" ><img src="../images/picture/shan.gif" width="10" height="11"></td>
+					  <td width="8%" ><img src="../images/picture/edit.gif" width="17" height="18"></td>
+					  <td width="12%" >现场检查情况统计</td>
+					  <td width="20%" >&nbsp;</td>
+					  <td width="20%" >&nbsp;</td>
+					  <td width="15%" >&nbsp;</td>
+					  <td width="13%" >&nbsp;</td>
+					  </a>					</tr>					
+			  </table>
+			  </fieldset>
+			</td>
+          </tr>
+       </table>
+	  </td>
+	</tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+	</form>
+  </table>
+</div>
+</body>
+</html>

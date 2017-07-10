@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.mlj.ecbiz</groupId>
+		<artifactId>ecbiz-all</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>com.mlj.ecbiz</groupId>
+	<artifactId>ecbiz-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ecbiz-service</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>3.2.9.RELEASE</spring.version>
+		<mybatis.version>3.2.6</mybatis.version>
+		<aspectj.version>1.7.3</aspectj.version>
+		<jdk.version>1.6</jdk.version>
+		<com.github.httl.version>1.0.11</com.github.httl.version>
+		<javax.servlet.javax.servlet-api.version>3.1.0</javax.servlet.javax.servlet-api.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.mlj.ecbiz</groupId>
+			<artifactId>ecbiz-dao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<!-- 指定最新插件的版本号 -->
+					<version>2.3.2</version>
+					<configuration>
+						<!-- 指定高版本的源码和编译后的字节码文件 -->
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+						<optimize>true</optimize>
+						<debug>true</debug>
+						<showDeprecation>false</showDeprecation>
+						<showWarnings>false</showWarnings>
+					</configuration>
+				</plugin>
+				<!-- enforcer插件, 避免被依赖的依赖引入过期的jar包 -->
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

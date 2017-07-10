@@ -1,0 +1,55 @@
+.fulong-tree-container {
+	margin: 0px;
+	padding: 0px;
+	font: icon;
+	white-space: nowrap;
+}
+
+.fulong-tree-item {
+	padding: 0px;
+	font: icon;
+	color: black;
+	white-space: nowrap;
+}
+
+.fulong-tree-item a, .fulong-tree-item a:active, .fulong-tree-item a:hover {
+	margin-left: 3px;
+	padding: 1px 2px 1px 2px;
+}
+
+.fulong-tree-item a {
+	color: 000;
+	text-decoration: none;
+	font-size:14px;
+}
+
+.fulong-tree-item a:hover {
+	color: c60;
+	text-decoration: underline;
+	font-size:14px;
+}
+
+.fulong-tree-item a:active {
+	background: 5f9deb;
+	color: fff;
+	text-decoration: none;
+}
+
+.fulong-tree-item img {
+	vertical-align: middle;
+	border: 0px;
+}
+
+.fulong-tree-icon {
+	width: 16px;
+	height: 16px;
+}
+.fulong-tree-item a.selected {
+	color: 000;
+	background: ffcc33;
+}
+
+.fulong-tree-item a.selected-inactive {
+	color: fff;
+	background: 5f9deb;
+}

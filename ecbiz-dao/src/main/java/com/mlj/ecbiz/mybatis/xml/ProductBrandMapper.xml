@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.product.ProductBrandMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="ProductBrandResult" type="com.mlj.ecbiz.model.product.ProductBrand">
+        <result property="id" column="id"/>
+        <result property="brandName" column="brand_name"/>
+        <result property="englishName" column="english_name"/>
+        <result property="thumbLogo" column="thumb_logo"/>
+        <result property="brandLogo" column="brand_logo"/>
+        <result property="brandDesc" column="brand_desc"/>
+        <result property="aliasName" column="alias_name"/>
+        <result property="manufacturer" column="manufacturer"/>
+        <result property="officialUrl" column="official_url"/>
+        <result property="telephone" column="telephone"/>
+        <result property="content" column="content"/>
+        <result property="sortOrder" column="sort_order"/>
+        <result property="isShow" column="is_show"/>
+        <result property="english" column="english"/>
+    </resultMap>
+
+    <sql id="product_brand_columns">
+        product_brand.id,
+        product_brand.brand_name,
+        product_brand.english_name,
+        product_brand.thumb_logo,
+        product_brand.brand_logo,
+        product_brand.brand_desc,
+        product_brand.alias_name,
+        product_brand.manufacturer,
+        product_brand.official_url,
+        product_brand.telephone,
+        product_brand.content,
+        product_brand.sort_order,
+        product_brand.is_show,
+        product_brand.english
+    </sql>
+    
+    <sql id="product_brand_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="id != null">
+        	and id=#{id} 
+        </if>
+        
+        <if test="brandName != null and brandName != ''">
+        	and brand_name=#{brandName} 
+        </if>
+        
+        <if test="englishName != null and englishName != ''">
+        	and english_name=#{englishName} 
+        </if>
+        
+        <if test="thumbLogo != null and thumbLogo != ''">
+        	and thumb_logo=#{thumbLogo} 
+        </if>
+        
+        <if test="brandLogo != null and brandLogo != ''">
+        	and brand_logo=#{brandLogo} 
+        </if>
+        
+        <if test="brandDesc != null and brandDesc != ''">
+        	and brand_desc=#{brandDesc} 
+        </if>
+        
+        <if test="aliasName != null and aliasName != ''">
+        	and alias_name=#{aliasName} 
+        </if>
+        
+        <if test="manufacturer != null and manufacturer != ''">
+        	and manufacturer=#{manufacturer} 
+        </if>
+        
+        <if test="officialUrl != null and officialUrl != ''">
+        	and official_url=#{officialUrl} 
+        </if>
+        
+        <if test="telephone != null and telephone != ''">
+        	and telephone=#{telephone} 
+        </if>
+        
+        <if test="content != null and content != ''">
+        	and content=#{content} 
+        </if>
+        <if test="sortOrder != null">
+        	and sort_order=#{sortOrder} 
+        </if>
+        <if test="isShow != null">
+        	and is_show=#{isShow} 
+        </if>
+        
+        <if test="english != null and english != ''">
+        	and english=#{english} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="product_brand_set_conditions">
+    	<set>
+        <if test="id != null">
+        	id=#{id},
+        </if>
+        <if test="brandName != null">
+        	brand_name=#{brandName},
+        </if>
+        <if test="englishName != null">
+        	english_name=#{englishName},
+        </if>
+        <if test="thumbLogo != null">
+        	thumb_logo=#{thumbLogo},
+        </if>
+        <if test="brandLogo != null">
+        	brand_logo=#{brandLogo},
+        </if>
+        <if test="brandDesc != null">
+        	brand_desc=#{brandDesc},
+        </if>
+        <if test="aliasName != null">
+        	alias_name=#{aliasName},
+        </if>
+        <if test="manufacturer != null">
+        	manufacturer=#{manufacturer},
+        </if>
+        <if test="officialUrl != null">
+        	official_url=#{officialUrl},
+        </if>
+        <if test="telephone != null">
+        	telephone=#{telephone},
+        </if>
+        <if test="content != null">
+        	content=#{content},
+        </if>
+        <if test="sortOrder != null">
+        	sort_order=#{sortOrder},
+        </if>
+        <if test="isShow != null">
+        	is_show=#{isShow},
+        </if>
+        <if test="english != null">
+        	english=#{english},
+        </if>
+            id = id
+        </set>
+    </sql>
+
+    <sql id="product_brand_properties">
+        #{id},
+        #{brandName},
+        #{englishName},
+        #{thumbLogo},
+        #{brandLogo},
+        #{brandDesc},
+        #{aliasName},
+        #{manufacturer},
+        #{officialUrl},
+        #{telephone},
+        #{content},
+        #{sortOrder},
+        #{isShow},
+        #{english}
+    </sql>
+
+    <insert id="createProductBrand" parameterType="com.mlj.ecbiz.model.product.ProductBrand" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO product_brand (<include refid="product_brand_columns"/>) VALUES (<include refid="product_brand_properties"/>)
+    </insert>
+	
+	<insert id="insertProductBrand" parameterType="com.mlj.ecbiz.model.product.ProductBrand" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into product_brand
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        			id,
+    			</if>
+    			<if test="brandName != null" >
+        			brand_name,
+    			</if>
+    			<if test="englishName != null" >
+        			english_name,
+    			</if>
+    			<if test="thumbLogo != null" >
+        			thumb_logo,
+    			</if>
+    			<if test="brandLogo != null" >
+        			brand_logo,
+    			</if>
+    			<if test="brandDesc != null" >
+        			brand_desc,
+    			</if>
+    			<if test="aliasName != null" >
+        			alias_name,
+    			</if>
+    			<if test="manufacturer != null" >
+        			manufacturer,
+    			</if>
+    			<if test="officialUrl != null" >
+        			official_url,
+    			</if>
+    			<if test="telephone != null" >
+        			telephone,
+    			</if>
+    			<if test="content != null" >
+        			content,
+    			</if>
+    			<if test="sortOrder != null" >
+        			sort_order,
+    			</if>
+    			<if test="isShow != null" >
+        			is_show,
+    			</if>
+    			<if test="english != null" >
+        			english
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        		#{id},
+    		</if>
+    			<if test="brandName != null" >
+        		#{brandName},
+    		</if>
+    			<if test="englishName != null" >
+        		#{englishName},
+    		</if>
+    			<if test="thumbLogo != null" >
+        		#{thumbLogo},
+    		</if>
+    			<if test="brandLogo != null" >
+        		#{brandLogo},
+    		</if>
+    			<if test="brandDesc != null" >
+        		#{brandDesc},
+    		</if>
+    			<if test="aliasName != null" >
+        		#{aliasName},
+    		</if>
+    			<if test="manufacturer != null" >
+        		#{manufacturer},
+    		</if>
+    			<if test="officialUrl != null" >
+        		#{officialUrl},
+    		</if>
+    			<if test="telephone != null" >
+        		#{telephone},
+    		</if>
+    			<if test="content != null" >
+        		#{content},
+    		</if>
+    			<if test="sortOrder != null" >
+        		#{sortOrder},
+    		</if>
+    			<if test="isShow != null" >
+        		#{isShow},
+    		</if>
+    			<if test="english != null" >
+        		#{english}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteProductBrandById" parameterType="Long">
+        delete from product_brand
+        where
+            		id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteProductBrandByObj" parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+        delete from product_brand
+        <include refid="product_brand_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteProductBrandByIdList" parameterType="java.util.List">
+    	delete from product_brand 
+        	where
+            id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateProductBrand" parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+        update product_brand SET
+            id = #{id},
+            brand_name = #{brandName},
+            english_name = #{englishName},
+            thumb_logo = #{thumbLogo},
+            brand_logo = #{brandLogo},
+            brand_desc = #{brandDesc},
+            alias_name = #{aliasName},
+            manufacturer = #{manufacturer},
+            official_url = #{officialUrl},
+            telephone = #{telephone},
+            content = #{content},
+            sort_order = #{sortOrder},
+            is_show = #{isShow},
+            english = #{english}
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateProductBrandByObj" parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+        update product_brand 
+        <include refid="product_brand_set_conditions"/>
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateProductBrandByObjAndConditions" parameterType="java.util.HashMap">
+        update product_brand 
+        <set>
+        <if test="s.id != null">
+        	id=#{s.id},
+        </if>
+        <if test="s.brandName != null">
+        	brand_name=#{s.brandName},
+        </if>
+        <if test="s.englishName != null">
+        	english_name=#{s.englishName},
+        </if>
+        <if test="s.thumbLogo != null">
+        	thumb_logo=#{s.thumbLogo},
+        </if>
+        <if test="s.brandLogo != null">
+        	brand_logo=#{s.brandLogo},
+        </if>
+        <if test="s.brandDesc != null">
+        	brand_desc=#{s.brandDesc},
+        </if>
+        <if test="s.aliasName != null">
+        	alias_name=#{s.aliasName},
+        </if>
+        <if test="s.manufacturer != null">
+        	manufacturer=#{s.manufacturer},
+        </if>
+        <if test="s.officialUrl != null">
+        	official_url=#{s.officialUrl},
+        </if>
+        <if test="s.telephone != null">
+        	telephone=#{s.telephone},
+        </if>
+        <if test="s.content != null">
+        	content=#{s.content},
+        </if>
+        <if test="s.sortOrder != null">
+        	sort_order=#{s.sortOrder},
+        </if>
+        <if test="s.isShow != null">
+        	is_show=#{s.isShow},
+        </if>
+        <if test="s.english != null">
+        	english=#{s.english},
+        </if>
+        </set>
+        <where>
+        <if test="c.id != null">
+        	id=#{c.id} AND 
+        </if>
+        <if test="c.brandName != null">
+        	brand_name=#{c.brandName} AND 
+        </if>
+        <if test="c.englishName != null">
+        	english_name=#{c.englishName} AND 
+        </if>
+        <if test="c.thumbLogo != null">
+        	thumb_logo=#{c.thumbLogo} AND 
+        </if>
+        <if test="c.brandLogo != null">
+        	brand_logo=#{c.brandLogo} AND 
+        </if>
+        <if test="c.brandDesc != null">
+        	brand_desc=#{c.brandDesc} AND 
+        </if>
+        <if test="c.aliasName != null">
+        	alias_name=#{c.aliasName} AND 
+        </if>
+        <if test="c.manufacturer != null">
+        	manufacturer=#{c.manufacturer} AND 
+        </if>
+        <if test="c.officialUrl != null">
+        	official_url=#{c.officialUrl} AND 
+        </if>
+        <if test="c.telephone != null">
+        	telephone=#{c.telephone} AND 
+        </if>
+        <if test="c.content != null">
+        	content=#{c.content} AND 
+        </if>
+        <if test="c.sortOrder != null">
+        	sort_order=#{c.sortOrder} AND 
+        </if>
+        <if test="c.isShow != null">
+        	is_show=#{c.isShow} AND 
+        </if>
+        <if test="c.english != null">
+        	english=#{c.english} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateProductBrand" parameterType="java.util.List">
+		update product_brand
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.id!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.id}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="brand_name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.brandName!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.brandName}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="english_name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.englishName!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.englishName}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="thumb_logo=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.thumbLogo!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.thumbLogo}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="brand_logo=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.brandLogo!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.brandLogo}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="brand_desc=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.brandDesc!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.brandDesc}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="alias_name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.aliasName!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.aliasName}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="manufacturer=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.manufacturer!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.manufacturer}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="official_url=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.officialUrl!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.officialUrl}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="telephone=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.telephone!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.telephone}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="content=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.content!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.content}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="sort_order=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.sortOrder!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.sortOrder}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="is_show=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.isShow!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.isShow}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="english=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.english!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.english}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(id = #{i.id})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getProductBrandById" resultMap="ProductBrandResult" parameterType="Long">
+        select
+        <include refid="product_brand_columns"/>
+        from product_brand
+        where
+            id = #{value}
+    </select>
+    
+    <select id="getProductBrandByObj" resultMap="ProductBrandResult" parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+        select
+        <include refid="product_brand_columns"/>
+        from product_brand
+        <include refid="product_brand_where_conditions"/>
+    </select>
+	
+    
+    <select id="getProductBrandListByObj" resultMap="ProductBrandResult"  parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+        select
+        <include refid="product_brand_columns"/>
+        from product_brand 
+        <include refid="product_brand_where_conditions"/>
+    </select>
+    
+    <select id="getProductBrandListByMap" resultMap="ProductBrandResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="product_brand_columns"/>
+        from product_brand 
+        <include refid="product_brand_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getProductBrandCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+        select count(1) from product_brand
+        <include refid="product_brand_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getProductBrandIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+        select       id                             
+        from product_brand
+        <include refid="product_brand_where_conditions"/>
+    </select>
+	
+    <select id="getProductBrandIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+       select       id       from product_brand where 1=1 
+        id = #{value}
+    </select>
+    
+    <select id="getProductBrandIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.product.ProductBrand">
+       select       id           from product_brand 
+        <include refid="product_brand_where_conditions"/>
+    </select>
+    
+    <select id="getProductBrandIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       id              from product_brand 
+        <include refid="product_brand_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    <!-- 手动添加 -->
+    <select id="getProductBrandCountByObjPage" resultType="int" parameterType="java.util.HashMap">
+        select count(1) from product_brand
+        <trim prefix="where" prefixOverrides="and|or">
+	        <if test="letter != null and letter !=''">
+	         binary	brand_name like '%${letter}%'
+	        </if>
+	        <if test="keyword != null and keyword != '' and seachType==1">
+	        	and brand_name like '%${keyword}%'
+	        </if>
+	         <if test="keyword != null and keyword != '' and seachType==2">
+	        	and id =#{keyword}
+	        </if>
+        </trim>
+    </select>
+    <select id="getProductBrandListByMapPage" resultMap="ProductBrandResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="product_brand_columns"/>
+        from product_brand  
+        <trim prefix="where" prefixOverrides="and|or">
+	        <if test="letter != null and letter !=''">
+	        	 binary	brand_name like '%${letter}%' 
+	        </if>
+	        <if test="keyword != null and keyword != '' and seachType==1">
+	        	and brand_name like '%${keyword}%'
+	        </if>
+	         <if test="keyword != null and keyword != '' and seachType==2">
+	        	and id =#{keyword}
+	        </if>
+        </trim>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

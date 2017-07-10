@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>案件协查</title>
+</style>
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="../../statics/js/aml.js"></script>
+<script language="javascript" src="../../statics/js/selecttime.js"></script>
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+	<form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：行政调查 &gt;&gt; 案件协查 &gt;&gt; 协查任务函查询</span></div></td>
+    </tr>
+	<tr>
+	  <td>
+	    <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+			<tr>
+			  <td><fieldset>
+				<legend>查询条件</legend>
+				<TABLE width="100%" border="0" align="center" cellpadding="2" cellspacing="2"  >
+				  <TBODY>
+					<TR>
+					  <TD width="19%" align="right">案件协查系统编号：</TD>
+					  <TD width="32%" align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></TD>	
+					  <TD width="17%" align="right">任务函系统编号：</TD>
+					  <TD width="32%" align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></TD>		
+					</TR>
+					<TR>
+					  <TD align="right">任务函名称：</TD>
+					  <TD align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></TD>
+					  <TD align="right">任务函类别：</TD>
+					  <TD align="left" ><select name="select3">
+					    <option selected>全部</option>
+					    <option>发出</option>
+						<option>接收</option>					    
+                        </select></TD>	
+						</TR>
+					<TR>
+					<TD align="right">发送机构：</TD>
+					  <TD align="left" ><select name="select">
+					  	<option selected>全部</option>
+					    <option>山东省</option>
+				        </select>
+				        <select name="select3">
+							<option selected>全部</option>
+				          <option>济南分行</option>
+                                                </select></TD>
+					  <TD align="right">接收机构：</TD>
+					  <TD align="left" ><select name="select">
+					  	<option selected>全部</option>
+					    <option>山东省</option>
+				        </select>
+				        <select name="select3">
+							<option selected>全部</option>
+				          <option>济南分行</option>
+                                                </select></TD>
+					</TR>
+					<TR>
+					  <TD align="right">发出日期：</TD>
+					  <TD width="32%" align="left" nowrap ><input name="publishTime1" type="text" class="input-text" id="publishTime1" style="width: 180px" size="20">
+                      <img onclick=fPopCalendar(publishTime1,publishTime1) src="../../images/picture/in4_05.gif" width="17" height="16"> </TD>
+					  <TD align="right">回复日期：</TD>
+					  <TD align="left" nowrap ><input name="publishTime2" type="text" class="input-text" id="publishTime2" style="width: 180px" size="20">
+                          <img onclick=fPopCalendar(publishTime2,publishTime2) src="../../images/picture/in4_05.gif" width="17" height="16"> </TD>
+					</TR>
+					<TR>
+					  <TD align="right">任务函状态：</TD>
+					  <TD align="left" ><select name="select2">
+					    <option selected>未提交</option>
+					    <option>待回复</option>
+						<option>已回复</option>
+					    <option>不等待</option>
+					    <option>迟到回复</option>
+                        </select></TD>
+					  <TD align="right">&nbsp;</TD>
+					  <TD align="left" >&nbsp;</TD>
+				    </TR>
+				  </TBODY>
+				</TABLE>
+			  </fieldset>
+			  </td>
+			</tr>
+        </table>
+		<br>
+	    <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+		  <tr>
+			<td align="right">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Submit" value="查 询" onclick="">
+				<img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear" value="清 空" onclick="">
+				<img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+                <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear3" value="排序控制" onclick="window.open('emitCaseAidanceOrder.htm','','width=400 height=350 scrollbars=yes')">
+                <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+                <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear2" value="导出excel" onclick="">			</td>
+		  </tr>
+	    </table>
+		<table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend><span class="navigation">对外回复</span></legend>
+				<table width="98%" border="0" align="center" cellspacing="0" >
+					<tr>
+					  <td width="10%" align="left">&nbsp;</td>
+					  <td width="10%" align="left"><html:text property="currentPage" maxLength="10 " size="5" style="display:none"/></td>
+					  <td width="10%" align="left"><html:text property="totalPage" maxLength="10 " size="5" style="display:none"/></td>
+					  <td width="70%" align="right">&nbsp;<label>第<span class="style1"><%=currentPage%></span>页/共<span class="style1"><%=totalPage%></span>页&nbsp;共<span class="style1"><%=rowCount%></span>条记录</label>&nbsp;
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Frist" value="首 页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Forward" value="上一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Next" value="下一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Last" value="末 页" onclick=""></td>
+					</tr>
+				</table>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+					  <td height="22" nowrap >案件协查系统编号</td>
+					  <td nowrap >任务函系统编号</td>
+					  <td nowrap >任务函名称</td>
+					  <td nowrap >接收机构</td>
+					  <td width="12%" nowrap >发出日期</td>
+					  <td width="12%" nowrap >回复日期</td>
+					  <td nowrap >任务函状态</td>
+			        </tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="emitCaseAidanceView.htm">
+					  <td height="22" >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td width="5%" >&nbsp;</td>
+					   </a>					  </tr>					
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+					   <a href="emitCaseAidanceView.htm">
+                                          <td height="22" >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td >&nbsp;</td>
+					  <td width="5%" >&nbsp;</td>	
+                                          </a>			        </tr>					
+			  </table>
+			  </fieldset>
+			</td>
+          </tr>
+       </table>
+	  </td>
+	</tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+	</form>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/context     
+          http://www.springframework.org/schema/context/spring-context-2.0.xsd     
+          http://www.springframework.org/schema/data/mongo     
+          http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd     
+          http://www.springframework.org/schema/beans     
+          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<!-- 默认 start -->
+	<bean id="mongoServerAddress" class="com.mongodb.ServerAddress">
+		<constructor-arg value="${mongodb.host}"></constructor-arg>
+		<constructor-arg value="${mongodb.port}"></constructor-arg>
+	</bean>
+	<bean id="chexunMongoOptions" class="com.chexun.common.mongo.ChexunMongoOptions">
+		<property name="username" value="${mongodb.username}" />
+		<property name="password" value="${mongodb.password}" />
+		<property name="dbname" value="${mongodb.apname}" />
+		<property name="connectionsPerHost" value="100" />
+		<property name="threadsAllowedToBlockForConnectionMultiplier" value="5" />
+	</bean>
+	<bean id="mongo" class="com.mongodb.Mongo">
+		<constructor-arg ref="mongoServerAddress"></constructor-arg>
+		<constructor-arg ref="chexunMongoOptions"></constructor-arg>
+	</bean>
+	<!-- 默认end -->
+	<!-- 读start -->
+	<bean id="mongoServerReadAddress" class="com.mongodb.ServerAddress">
+		<constructor-arg value="${mongodb_read.host}"></constructor-arg>
+		<constructor-arg value="${mongodb_read.port}"></constructor-arg>
+	</bean>
+	<bean id="chexunMongoReadOptions" class="com.chexun.common.mongo.ChexunMongoOptions">
+		<property name="username" value="${mongodb_read.username}" />
+		<property name="password" value="${mongodb_read.password}" />
+		<property name="dbname" value="${mongodb_read.apname}" />
+		<property name="connectionsPerHost" value="100" />
+		<property name="threadsAllowedToBlockForConnectionMultiplier"
+			value="5" />
+		<property name="slaveOk" value="true" />
+	</bean>
+	<bean id="mongo_read" class="com.mongodb.Mongo">
+		<constructor-arg ref="mongoServerReadAddress"></constructor-arg>
+		<constructor-arg ref="chexunMongoReadOptions"></constructor-arg>
+	</bean>
+	<!-- 读end -->
+	<!-- 写start -->
+	<bean id="mongoServerWriteAddress" class="com.mongodb.ServerAddress">
+		<constructor-arg value="${mongodb_write.host}"></constructor-arg>
+		<constructor-arg value="${mongodb_write.port}"></constructor-arg>
+	</bean>
+	<bean id="chexunMongoWriteOptions" class="com.chexun.common.mongo.ChexunMongoOptions">
+		<property name="username" value="${mongodb_write.username}" />
+		<property name="password" value="${mongodb_write.password}" />
+		<property name="dbname" value="${mongodb_write.apname}" />
+		<property name="connectionsPerHost" value="100" />
+		<property name="threadsAllowedToBlockForConnectionMultiplier"
+			value="5" />
+	</bean>
+	<bean id="mongo_write" class="com.mongodb.Mongo">
+		<constructor-arg ref="mongoServerWriteAddress"></constructor-arg>
+		<constructor-arg ref="chexunMongoWriteOptions"></constructor-arg>
+	</bean>
+	<!-- 写end -->
+
+	<!-- 写 给网监发送数据start
+	<bean id="mongoNetMonitorAddress" class="com.mongodb.ServerAddress">
+		<constructor-arg value="${mongodb_netMonitor.host}"></constructor-arg>
+		<constructor-arg value="${mongodb_netMonitor.port}"></constructor-arg>
+	</bean>
+	<bean id="chexunMongoNetMonitorOptions" class="com.chexun.common.mongo.ChexunMongoOptions">
+		<property name="username" value="${mongodb_netMonitor.username}" />
+		<property name="password" value="${mongodb_netMonitor.password}" />
+		<property name="dbname" value="${mongodb_netMonitor.apname}" />
+		<property name="connectionsPerHost" value="100" />
+		<property name="threadsAllowedToBlockForConnectionMultiplier"
+			value="5" />
+	</bean>
+	
+	<bean id="mongo_NetMonitor" class="com.mongodb.Mongo">
+		<constructor-arg ref="mongoNetMonitorAddress"></constructor-arg>
+		<constructor-arg ref="chexunMongoNetMonitorOptions"></constructor-arg>
+	</bean> -->
+	<!-- 写 给网监发送数据end -->
+
+	<!-- 链接对象注入start
+	<bean id="mongoHelper" class="com.ecsp.chexun.mongo.MongoHelper">
+		<constructor-arg ref="mongo"></constructor-arg>
+		<constructor-arg ref="mongo_read"></constructor-arg>
+		<constructor-arg ref="mongo_write"></constructor-arg>
+	</bean>
+	<bean id="netMongoHelper" class="com.ecsp.chexun.mongo.NetMongoHelper">
+		<constructor-arg ref="mongo_NetMonitor"></constructor-arg>
+	</bean>
+	 -->
+	<!-- 链接对象注入end -->
+	</beans>

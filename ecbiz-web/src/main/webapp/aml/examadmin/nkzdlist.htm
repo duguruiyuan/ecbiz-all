@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>综合信息</title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	background-image: url(../../images/seach_4.gif);
+}
+-->
+</style>
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="../../statics/js/aml.js"></script>
+<!--菜单-->
+<style type="text/css">
+<!--
+.STYLE1 {color: #34488D}
+-->
+</style>
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+	<form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="STYLE1">您的位置：监督检查 &gt;&gt; 非现场监管 &gt;&gt; 内控制度</span></div></td>
+    </tr>
+	<tr>
+	  <td>
+	    <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+			<tr>
+			  <td><fieldset>
+				<legend>查询条件</legend>
+				<TABLE width="100%" border="0" align="center" cellpadding="2" cellspacing="2"  >
+				  <TBODY>
+					<TR>
+					  <TD align="right" width="18%">机构名称：</TD>
+					  <TD align="left" ><input type="text" name="textfield84" class="input-text" style="width: 150px" size="15"></TD>	
+					  <TD align="right">上报机构：</TD>
+					  <TD align="left" ><select name="select3">
+                          <option>山东分行</option>
+                        </select>
+                          <select name="select4">
+                            <option>烟台</option>
+                        </select></TD>
+					</TR>
+					<TR>
+					  <TD align="right">年度：</TD>
+					  <TD align="left" ><select name="select">
+                          <option>2006</option>
+                        </select>
+					    年 </TD>
+					  <TD align="right">&nbsp;</TD>
+					  <TD align="left" >&nbsp;</TD>
+					</TR>
+				  </TBODY>
+				</TABLE>
+			  </fieldset>
+			  </td>
+			</tr>
+        </table>
+		<br>
+	    <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+		  <tr>
+			<td align="right"><input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Submit" value="查 询" onclick="">
+				<img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+			  <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear" value="清 空" onclick="">
+              <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+              <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear3" value="排序控制" onclick="window.open('nkzdlistOrder.htm','','width=400 height=350 scrollbars=yes')">
+              <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+              <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear2" value="导出excel" onclick=""></td>
+		  </tr>
+	    </table>
+		<table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend>内控制度</legend>
+				<table width="98%" border="0" align="center" cellspacing="0" >
+					<tr>
+					  <td width="10%" align="left">&nbsp;</td>
+					  <td width="10%" align="left"><html:text property="currentPage" maxLength="10 " size="5" style="display:none"/></td>
+					  <td width="10%" align="left"><html:text property="totalPage" maxLength="10 " size="5" style="display:none"/></td>
+					  <td width="70%" align="right">&nbsp;<label>第<span class="style1"><%=currentPage%></span>页/共<span class="style1"><%=totalPage%></span>页&nbsp;共<span class="style1"><%=rowCount%></span>条记录</label>&nbsp;
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Frist" value="首 页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Forward" value="上一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Next" value="下一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Last" value="末 页" onclick=""></td>
+					</tr>
+				</table>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+					  <td >机构名称</td>
+
+					  <td height="22" >上报机构</td>
+					  <td >年度</td>
+					  <td width="12%" >登记日期</td>
+				    </tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+										  <a href="nkzd.htm">
+					  <td align="left" >&nbsp;</td>
+					  <td height="22" align="left" >江苏省建设银行</td>
+					  <td >2006</td>
+					  <td width="10%" >2007-04-01</td>
+					  </a>					</tr>					
+			  </table>
+			  </fieldset>
+			</td>
+          </tr>
+       </table>
+	  </td>
+	</tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+	</form>
+  </table>
+</div>
+</body>
+</html>

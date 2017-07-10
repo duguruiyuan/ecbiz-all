@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.product.ProductTypeMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="ProductTypeResult" type="com.mlj.ecbiz.model.product.ProductType">
+        <result property="id" column="id"/>
+        <result property="typeName" column="type_name"/>
+    </resultMap>
+
+    <sql id="product_type_columns">
+        product_type.id,
+        product_type.type_name
+    </sql>
+    
+    <sql id="product_type_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="id != null">
+        	and id=#{id} 
+        </if>
+        
+        <if test="typeName != null and typeName != ''">
+        	and type_name=#{typeName} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="product_type_set_conditions">
+    	<set>
+        <if test="id != null">
+        	id=#{id},
+        </if>
+        <if test="typeName != null">
+        	type_name=#{typeName},
+        </if>
+            id = id
+        </set>
+    </sql>
+
+    <sql id="product_type_properties">
+        #{id},
+        #{typeName}
+    </sql>
+
+    <insert id="createProductType" parameterType="com.mlj.ecbiz.model.product.ProductType" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO product_type (<include refid="product_type_columns"/>) VALUES (<include refid="product_type_properties"/>)
+    </insert>
+	
+	<insert id="insertProductType" parameterType="com.mlj.ecbiz.model.product.ProductType" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into product_type
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        			id,
+    			</if>
+    			<if test="typeName != null" >
+        			type_name
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        		#{id},
+    		</if>
+    			<if test="typeName != null" >
+        		#{typeName}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteProductTypeById" parameterType="Long">
+        delete from product_type
+        where
+            		id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteProductTypeByObj" parameterType="com.mlj.ecbiz.model.product.ProductType">
+        delete from product_type
+        <include refid="product_type_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteProductTypeByIdList" parameterType="java.util.List">
+    	delete from product_type 
+        	where
+            id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateProductType" parameterType="com.mlj.ecbiz.model.product.ProductType">
+        update product_type SET
+            id = #{id},
+            type_name = #{typeName}
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateProductTypeByObj" parameterType="com.mlj.ecbiz.model.product.ProductType">
+        update product_type 
+        <include refid="product_type_set_conditions"/>
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateProductTypeByObjAndConditions" parameterType="java.util.HashMap">
+        update product_type 
+        <set>
+        <if test="s.id != null">
+        	id=#{s.id},
+        </if>
+        <if test="s.typeName != null">
+        	type_name=#{s.typeName},
+        </if>
+        </set>
+        <where>
+        <if test="c.id != null">
+        	id=#{c.id} AND 
+        </if>
+        <if test="c.typeName != null">
+        	type_name=#{c.typeName} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateProductType" parameterType="java.util.List">
+		update product_type
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.id!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.id}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="type_name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.typeName!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.typeName}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(id = #{i.id})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getProductTypeById" resultMap="ProductTypeResult" parameterType="Long">
+        select
+        <include refid="product_type_columns"/>
+        from product_type
+        where
+            id = #{value}
+    </select>
+    
+    <select id="getProductTypeByObj" resultMap="ProductTypeResult" parameterType="com.mlj.ecbiz.model.product.ProductType">
+        select
+        <include refid="product_type_columns"/>
+        from product_type
+        <include refid="product_type_where_conditions"/>
+    </select>
+	
+    
+    <select id="getProductTypeListByObj" resultMap="ProductTypeResult"  parameterType="com.mlj.ecbiz.model.product.ProductType">
+        select
+        <include refid="product_type_columns"/>
+        from product_type 
+        <include refid="product_type_where_conditions"/>
+    </select>
+    
+    <select id="getProductTypeListByMap" resultMap="ProductTypeResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="product_type_columns"/>
+        from product_type 
+        <include refid="product_type_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getProductTypeCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.product.ProductType">
+        select count(1) from product_type
+        <include refid="product_type_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getProductTypeIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductType">
+        select       id     
+        from product_type
+        <include refid="product_type_where_conditions"/>
+    </select>
+	
+    <select id="getProductTypeIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductType">
+       select       id      from product_type where 1=1 
+        id = #{value}
+    </select>
+    
+    <select id="getProductTypeIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.product.ProductType">
+       select       id      from product_type 
+        <include refid="product_type_where_conditions"/>
+    </select>
+    
+    <select id="getProductTypeIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       id      from product_type 
+        <include refid="product_type_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

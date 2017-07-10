@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.product.PhotoDetailMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="PhotoDetailResult" type="com.mlj.ecbiz.model.product.PhotoDetail">
+        <result property="id" column="id"/>
+        <result property="albumId" column="album_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="clickNum" column="click_num"/>
+        <result property="scenePicType" column="scene_pic_type"/>
+        <result property="scenePicTypeSort" column="scene_pic_type_sort"/>
+        <result property="picSort" column="pic_sort"/>
+        <result property="picRemark" column="pic_remark"/>
+        <result property="picType" column="pic_type"/>
+        <result property="fileType" column="file_type"/>
+        <result property="fileMd5" column="file_md5"/>
+        <result property="state" column="state"/>
+        <result property="width" column="width"/>
+        <result property="height" column="height"/>
+        <result property="picstate" column="picstate"/>
+    </resultMap>
+
+    <sql id="photo_detail_columns">
+        photo_detail.id,
+        photo_detail.album_id,
+        photo_detail.create_time,
+        photo_detail.parent_id,
+        photo_detail.click_num,
+        photo_detail.scene_pic_type,
+        photo_detail.scene_pic_type_sort,
+        photo_detail.pic_sort,
+        photo_detail.pic_remark,
+        photo_detail.pic_type,
+        photo_detail.file_type,
+        photo_detail.file_md5,
+        photo_detail.state,
+        photo_detail.width,
+        photo_detail.height,
+        photo_detail.picstate
+    </sql>
+    
+    <sql id="photo_detail_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="id != null">
+        	and id=#{id} 
+        </if>
+        <if test="albumId != null">
+        	and album_id=#{albumId} 
+        </if>
+        <if test="createTime != null">
+        	and create_time=#{createTime} 
+        </if>
+        <if test="parentId != null">
+        	and parent_id=#{parentId} 
+        </if>
+        <if test="clickNum != null">
+        	and click_num=#{clickNum} 
+        </if>
+        <if test="scenePicType != null">
+        	and scene_pic_type=#{scenePicType} 
+        </if>
+        <if test="scenePicTypeSort != null">
+        	and scene_pic_type_sort=#{scenePicTypeSort} 
+        </if>
+        <if test="picSort != null">
+        	and pic_sort=#{picSort} 
+        </if>
+        
+        <if test="picRemark != null and picRemark != ''">
+        	and pic_remark=#{picRemark} 
+        </if>
+        
+        <if test="picType != null and picType != ''">
+        	and pic_type=#{picType} 
+        </if>
+        
+        <if test="fileType != null and fileType != ''">
+        	and file_type=#{fileType} 
+        </if>
+        
+        <if test="fileMd5 != null and fileMd5 != ''">
+        	and file_md5=#{fileMd5} 
+        </if>
+        <if test="state != null">
+        	and state=#{state} 
+        </if>
+        <if test="width != null">
+        	and width=#{width} 
+        </if>
+        <if test="height != null">
+        	and height=#{height} 
+        </if>
+        <if test="picstate != null">
+        	and picstate=#{picstate} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="photo_detail_set_conditions">
+    	<set>
+        <if test="id != null">
+        	id=#{id},
+        </if>
+        <if test="albumId != null">
+        	album_id=#{albumId},
+        </if>
+        <if test="createTime != null">
+        	create_time=#{createTime},
+        </if>
+        <if test="parentId != null">
+        	parent_id=#{parentId},
+        </if>
+        <if test="clickNum != null">
+        	click_num=#{clickNum},
+        </if>
+        <if test="scenePicType != null">
+        	scene_pic_type=#{scenePicType},
+        </if>
+        <if test="scenePicTypeSort != null">
+        	scene_pic_type_sort=#{scenePicTypeSort},
+        </if>
+        <if test="picSort != null">
+        	pic_sort=#{picSort},
+        </if>
+        <if test="picRemark != null">
+        	pic_remark=#{picRemark},
+        </if>
+        <if test="picType != null">
+        	pic_type=#{picType},
+        </if>
+        <if test="fileType != null">
+        	file_type=#{fileType},
+        </if>
+        <if test="fileMd5 != null">
+        	file_md5=#{fileMd5},
+        </if>
+        <if test="state != null">
+        	state=#{state},
+        </if>
+        <if test="width != null">
+        	width=#{width},
+        </if>
+        <if test="height != null">
+        	height=#{height},
+        </if>
+        <if test="picstate != null">
+        	picstate=#{picstate},
+        </if>
+            id = id
+        </set>
+    </sql>
+
+    <sql id="photo_detail_properties">
+        #{id},
+        #{albumId},
+        #{createTime},
+        #{parentId},
+        #{clickNum},
+        #{scenePicType},
+        #{scenePicTypeSort},
+        #{picSort},
+        #{picRemark},
+        #{picType},
+        #{fileType},
+        #{fileMd5},
+        #{state},
+        #{width},
+        #{height},
+        #{picstate}
+    </sql>
+
+    <insert id="createPhotoDetail" parameterType="com.mlj.ecbiz.model.product.PhotoDetail" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO photo_detail (<include refid="photo_detail_columns"/>) VALUES (<include refid="photo_detail_properties"/>)
+    </insert>
+	
+	<insert id="insertPhotoDetail" parameterType="com.mlj.ecbiz.model.product.PhotoDetail" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into photo_detail
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        			id,
+    			</if>
+    			<if test="albumId != null" >
+        			album_id,
+    			</if>
+    			<if test="createTime != null" >
+        			create_time,
+    			</if>
+    			<if test="parentId != null" >
+        			parent_id,
+    			</if>
+    			<if test="clickNum != null" >
+        			click_num,
+    			</if>
+    			<if test="scenePicType != null" >
+        			scene_pic_type,
+    			</if>
+    			<if test="scenePicTypeSort != null" >
+        			scene_pic_type_sort,
+    			</if>
+    			<if test="picSort != null" >
+        			pic_sort,
+    			</if>
+    			<if test="picRemark != null" >
+        			pic_remark,
+    			</if>
+    			<if test="picType != null" >
+        			pic_type,
+    			</if>
+    			<if test="fileType != null" >
+        			file_type,
+    			</if>
+    			<if test="fileMd5 != null" >
+        			file_md5,
+    			</if>
+    			<if test="state != null" >
+        			state,
+    			</if>
+    			<if test="width != null" >
+        			width,
+    			</if>
+    			<if test="height != null" >
+        			height,
+    			</if>
+    			<if test="picstate != null" >
+        			picstate
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        		#{id},
+    		</if>
+    			<if test="albumId != null" >
+        		#{albumId},
+    		</if>
+    			<if test="createTime != null" >
+        		#{createTime},
+    		</if>
+    			<if test="parentId != null" >
+        		#{parentId},
+    		</if>
+    			<if test="clickNum != null" >
+        		#{clickNum},
+    		</if>
+    			<if test="scenePicType != null" >
+        		#{scenePicType},
+    		</if>
+    			<if test="scenePicTypeSort != null" >
+        		#{scenePicTypeSort},
+    		</if>
+    			<if test="picSort != null" >
+        		#{picSort},
+    		</if>
+    			<if test="picRemark != null" >
+        		#{picRemark},
+    		</if>
+    			<if test="picType != null" >
+        		#{picType},
+    		</if>
+    			<if test="fileType != null" >
+        		#{fileType},
+    		</if>
+    			<if test="fileMd5 != null" >
+        		#{fileMd5},
+    		</if>
+    			<if test="state != null" >
+        		#{state},
+    		</if>
+    			<if test="width != null" >
+        		#{width},
+    		</if>
+    			<if test="height != null" >
+        		#{height},
+    		</if>
+    			<if test="picstate != null" >
+        		#{picstate}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deletePhotoDetailById" parameterType="Long">
+        delete from photo_detail
+        where
+            		id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deletePhotoDetailByObj" parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+        delete from photo_detail
+        <include refid="photo_detail_where_conditions"/>
+    </delete>
+    
+  	<delete id="deletePhotoDetailByIdList" parameterType="java.util.List">
+    	delete from photo_detail 
+        	where
+            id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updatePhotoDetail" parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+        update photo_detail SET
+            id = #{id},
+            album_id = #{albumId},
+            create_time = #{createTime},
+            parent_id = #{parentId},
+            click_num = #{clickNum},
+            scene_pic_type = #{scenePicType},
+            scene_pic_type_sort = #{scenePicTypeSort},
+            pic_sort = #{picSort},
+            pic_remark = #{picRemark},
+            pic_type = #{picType},
+            file_type = #{fileType},
+            file_md5 = #{fileMd5},
+            state = #{state},
+            width = #{width},
+            height = #{height},
+            picstate = #{picstate}
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updatePhotoDetailByObj" parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+        update photo_detail 
+        <include refid="photo_detail_set_conditions"/>
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updatePhotoDetailByObjAndConditions" parameterType="java.util.HashMap">
+        update photo_detail 
+        <set>
+        <if test="s.id != null">
+        	id=#{s.id},
+        </if>
+        <if test="s.albumId != null">
+        	album_id=#{s.albumId},
+        </if>
+        <if test="s.createTime != null">
+        	create_time=#{s.createTime},
+        </if>
+        <if test="s.parentId != null">
+        	parent_id=#{s.parentId},
+        </if>
+        <if test="s.clickNum != null">
+        	click_num=#{s.clickNum},
+        </if>
+        <if test="s.scenePicType != null">
+        	scene_pic_type=#{s.scenePicType},
+        </if>
+        <if test="s.scenePicTypeSort != null">
+        	scene_pic_type_sort=#{s.scenePicTypeSort},
+        </if>
+        <if test="s.picSort != null">
+        	pic_sort=#{s.picSort},
+        </if>
+        <if test="s.picRemark != null">
+        	pic_remark=#{s.picRemark},
+        </if>
+        <if test="s.picType != null">
+        	pic_type=#{s.picType},
+        </if>
+        <if test="s.fileType != null">
+        	file_type=#{s.fileType},
+        </if>
+        <if test="s.fileMd5 != null">
+        	file_md5=#{s.fileMd5},
+        </if>
+        <if test="s.state != null">
+        	state=#{s.state},
+        </if>
+        <if test="s.width != null">
+        	width=#{s.width},
+        </if>
+        <if test="s.height != null">
+        	height=#{s.height},
+        </if>
+        <if test="s.picstate != null">
+        	picstate=#{s.picstate},
+        </if>
+        </set>
+        <where>
+        <if test="c.id != null">
+        	id=#{c.id} AND 
+        </if>
+        <if test="c.albumId != null">
+        	album_id=#{c.albumId} AND 
+        </if>
+        <if test="c.createTime != null">
+        	create_time=#{c.createTime} AND 
+        </if>
+        <if test="c.parentId != null">
+        	parent_id=#{c.parentId} AND 
+        </if>
+        <if test="c.clickNum != null">
+        	click_num=#{c.clickNum} AND 
+        </if>
+        <if test="c.scenePicType != null">
+        	scene_pic_type=#{c.scenePicType} AND 
+        </if>
+        <if test="c.scenePicTypeSort != null">
+        	scene_pic_type_sort=#{c.scenePicTypeSort} AND 
+        </if>
+        <if test="c.picSort != null">
+        	pic_sort=#{c.picSort} AND 
+        </if>
+        <if test="c.picRemark != null">
+        	pic_remark=#{c.picRemark} AND 
+        </if>
+        <if test="c.picType != null">
+        	pic_type=#{c.picType} AND 
+        </if>
+        <if test="c.fileType != null">
+        	file_type=#{c.fileType} AND 
+        </if>
+        <if test="c.fileMd5 != null">
+        	file_md5=#{c.fileMd5} AND 
+        </if>
+        <if test="c.state != null">
+        	state=#{c.state} AND 
+        </if>
+        <if test="c.width != null">
+        	width=#{c.width} AND 
+        </if>
+        <if test="c.height != null">
+        	height=#{c.height} AND 
+        </if>
+        <if test="c.picstate != null">
+        	picstate=#{c.picstate} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdatePhotoDetail" parameterType="java.util.List">
+		update photo_detail
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.id!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.id}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="album_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.albumId!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.albumId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="create_time=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.createTime!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.createTime}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="parent_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.parentId!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.parentId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="click_num=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.clickNum!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.clickNum}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="scene_pic_type=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.scenePicType!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.scenePicType}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="scene_pic_type_sort=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.scenePicTypeSort!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.scenePicTypeSort}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="pic_sort=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.picSort!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.picSort}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="pic_remark=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.picRemark!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.picRemark}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="pic_type=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.picType!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.picType}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="file_type=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.fileType!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.fileType}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="file_md5=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.fileMd5!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.fileMd5}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="state=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.state!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.state}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="width=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.width!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.width}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="height=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.height!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.height}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="picstate=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.picstate!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.picstate}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(id = #{i.id})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getPhotoDetailById" resultMap="PhotoDetailResult" parameterType="Long">
+        select
+        <include refid="photo_detail_columns"/>
+        from photo_detail
+        where
+            id = #{value}
+    </select>
+    
+    <select id="getPhotoDetailByObj" resultMap="PhotoDetailResult" parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+        select
+        <include refid="photo_detail_columns"/>
+        from photo_detail
+        <include refid="photo_detail_where_conditions"/>
+    </select>
+	
+    
+    <select id="getPhotoDetailListByObj" resultMap="PhotoDetailResult"  parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+        select
+        <include refid="photo_detail_columns"/>
+        from photo_detail 
+        <include refid="photo_detail_where_conditions"/>
+    </select>
+    
+    <select id="getPhotoDetailListByMap" resultMap="PhotoDetailResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="photo_detail_columns"/>
+        from photo_detail 
+        <include refid="photo_detail_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getPhotoDetailCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+        select count(1) from photo_detail
+        <include refid="photo_detail_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getPhotoDetailIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+        select       id                                 
+        from photo_detail
+        <include refid="photo_detail_where_conditions"/>
+    </select>
+	
+    <select id="getPhotoDetailIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+       select       id                                  from photo_detail where 1=1 
+        id = #{value}
+    </select>
+    
+    <select id="getPhotoDetailIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.product.PhotoDetail">
+       select       id                                  from photo_detail 
+        <include refid="photo_detail_where_conditions"/>
+    </select>
+    
+    <select id="getPhotoDetailIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       id                                  from photo_detail 
+        <include refid="photo_detail_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>
