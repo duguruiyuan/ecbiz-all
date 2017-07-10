@@ -33,6 +33,7 @@
 			<artifactId>base-framework</artifactId>
 			<version>1.0</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.chexun.base</groupId>
 			<artifactId>base-common</artifactId>
