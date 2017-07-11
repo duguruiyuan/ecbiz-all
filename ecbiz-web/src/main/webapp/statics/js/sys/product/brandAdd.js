@@ -14,8 +14,7 @@ brandAdd.save = function(url) {
 	var telephone = $("#telephone").val();
 	var isShow  = $('input[name=isshow]:checked').val();
 	var brandDesc = $("#brand_desc").val();
-	var content = $("#editor").val();
-	
+	var content =UE.getEditor('editor').getContent();
 	var params = {
 			brandName : brandName,
 			englishName : englishName,

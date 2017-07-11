@@ -87,9 +87,9 @@
         <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
           <tr>
             <td align="right">
-			<input onMouseOver=msover(event); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(event); type="submit" name="Submit" value="查 询" onclick="brandList.seach()">
+			<input onMouseOver=msover(event); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(event); type="button" name="Submit" value="查 询" onclick="brandList.seach()">
 				<img src="../../statics/images/line.gif" width="5" height="15" align="absmiddle">
-               <input onMouseOver="msover(event)"; style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut="msout(event)"; type="submit" name="Frist2" value="新 增" onClick="location.href='add'">
+               <input onMouseOver="msover(event)"; style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut="msout(event)"; type="button" name="Frist2" value="新 增" onClick="location.href='add'">
                </td>
           </tr>
         </table>

@@ -23,6 +23,7 @@
 <script language="javascript" src="../../statics/js/sys/product/brandEdit.js"></script>
 
 <!--#set(com.mlj.ecbiz.model.product.ProductBrand productBrand)-->
+<!--#set(com.mlj.ecbiz.model.product.PhotoDetail photoDetail)-->
 </head>
 
 <body style="overflow-x:hidden">
@@ -92,8 +93,8 @@
                 <TR id="imgtr">
                   <TD width="18%" align="right"  nowrap="nowrap"></TD>
                   <TD align="left" >
-                  	<input name="logoImage" id="logoImage" type="hidden" value="${productBrand.brandLogo}" />
-                  	<img  id="imgshow_2" src="${photoDetail.brandLogo}" style="height: 40px;width: 150px;"/>
+                  	<input name="logoImage" id="logoImage" type="hidden" value="${photoDetail.id}" />
+                  	<img  id="imgshow_2" src="${photoDetail.picRemark}" style="height: 40px;width: 150px;"/>
                   </TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>

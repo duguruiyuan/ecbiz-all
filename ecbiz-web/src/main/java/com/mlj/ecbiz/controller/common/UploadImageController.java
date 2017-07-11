@@ -4,6 +4,7 @@ package  com.mlj.ecbiz.controller.common;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -61,7 +62,7 @@ public class UploadImageController {
 			photo.setAlbumId(Long.valueOf(albumId));
 			photo.setCreateTime(new Date());
 			//photo.setParentId(Long.parseLong(parentId));
-			photo.setPicType(picType);
+			
 			photo.setFileType(fileType);
 			photo.setState(1L);
 			BufferedImage bi = javax.imageio.ImageIO.read(file.getInputStream());
@@ -76,7 +77,7 @@ public class UploadImageController {
 					photo.setPicstate(1L);// 竖版的图片
 				}
 			}
-			photoDetailService.addPhotoDetail(photo);
+			
 			FtpBean newFtp = new FtpBean(null);
 			if(CallName.CAR.getName().equals(picType)){
 				newFtp = new FtpBean(CallName.CAR);
@@ -90,8 +91,10 @@ public class UploadImageController {
 				newFtp = new FtpBean(CallName.NEWS);
 			}
 			
-			String webPath = "statics/upload/images/"+new Date().getYear()+"/"+new Date().getMonth()+new Date().getDay()+"/"; 
-			String fileRealPath = request.getSession().getServletContext().getRealPath("/")+"statics\\upload\\";
+			Calendar now = Calendar.getInstance();
+			
+			String webPath = "images/"+ frontCompWithZore(now.get(Calendar.YEAR),2)+"/"+frontCompWithZore((now.get(Calendar.MONTH) + 1),2)+frontCompWithZore(now.get(Calendar.DAY_OF_MONTH),2)+"/"; 
+			String fileRealPath = request.getSession().getServletContext().getRealPath("/")+webPath;
 		    
 		    //判断文件夹是否存在  
 		    File targerFile = new File(fileRealPath);                     
@@ -100,8 +103,10 @@ public class UploadImageController {
 		       targerFile.mkdirs();  
 		    }   
 			String newfilename=UUID.randomUUID()+fileType;
+			photo.setFileMd5(String.valueOf(UUID.randomUUID()));
+			
 			//新文件
-			File newfile=new File(fileRealPath+newfilename);
+			File newfile=new File(fileRealPath+"logo_"+newfilename);
 			FileCopyUtils.copy(file.getBytes(), newfile);
 			if (fileRealPath == null) {
 				photoDetailService.deletePhotoDetailById(photo.getId());
@@ -116,11 +121,14 @@ public class UploadImageController {
 				}else if(DirectoryFactory.ReadDirectory(CallName.LOGO).equals(picType)){
 					newPicType="logo_50_50";
 				}
+				photo.setPicType(newPicType);
+				photo.setPicRemark("http://ecbiz.chexun.com/"+webPath+"logo_"+newfilename);
+				photoDetailService.addPhotoDetail(photo);
 				response.setCharacterEncoding("GBK");
 		        response.setContentType("text/html;charset=GBK;");
 		        PrintWriter out=null;
 		        out = response.getWriter();
-				out.print("<script>window.document.domain='chexun.com';window.parent.notice_id('http://ecbiz.chexun.com/"+webPath+newfilename+"','"+photo.getId()+"');</script>");
+				out.print("<script>window.document.domain='chexun.com';window.parent.notice_id('http://ecbiz.chexun.com/"+webPath+"logo_"+newfilename+"','"+photo.getId()+"');</script>");
 				//return fileRealPath+newfilename;
 			}
 		} catch (Exception e) {
@@ -129,7 +137,22 @@ public class UploadImageController {
 		
 		return null;
 	}
-	
+    /** 
+     * 将元数据前补零，补后的总长度为指定的长度，以字符串的形式返回 
+     * @param sourceDate 
+     * @param formatLength 
+     * @return 重组后的数据 
+     */  
+    public static String frontCompWithZore(int sourceDate,int formatLength)  
+    {  
+     /* 
+      * 0 指前面补充零 
+      * formatLength 字符总长度为 formatLength 
+      * d 代表为正数。 
+      */  
+     String newString = String.format("%0"+formatLength+"d", sourceDate);  
+     return  newString;  
+    }  
 	
 	
 }

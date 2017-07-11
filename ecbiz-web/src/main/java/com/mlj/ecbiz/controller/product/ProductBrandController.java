@@ -58,7 +58,7 @@ public class ProductBrandController {
 //			if(!"".equals(letter)){
 //				map.put("letter", letter);
 //			}
-			page.setPageSize(2);
+			page.setPageSize(15);
 			List<ProductBrand> list = productBrandService.getProductBrandPage(map, page);
 			modelAndView.addObject("query", query);
 			modelAndView.addObject("productBrandList", list);
