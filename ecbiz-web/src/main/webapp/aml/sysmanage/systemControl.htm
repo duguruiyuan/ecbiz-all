@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>现场检查</title>
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="../../statics/js/aml.js"></script>
+<!--菜单-->
+<style type="text/css">
+<!--
+.STYLE1 {color: #34488D}
+.STYLE2 {color: #CC6633}
+-->
+</style>
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+	<form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：系统管理 &gt;&gt;  系统监控</span></div></td>
+    </tr>
+	<tr>
+	  <td>
+	    <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+			<tr>
+			  <td><fieldset>
+				<legend>目前状况</legend>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+                  <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                    <td width="20%" height="20" align="right" bgcolor="#CCCCCC" >系统在线人数：</td>
+                    <td align="left" bgcolor="#FFFFFF" >现有人数：<span class="sysytem">1</span>个 最多时达到：<span class="sysytem">2</span>个 总共为：<span class="sysytem">5</span>个 超时值为：<span class="sysytem">1200</span>秒 </td>
+                  </tr>
+                  <tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td width="20%" height="20" align="right" bgcolor="#CCCCCC" >系统线程数：</td>
+                    <td align="left" >目前存活：<span class="sysytem">35</span>个 </td>
+                    </tr>
+                  <tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td width="20%" height="20" align="right" bgcolor="#CCCCCC" >内存使用情况：</td>
+                    <td align="left" >已用内存：<span class="sysytem">53.80M</span> 总内存：<span class="sysytem">63.56M</span> 最大内存：<span class="sysytem">63.56M</span>   可用率：<span class="sysytem">15.36%</span> </td>
+                  </tr>
+                  <tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td height="20" align="right" bgcolor="#CCCCCC" >启动时间：</td>
+                    <td align="left" >2007-05-24 10:44:07启动 </td>
+                  </tr>
+                </table>
+			  </fieldset>
+			  </td>
+			</tr>
+        </table>
+		<br>
+	    <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+		  <tr>
+			<td align="left">
+				<p><span class="sysytem">用户当前使用情况</span>
+				  <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear" value="刷新当前显示" onclick="">
+			</p>
+			  </td>
+		  </tr>
+	    </table>
+		<table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend>系统监控</legend>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+					  <td width="15%" height="25" >登录账号</td>
+					  <td width="15%" >真实姓名</td>
+					  <td width="20%" >组织机构代码</td>
+					  <td width="15%" >单位名称</td>
+					  <td width="13%" >操作描述</td>
+					  <td width="13%" >IP地址</td>
+					  <td width="23%" >登录时间</td>
+					</tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <td width="20%" height="20" >zhanxt</td>
+					  <td width="20%" >王小王</td>
+					  <td width="20%" >12345678900000</td>
+					  <td width="15%" >光大银行</td>
+					  <td >系统监控</td>
+					  <td >127.0.0.1</td>
+					  <td width="23%"colspan="2" nowrap >2006-05-25 13:13</td>
+				    </tr>					
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+					  <td width="20%" height="20" >zhanxt</td>
+					  <td width="20%" >王小王</td>
+					  <td width="20%" >12345678900000</td>
+					  <td width="15%" >光大银行</td>
+					  <td width="13%" >系统监控</td>
+					  <td width="13%" >127.0.0.1</td>
+					  <td nowrap >2006-05-25 13:13</td>
+					</tr>					
+			  </table>
+			  </fieldset>
+			</td>
+          </tr>
+       </table>
+	  </td>
+	</tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+	</form>
+  </table>
+</div>
+</body>
+</html>

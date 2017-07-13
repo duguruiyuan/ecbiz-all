@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>人员管理</title>
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<!--菜单-->
+<script language="javascript" src="../../statics/js/menu.js"></script>
+<script language="javascript" src="../../statics/js/demur.js"></script>
+<script language="JavaScript" src="../../statics/js/selecttime.js"></script>
+<!--菜单-->
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+  <form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：综合管理 &gt;&gt; 人员信息管理 &gt;&gt; 新增人员信息</span></td>
+    </tr>
+    <tr>
+      <td height=25 id=operation><div align="right">
+        <input name="Submit2" type="button" class="input-button" value="保 存" onClick="location.href='peopleManage.htm'">
+      <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+        <input name="Submit2" type="button" class="input-button" value="返 回" onClick="javascrip:history.back()">&nbsp;&nbsp;&nbsp;
+        </div></td>
+    </tr>
+    <tr>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td valign="top" ><div>
+          <table width="90%" border="0" align="center" cellpadding="4" cellspacing="1" class="tbcolor">
+            <tr id="tbcolor">
+              <th align="center" id="list">新 增 人 员 信 息 </th>
+            </tr>
+            <tr>
+              <td bgcolor="#FFFFFF"><TABLE width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+                  <TBODY>
+                    <TR> 
+                      <TD width="18%" align="right" >姓名：</TD>
+                      <TD align="left" ><INPUT type="text" name="textfield2" class="input-text" style="width: 200px" size="20"></TD>
+                      <TD width="18%" align="right" >性别：</TD>
+                      <TD align="left" ><select name="select2">]
+					    <option selected> </option>
+                        <option >男</option>
+                        <option>女</option>
+                      </select></TD>
+                    </TR>
+                    <TR>
+                      <TD align="right" >证件号码：</TD>
+                      <TD  align="left" ><input type="text" name="textfield232" class="input-text" style="width: 200px" size="20"></TD>
+                      <TD align="right" >出生年份：</TD>
+                      <TD  align="left" ><select name="select6">
+                          <option>1978</option>
+                          <option>1979</option>
+                          <option>1980</option>
+                        </select>
+                        年
+  <select name="select7">
+    <option>01</option>
+    <option>02</option>
+  </select>
+                        月</TD>
+                    </TR>
+                   <TR>
+                     <TD align="right" >工作单位：</TD>
+                     <TD  align="left" ><input type="text" name="textfield232" class="input-text" style="width: 200px" size="20"></TD> 
+                      <TD align="right">学位：</TD>
+                      <TD align="left"><select name="select1">
+                          <option selected> </option>
+                          <option>本科</option>
+                          <option>研究生</option>
+                          <option>博士</option>
+                      </select></TD>
+                   </TR>
+                    <TR>
+                      <TD align="right">学历：</TD>
+                      <TD align="left"><select name="select1">
+                          <option selected> </option>
+                          <option>高中以下</option>
+                        <option>中专</option>
+						<option>高中</option>
+                        <option>大专</option>
+                        <option>本科</option>
+						<option>硕士</option>
+                        <option>博士</option>
+                        <option>其他</option>
+                      </select></TD> 
+                      <TD align="right">专业：</TD>
+                      <TD align="left"><select name="select1">
+                          <option selected> </option>
+                          <option>计算机</option>
+                          <option>法律</option>
+                          <option>数学</option>
+                      </select></TD>
+                    </TR>   
+                    <TR>
+                      <TD align="right">岗位性质：</TD>
+                      <TD align="left"><select name="select1">
+                          <option selected> </option>
+                          <option>业务人员</option>
+                          <option>管理人员</option>
+                        >
+                      </select></TD> 
+                      <TD align="right">职务：</TD>
+                      <TD align="left"><select name="select1">
+                          <option selected> </option>
+                          <option>行长</option>
+                          <option>处长</option>
+                          <option>科长</option>
+                      </select></TD>
+                    </TR>   
+					<TR>
+					  <TD align="right">技术职称：</TD>
+					  <TD align="left"><select name="select1">
+                          <option selected> </option>
+                          <option>中级工程师</option>
+                          <option>高级工程师</option>
+                      </select></TD> 
+                      <TD align="right">外语能力：</TD>
+                      <TD align="left"><INPUT type="text" name="textfield22" class="input-text" style="width: 200px" size="20"></TD>
+					</TR>  
+					<TR>
+					  <TD align="right"> 办公电话：</TD>
+					  <TD align="left"><input type="text" name="textfield23" class="input-text" style="width: 200px" size="20"></TD> 
+                      <TD align="right">传真：</TD>
+                      <TD align="left"><INPUT type="text" name="textfield2" class="input-text" style="width: 200px" size="20"></TD>
+					</TR>   
+					<TR>
+					  <TD align="right">手机：</TD>
+					  <TD align="left"><INPUT type="text" name="textfield2" class="input-text" style="width: 200px" size="20"></TD> 
+                      <TD align="right">家庭电话：</TD>
+                      <TD align="left"><INPUT type="text" name="textfield2" class="input-text" style="width: 200px" size="20"></TD>
+					</TR> 
+					<TR>
+					  <TD align="right">参加反洗钱<br>
+					    工作时间：</TD>
+					  <TD align="left"><select name="select">
+                          <option>2006</option>
+                        </select>
+					    年
+  <select name="select3">
+    <option>01</option>
+  </select>
+					    月</TD> 
+                      <TD align="right">在职状态：</TD>
+                      <TD align="left"><select name="select5">
+                          <option></option>
+                          <option>离职</option>
+                          <option>在职</option>
+                      </select></TD>
+					</TR> 
+					<TR> 
+                      <TD width="18%" align="right">工作经历：</TD>
+                     <TD colspan="3" align="left"><textarea name="textarea" cols="79" rows="5"></textarea></TD>
+					 </TR>   
+
+                    <TR>
+                      <TD width="18%"align="right">学术研究：</TD>
+                      <TD colspan="3" align="left"><textarea name="textarea" cols="79" rows="5"></textarea></TD>               
+                    </TR>   
+					<TR>
+                      <TD width="18%"align="right">参加境内外培训情况：</TD>
+                      <TD colspan="3" align="left"><textarea name="textarea" cols="79" rows="5"></textarea></TD>               
+                    </TR>   
+					<TR>
+                      <TD width="18%"align="right">其他：</TD>
+                      <TD colspan="3" align="left"><textarea name="textarea" cols="79" rows="5"></textarea></TD>               
+                    </TR> 
+                  </TBODY>
+                </TABLE></td>
+            </tr>
+          </table>
+          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td height="25" id="operation"><div align="right">
+                <input name="Submit" type="button" class="input-button" value="保 存" onClick="location.href='peopleManage.htm'">                
+                  <img src="../../images/line.gif" width="5" height="15" align="absmiddle">                
+                <input name="Submit2" type="button" class="input-button" value="返 回" onClick="javascrip:history.back()">&nbsp;&nbsp;&nbsp;
+              </div></td>
+            </tr>
+          </table>
+      </div>
+      </td>
+    </tr>
+    </form>
+  </table>
+</div>
+</body>
+</html>

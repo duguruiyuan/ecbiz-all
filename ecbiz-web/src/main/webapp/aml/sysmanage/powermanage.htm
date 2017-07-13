@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>系统管理</title>
+<style type="text/css">
+<!--
+body {
+    margin-left: 0px;
+    margin-top: 0px;
+    background-image: url(../../images/seach_4.gif);
+}
+-->
+</style>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<!--菜单-->
+<LINK REL="StyleSheet" HREF="../../statics/css/menu.css">
+<script language="javascript" src="../../statics/js/aml.js"></script>
+<!--菜单-->
+<style type="text/css">
+<!--
+.STYLE1 {color: #000000}
+-->
+</style>
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+    <form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：系统管理&gt;&gt; 权限管理</span></div></td>
+    </tr>
+    <tr>
+      <td><br>
+        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><fieldset>
+                <legend>权限管理</legend>
+                <table width="98%" border="0" align="center" cellspacing="0" >
+                    <tr>
+                      <td width="10%" align="left"><html:text property="currentPage" maxLength="10 " size="5" style="display:none"/></td>
+                      <td width="10%" align="left"><html:text property="totalPage" maxLength="10 " size="5" style="display:none"/></td>
+                      <td width="70%" align="right">&nbsp;</td>
+                    </tr>
+                </table>
+                <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+                  <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                    <td width="20%" rowspan="2" bgcolor="#CCCCCC" class="tbcolor" >&nbsp;</td>
+                    <td width="25%" class="tbcolor" ><strong>系统管理员</strong></td>
+                    <td width="25%" class="tbcolor" ><strong>业务权限管理员</strong></td>
+                    <td width="25%" class="tbcolor" ><strong>业务人员</strong></td>
+                  </tr>
+                  <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                    <td class="tbcolor" ><input type="submit" name="Submit2" value="全选">
+                    <input type="submit" name="Submit22" value="全清"></td>
+                    <td width="25%" class="tbcolor" ><input type="submit" name="Submit23" value="全选">
+                      <input type="submit" name="Submit222" value="全清"></td>
+                    <td width="25%" class="tbcolor" ><input type="submit" name="Submit24" value="全选">
+                      <input type="submit" name="Submit223" value="全清"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+                    
+                    <td width="20%" align="left" bgcolor="#CCCCCC" ><span class="STYLE1">综合管理信息系统</span></td>
+                    <td width="25%" bgcolor="#CCCCCC" >&nbsp;</td>
+                    <td width="25%" bgcolor="#CCCCCC" >&nbsp;</td>
+                    <td width="25%" bgcolor="#CCCCCC" >&nbsp;</td>                  
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    
+                    <td width="20%" align="left" bgcolor="#E8E8E8" ><span class="STYLE1">综合管理</span></td>
+                    <td width="25%" bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td width="25%" bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td width="25%" bgcolor="#E8E8E8" >&nbsp;</td>                  
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">信息发布</span></td>
+                    <td ><input name="checkbox4736" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox241" value="checkbox"></td>
+                    <td ><input name="checkbox4737" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">信息上报</span></td>
+                    <td ><input name="checkbox4738" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox243" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox244" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">信息交流</span></td>
+                    <td >&nbsp;</td>
+                    <td >&nbsp;</td>
+                    <td >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">写消息</span></td>
+                    <td ><input name="checkbox47310" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox245" value="checkbox"></td>
+                    <td ><input name="checkbox4739" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >收件夹</td>
+                    <td ><input type="checkbox" name="checkbox22" value="checkbox"></td>
+                    <td ><input name="checkbox4" type="checkbox" value="checkbox" checked></td>
+                    <td ><input name="checkbox42" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">发件夹</span></td>
+                    <td ><input type="checkbox" name="checkbox23" value="checkbox"></td>
+                    <td ><input name="checkbox43" type="checkbox" value="checkbox" checked></td>
+                    <td ><input name="checkbox476" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">人员信息管理</span></td>
+                    <td ><input type="checkbox" name="checkbox24" value="checkbox"></td>
+                    <td ><input name="checkbox474" type="checkbox" value="checkbox" checked></td>
+                    <td ><input name="checkbox475" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">监督检查</span></td>
+                    <td >&nbsp;</td>
+                    <td >&nbsp;</td>
+                    <td >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">现场检查</span></td>
+                    <td ><input type="checkbox" name="checkbox25" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23848" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23849" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" ><span class="STYLE1">行政处罚</span></td>
+                    <td ><input type="checkbox" name="checkbox26" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23847" value="checkbox"></td>
+                    <td ><input name="checkbox47" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" bgcolor="#E8E8E8" ><span class="STYLE1">非现场监管</span></td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >内控制度</td>
+                    <td ><input name="checkbox4733" type="checkbox" value="checkbox" checked></td>
+                    <td ><input name="checkbox45" type="checkbox" value="checkbox" checked></td>
+                    <td ><input name="checkbox472" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >机构和岗位</td>
+                    <td ><input type="checkbox" name="checkbox28" value="checkbox"></td>
+                    <td ><input name="checkbox473" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23846" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >培训工作</td>
+                    <td ><input name="checkbox4734" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23845" value="checkbox"></td>
+                    <td ><input name="checkbox4732" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >宣传活动</td>
+                    <td ><input type="checkbox" name="checkbox210" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23844" value="checkbox"></td>
+                    <td ><input name="checkbox46" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >内部审计</td>
+                    <td ><input name="checkbox4735" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23842" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23843" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >客户身份识别</td>
+                    <td ><input type="checkbox" name="checkbox212" value="checkbox"></td>
+                    <td ><input name="checkbox48" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23841" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >可疑交易报告</td>
+                    <td ><input type="checkbox" name="checkbox213" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23840" value="checkbox"></td>
+                    <td ><input name="checkbox49" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >资料与交易保存</td>
+                    <td ><input type="checkbox" name="checkbox214" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23839" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23838" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >打击洗钱活动</td>
+                    <td ><input name="checkbox410" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23836" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23837" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" bgcolor="#E8E8E8" >行政调查</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" bgcolor="#E8E8E8" >案件协查</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >登记与反馈</td>
+                    <td ><input type="checkbox" name="checkbox216" value="checkbox"></td>
+                    <td ><input name="checkbox411" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23835" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >受理审批</td>
+                    <td ><input name="checkbox47311" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23833" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23834" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >受理办理</td>
+                    <td ><input type="checkbox" name="checkbox218" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23832" value="checkbox"></td>
+                    <td ><input name="checkbox412" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >调查办理</td>
+                    <td ><input type="checkbox" name="checkbox219" value="checkbox"></td>
+                    <td ><input name="checkbox413" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23829" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >报案管理</td>
+                    <td ><input name="checkbox414" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23830" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23831" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >名单管理</td>
+                    <td >&nbsp;</td>
+                    <td >&nbsp;</td>
+                    <td >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >黑名单</td>
+                    <td ><input type="checkbox" name="checkbox221" value="checkbox"></td>
+                    <td ><input name="checkbox415" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23828" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >白名单</td>
+                    <td ><input type="checkbox" name="checkbox222" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23826" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23827" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >协查名单</td>
+                    <td ><input type="checkbox" name="checkbox223" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23825" value="checkbox"></td>
+                    <td ><input name="checkbox416" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >重点关注名单</td>
+                    <td ><input type="checkbox" name="checkbox224" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23824" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23823" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >关注名单</td>
+                    <td ><input name="checkbox417" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23821" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23822" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" bgcolor="#E8E8E8" >文书管理</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >现场检查</td>
+                    <td ><input type="checkbox" name="checkbox226" value="checkbox"></td>
+                    <td ><input name="checkbox418" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23820" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >行政处罚</td>
+                    <td ><input type="checkbox" name="checkbox227" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23818" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23819" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >案件协查</td>
+                    <td ><input type="checkbox" name="checkbox228" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23817" value="checkbox"></td>
+                    <td ><input name="checkbox419" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >线索调查</td>
+                    <td ><input type="checkbox" name="checkbox229" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23815" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23816" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >统计分析</td>
+                    <td >&nbsp;</td>
+                    <td >&nbsp;</td>
+                    <td >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >人员信息统计</td>
+                    <td ><input name="checkbox420" type="checkbox" value="checkbox" checked></td>
+                    <td ><input name="checkbox421" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23814" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >监管信息统计</td>
+                    <td ><input type="checkbox" name="checkbox231" value="checkbox"></td>
+                    <td >&nbsp;</td>
+                    <td ><input name="checkbox422" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >案件协查统计</td>
+                    <td ><input name="checkbox423" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23811" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23812" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >线索调查统计</td>
+                    <td ><input type="checkbox" name="checkbox233" value="checkbox"></td>
+                    <td ><input name="checkbox424" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox23813" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >流程管理</td>
+                    <td ><input type="checkbox" name="checkbox234" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox23810" value="checkbox"></td>
+                    <td ><input name="checkbox425" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" bgcolor="#E8E8E8" >系统管理</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                    <td bgcolor="#E8E8E8" >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >人行机构管理</td>
+                    <td ><input name="checkbox426" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox2389" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox2388" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >金融机构管理</td>
+                    <td ><input type="checkbox" name="checkbox236" value="checkbox"></td>
+                    <td ><input name="checkbox427" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox2387" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >用户管理</td>
+                    <td ><input type="checkbox" name="checkbox237" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox2384" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox2386" value="checkbox"></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >角色管理</td>
+                    <td ><input type="checkbox" name="checkbox238" value="checkbox"></td>
+                    <td ><input type="checkbox" name="checkbox2385" value="checkbox"></td>
+                    <td ><input name="checkbox428" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >权限管理</td>
+                    <td ><input name="checkbox431" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox2383" value="checkbox"></td>
+                    <td >&nbsp;</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+                    <td align="left" >系统日志</td>
+                    <td ><input name="checkbox430" type="checkbox" value="checkbox" checked></td>
+                    <td ><input type="checkbox" name="checkbox2382" value="checkbox"></td>
+                    <td ><input name="checkbox429" type="checkbox" value="checkbox" checked></td>
+                  </tr>
+                </table>
+              </fieldset>
+              </td>
+          </tr>
+       </table>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    </form>
+  </table>
+</div>
+</body>
+</html>

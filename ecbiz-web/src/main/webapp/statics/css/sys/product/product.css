@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+.commod_preview {
+    border: 1px solid #aaaaaa;
+    float: left;
+    height: 160px;
+    margin-bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 575px;
+}
+.showImgkuang {
+    float: left;
+    width: auto;
+}
+.f_red {
+    color: red;
+}

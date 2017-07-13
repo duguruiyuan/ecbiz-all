@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>监督检查</title>
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="../../statics/js/aml.js"></script>
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+	<form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：监督检查 &gt;&gt; 行政处罚</span></div></td>
+    </tr>
+    <tr>
+      <td height=25 id=operation><div align="right">
+       			<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Forward" value="处罚决定" onClick="location.href='punishDecAnd.htm'">
+				<img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Forward2" value="罚款执行" onClick="location.href='punishEnfAnd.htm'">
+                <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Next" value="行政复议" onClick="location.href='punishRepAnd.htm'">
+				<img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Next" value="行政诉讼" onClick="location.href='punishLawAnd.htm'">
+				<img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+				<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Next" value=" 返 回 " onClick="javascrip:history.back()">
+       </div></td>
+    </tr>
+	<tr>
+	  <td align="center">
+	    <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+			<tr>
+			  <td><fieldset>
+				<legend>行政处罚立案登记</legend>
+				<br>
+			    <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+                  <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                    <td height="22">行政处罚系统编号</td>
+                    <td>立案名称</td>
+                    <td >立案日期</td>
+                    <td >拟处罚对象</td>
+                    <td >状态</td>
+                    <td width="10%" nowrap="nowrap">修改</td>
+                    <td width="10%" nowrap="nowrap">删除</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle"> <a href="punishEnr.htm">
+                    <td height="22" align="left">1100000605130011</td>
+                    <td height="22" align="left">熊猫电子技术有限公司</td>
+                    <td >2006-01-12</td>
+                    <td >********</td>
+                    <td >已提交</td>
+                    </a>
+                      <td width="10%" ><a href="punishEnr.htm"></a><a href="punishEnr2.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a></td>
+                    <a href="#" onClick="confirm('你确定要删除数据吗？');">
+                      <td width="10%" ><img src="../../images/picture/delete.gif" width="15" height="15"></td>
+                    </a> </tr>
+                </table>
+			  </fieldset>			</td>
+          </tr>
+       </table>
+		<br>
+	    <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend>行政处罚决定书</legend>
+				<br>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+					  <td height="22"nowrap>出具行政处罚决定
+书日期</td>
+					  <td>处罚对象</td>
+					  <td >违规类别</td>
+					  <td >处罚种类</td>
+					  <td >处罚金额(万元)</td>
+					  <td >状态</td>
+					  <td width="5%" >修改</td>
+					  <td width="5%" >删除</td>
+					</tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="punishDec.htm">
+					  <td height="22">2006-01-15</td>
+					  <td>***********</td>
+					  <td >未按规定识别客户</td>
+					  <td >罚款警告并处</td>
+					  <td >120.00</td>
+					  <td >已提交</td>
+					  </a>
+					  <td ><a href="punishDec2.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a></td>
+					  
+					  <a href="#" onClick="confirm('你确定要删除数据吗？');"><td ><img src="../../images/picture/delete.gif" width="15" height="15"></td>
+					  </a>				  </tr>								
+			  </table>
+			  </fieldset>
+			  </td>
+          </tr>
+       </table>
+		<br>
+	    <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend>罚款处罚执行</legend>
+				<br>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+					  <td height="20">处罚决定书编号</td>
+					  <td>缴款金额(万元)</td>
+					  <td >缴款日期</td>
+					 <td >状态</td>
+					  <td width="5%" >修改</td>
+					  <td width="5%" >删除</td>
+					</tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="punishEnf.htm">
+					  <td height="20">0605010011</td>
+					  <td>2000.00</td>
+					  <td >2006-02-23</td>
+					  <td >已提交</td>
+					  </a>
+					  <td ><a href="punishEnf2.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a></td>
+					  
+					  <a href="#" onClick="confirm('你确定要删除数据吗？');"><td ><img src="../../images/picture/delete.gif" width="15" height="15"></td>
+					  </a>				  </tr>								
+			  </table>
+			  </fieldset>
+			</td>
+          </tr>
+       </table>
+	   <br>
+	    <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend>行政复议</legend>
+				<br>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+					  <td height="22" nowrap="nowrap">行政复议立案日期</td>
+					  <td nowrap="nowrap">做出行政复议决定日期</td>
+					  <td nowrap="nowrap">受理复议单位</td>
+					  <td nowrap="nowrap">行政复议后改变决定</td>
+					  <td nowrap="nowrap">不予处罚或减轻处罚</td>
+					  <td width="10%" nowrap="nowrap">状态</td>
+					  <td nowrap="nowrap" width="10%">修改</td>
+					  <td nowrap="nowrap" width="10%">删除</td>
+					</tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="punishRep.htm">
+					  <td height="22">2006-02-23</td>
+					  <td>2007-05-30</td>
+					  <td>***********</td>
+					  <td>是</td>
+					  <td>否</td>
+					  <td nowrap >已提交</td>
+					  </a>
+					  <td width="10%" ><a href="punishRep2.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a> </td>
+					  <a href="#" onClick="confirm('你确定要删除数据吗？');">
+					  <td width="10%" ><img src="../../images/picture/delete.gif" width="15" height="15">		  </td>
+					  </a>				</tr>											
+			  </table>
+			  </fieldset>
+			  </td>
+          </tr>
+       </table>
+	    <br>
+	    <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><fieldset>
+              <legend>行政诉讼</legend>
+              <br>
+              <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+                <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                  <td height="22" nowrap="nowrap">行政诉讼立案日期</td>
+				  <td nowrap="nowrap">做出行政诉讼决定日期</td>
+				  <td nowrap="nowrap">受理诉讼单位</td>
+				  <td nowrap="nowrap">行政诉讼后改变决定</td>
+				  <td nowrap="nowrap">不予处罚或减轻处罚</td>
+				  <td nowrap="nowrap">状态</td>
+                  <td nowrap="nowrap" width="5%">修改</td>
+                  <td nowrap="nowrap" width="5%">删除</td>
+                </tr>
+                <tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+				<a href="punishLaw.htm">
+                  <td  height="22">2006-02-23</td>
+				  <td>2006-04-10</td>
+                  <td >************</td>
+                  <td >是</td>
+                  <td >是</td>
+				  <td nowrap >未提交</td>
+				  </a>
+                  <td ><a href="punishLaw2.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a></td>
+                  <td ><a href="#" onClick="confirm('你确定要删除数据吗？');"><img src="../../images/picture/delete.gif" width="15" height="15" border="0"></a></td>
+                </tr>
+              </table>
+            </fieldset></td>
+          </tr>
+        </table>
+		<br>
+		<br>
+	   <tr>
+      <td>&nbsp;</td>
+    </tr>
+	</form>
+  </table>
+</div>
+</body>
+</html>

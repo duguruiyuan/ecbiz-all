@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>现场检查</title>
+<script language="javascript" src="../../statics/js/aml.js"></script>
+<!--菜单-->
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+	<form name="form1" method="post" action="">
+    <tr>
+      <td height=25 id=location ><div align="left"><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：系统管理 &gt;&gt; 角色管理</span></div></td>
+    </tr>
+	<tr>
+	  <td>
+
+	    <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+		  <tr>
+			<td align="right">
+			<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Add" value="新 增" onclick="location.href='roleAdd.htm'">
+			</td>
+		  </tr>
+	<tr>
+	  <td>
+		<br>
+	    <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+		  </tr>
+	    </table>
+		<table width="95%"  border="0" cellspacing="0" cellpadding="0">
+			<tr>
+			  <td><fieldset>
+				<legend>用户管理</legend>
+				<table width="98%" border="0" align="center" cellspacing="0" >
+					<tr>
+					  <td width="10%" align="left">&nbsp;</td>
+					  <td width="10%" align="left"><html:text property="currentPage" maxLength="10 " size="5" style="display:none"/></td>
+					  <td width="10%" align="left"><html:text property="totalPage" maxLength="10 " size="5" style="display:none"/></td>
+					  <td width="70%" align="right">&nbsp;<label>第<span class="style1"><%=currentPage%></span>页/共<span class="style1"><%=totalPage%></span>页&nbsp;共<span class="style1"><%=rowCount%></span>条记录</label>&nbsp;
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Frist" value="首 页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Forward" value="上一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Next" value="下一页" onclick="">
+						<input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Last" value="末 页" onclick=""></td>
+					</tr>
+				</table>
+				<table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+					<tr bgcolor="#CCCCCC" align="center" valign="middle">
+					  <td width="15%" >角色名称</td>
+					  <td width="15%" >角色描述</td>
+					  <td width="10%" >登记人</td>
+					  <td width="20%" >登记日期</td>
+					  <td width="5%" >修改</td>
+                      <td width="5%" >删除</td>
+					</tr>
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="roleView.htm">
+					   <td width="15%" >系统管理员</td>
+					  <td width="15%" >管理系统用户，创建用户，权限管理等</td>
+					  <td width="10%" >system</td>
+					  <td width="20%" >2006-12-05</td>
+					 <td width="5%" ><a href="roleModify.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a>
+                    <td width="5%" ><img src="../../images/picture/delete.gif" width="15" height="15"></td>
+					</tr>					
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="roleView.htm">
+					   <td width="15%" >总行业务权限管理员</td>
+					  <td width="15%" >总行业务权限管理员</td>
+					  <td width="10%" >admin</td>
+					  <td width="20%" >2006-12-05</td>
+					  <td width="5%" ><a href="roleModify.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a>
+                    <td width="5%" ><img src="../../images/picture/delete.gif" width="15" height="15"></td>
+					</tr>					
+					</tr>					
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="roleView.htm">
+					   <td width="15%" >总行业务人员</td>
+					  <td width="15%" >总行业务人员</td>
+					  <td width="10%" >admin</td>
+					  <td width="20%" >2006-12-05</td>
+					  <td width="5%" ><a href="roleModify.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a>
+                    <td width="5%" ><img src="../../images/picture/delete.gif" width="15" height="15"></td>
+					</tr>	
+					</tr>					
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="roleView.htm">
+					   <td width="15%" >分行业务权限管理员</td>
+					  <td width="15%" >分行业务权限管理员</td>
+					  <td width="10%" >admin</td>
+					   <td width="20%" >2006-12-05</td>
+					  <td width="5%" ><a href="roleModify.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a>
+                    <td width="5%" ><img src="../../images/picture/delete.gif" width="15" height="15"></td>
+					</tr>
+					</tr>					
+					<tr onmouseout="mOut(this,'#FFFFFF',event);" onmouseover="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+					  <a href="roleView.htm">
+					   <td width="15%" >分行业务人员</td>
+					  <td width="15%" >分行业务人员</td>
+					  <td width="10%" >admin</td>
+					   <td width="20%" >2006-12-05</td>
+					  <td width="5%" ><a href="roleModify.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a>
+                    <td width="5%" ><img src="../../images/picture/delete.gif" width="15" height="15"></td>
+					</tr>				
+			  </table></fieldset>
+			</td>
+          </tr>
+       </table>
+	  </td>
+	</tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+	</form>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>商品信息</title>
+<script language="javascript" src="../../statics/js/plugin/jq/jq.js"></script>
+<script language="javascript" src="../../statics/js/sys/product/brandList.js"></script>
+<!--菜单-->
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<!--菜单-->
+<script language="javascript" src="../../statics/js/aml.js"></script>
+<script language="JavaScript" src="../../statics/js/selecttime.js"></script>
+
+<!--#set(com.chexun.base.framework.core.entity.PageEntity page)-->
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+<form action="list" method="post" id="searchForm">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height=25 align="left" id=location ><img src="../../statics/images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：商品信息 &gt;&gt; 商品发布 </span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td><fieldset>
+                <legend>查询过滤器</legend>
+                <TABLE width="100%" border="0" align="center" cellpadding="2" cellspacing="2"  >
+                  <TBODY>
+                    <TR>
+					  <TD width="18%" align="right">分类：
+					  <select class="select_aaaaaa"  name="letter" size="1" id="letter">
+							<option value="" selected="selected">商品分类</option>
+						</select>
+					  </TD>
+					  <TD width="18%" align="right">
+					     上下/架:
+					     <select class="select_aaaaaa"  name="seachType" size="1" id="seachType">
+		                    <option value="0" selected="selected">上下/架</option>
+		                    <option value="1">上架</option>
+							<option value="2">下架</option>
+						 </select>
+					   </TD>
+					   
+                      <TD   align="right" >选项：
+                         <select class="select_aaaaaa"  name="seachType" size="1" id="seachType">
+		                    <option value="1" selected="selected">品牌名称</option>
+							<option value="2">商品编码</option>
+						 </select>
+                      </TD>  
+                      <TD align="left" nowrap>
+                     <input type="text" name="keyword" id="keyword" class="input-text" style="width: 200px" size="20">
+                      </TD>
+                      <TD align="left" nowrap >
+                     
+                      </TD>
+                      <TD width="18%" align="right">
+					    
+					   </TD>
+                    </TR>
+                  </TBODY>
+                </TABLE>
+              </fieldset>
+              </td>
+            </tr>
+        </table>
+        <br>
+        <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td align="right">
+			<input onMouseOver=msover(event); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(event); type="button" name="Submit" value="查 询" onclick="brandList.seach()">
+				<img src="../../statics/images/line.gif" width="5" height="15" align="absmiddle">
+               <input onMouseOver="msover(event)"; style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut="msout(event)"; type="button" name="Frist2" value="新 增" onClick="location.href='add'">
+               </td>
+          </tr>
+        </table>
+         
+         <input type="hidden" id="pageCurrentPage" name="currentPage" value="${page.currentPage}"/>
+        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left"><fieldset>
+                <legend>品牌信息 </legend>
+                ${include("/common/page.httl")}
+                <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+                  <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                    <td width="12%">商品编码</td>
+                    <td width="12%">销售类型</td>
+                    <td width="12%">品牌</td>
+                    <td width="12%">商品分类</td>
+                    <td width="12%">商品名称</td>
+                    <td width="12%">平台售价</td>
+                    <td width="12%">市场价格</td>
+                    <td width="12%">销售库存</td>
+                    <td width="12%">上下/架</td>
+                    <td width="5%" nowrap="nowrap">修改</td>
+                    <td width="5%" nowrap="nowrap">删除</td>
+                  </tr>
+                  <!--#for(com.mlj.ecbiz.model.product.ProductInfo productinfo : productInfoList)-->
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle"> <a href="infoReportRecView.htm">
+                    <td>${productinfo.id }</td>
+			        <td>${productinfo.brandId }</td>
+			        <td>${productinfo.catId }</td>
+			        <td>${productinfo.productName }</td>
+			        <td>${productinfo.shopPrice }</td>
+			        <td>${productinfo.marketPrice }</td>
+			        <td>${productinfo.stock }</td>
+			        <td>${productinfo.isOnsale }</td>
+			        
+				    <td id="statusName_${productinfo.id }">
+				           	<a href="javascript:brandList.toEdit('edit','${productinfo.id }');">
+								<img class="active" src="../../statics/images/picture/edit2.gif" width="15" height="15" border="0">
+							</a>
+				    </td>   
+				    <td id="statusName_${productinfo.id }">
+				    		<a href="javascript:brandList.MM_popupMsg('你确删除此信息嘛?','list','${productinfo.id}');">
+				           		<img class="active" src="../../statics/images/picture/delete.gif" width="15" height="15">
+				   			</a>
+				    </td>      
+				  </tr>
+				   <!--#end--> 
+              </table>
+              
+              </fieldset>   </td>
+          </tr>
+       </table>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  </form>
+</div>
+</body>
+</html>

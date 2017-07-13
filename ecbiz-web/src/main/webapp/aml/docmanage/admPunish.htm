@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>文书管理列表</title>
+<!--菜单-->
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<script language="javascript" src="../../statics/js/aml.js"></script>
+<script language="JavaScript" src="../../statics/js/selecttime.js"></script>
+<!--菜单-->
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height=25 align="left" id=location ><img src="../../images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：文书管理 &gt;&gt; 行政处罚 </span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td><fieldset>
+                <legend>查询条件</legend>
+                <table width="100%" border="0" align="center" cellpadding="2" cellspacing="2"  >
+                  <tbody>
+                    <tr>
+                      <td align="right" width="18%">标题：</td>
+                      <td align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></td>
+                      <td width="18%" align="right">现场检查编号：</td>
+                      <td align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></td>
+                    </tr>
+                    <tr>
+                      <td align="right" width="20%">登记号：</td>
+                      <td align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></td>
+                      <td width="20%" align="right">文号：</td>
+                      <td align="left" ><input type="text" name="textfield8" class="input-text" style="width: 200px" size="20"></td>
+                    </tr>
+                    <tr>
+                      <td align="right">发文单位：</td>
+                      <td align="left" ><input type="text" name="textfield82" class="input-text" style="width: 200px" size="20"></td>
+                      <td align="right" >发文日期：</td>
+                      <td align="left" nowrap ><input name="publishTime1" type="text" class="input-text" id="publishTime1" style="width: 80px" size="10">
+                          <img onClick=fPopCalendar(publishTime1,publishTime1) src="../../images/picture/in4_05.gif" width="17" height="16"> -
+                        <input name="publishTime2" type="text" class="input-text" id="publishTime2" style="width: 80px" size="10">
+                          <img onClick=fPopCalendar(publishTime2,publishTime2) src="../../images/picture/in4_05.gif" width="17" height="16"> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </fieldset>              </td>
+            </tr>
+        </table>
+        <br>
+        <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td align="right"><input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Frist2" value="新 增" onClick="location.href='admPunishAdd.htm'">
+               <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+                 <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Submit" value="查 询" onclick="">
+                <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+                <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear" value="清 空" onclick="">
+                <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+                <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear3" value="排序控制" onClick="window.open('admPunishOrder.htm','','width=400 height=350 scrollbars=yes')">
+                <img src="../../images/line.gif" width="5" height="15" align="absmiddle">
+                <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="button" name="Clear22" value="导出excel" onclick="">            </td>
+          </tr>
+        </table>
+        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left"><fieldset>
+                <legend>行政处罚 </legend>
+                <table width="98%" border="0" align="center" cellspacing="0" >
+                    <tr>
+                      <td width="10%" align="left"></td>
+                      <td width="10%" align="left"><html:text property="currentPage" maxLength="10 " size="5" style="display:none"/></td>
+                      <td width="10%" align="left"><html:text property="totalPage" maxLength="10 " size="5" style="display:none"/></td>
+                      <td width="70%" align="right">&nbsp;
+                        <label>第<span class="style1">1</span>页/共1页&nbsp;共3条记录</label>
+                      &nbsp;
+                        <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Frist" value="首 页" onclick="">
+                        <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Forward" value="上一页" onclick="">
+                        <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Next" value="下一页" onclick="">
+                      <input onMouseOver=msover(); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(); type="submit" name="Last" value="末 页" onclick=""></td></tr>
+                </table>
+                <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+                  <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                    <a href="admPunishView.htm">
+                    <td height="20" nowrap >标题</td>
+                    <td height="20" nowrap >现场检查编号</td>
+                    <td nowrap >登记号</td>
+                    <td nowrap >文号</td>
+                    <td nowrap >发文单位</td>
+                    <td nowrap >受文单位</td>
+                    <td nowrap >用文单位</td>
+                    <td width="12%" nowrap >发文日期 </td>
+                    <td nowrap >修改</td>
+                    <td nowrap >删除</td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle">
+                     <a href="admPunishView.htm">
+                    <td >*************</td>
+                    <td >10000012999070403A001</td>
+                    <td >苏案1903801</td>
+                    <td >熊猫电子</td>
+                    <td >5000万</td>
+                    <td >江苏分行</td>
+                    <td >江苏公安厅</td>
+                    <td >2007-04-10</td>
+                    </a>
+                      <td><a href="admPunishModify.htm"><img  src="../../images/picture/edit2.gif"width="15" height="15" border="0"></a></td>
+                    <td ><a href="#" onClick="confirm('你确定要删除数据吗？');"><img src="../../images/picture/delete.gif" width="15" height="15" border="0"></a> </td>
+                  </tr>
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);" bgcolor="#F8F8F8" align="center" valign="middle">
+				    <a href="admPunishView.htm">
+                    <td >*****************</td>
+                    <td >10000012999070403A001</td>
+                    <td >苏案1903801</td>
+                    <td >熊猫电子</td>
+                    <td >5000万</td>
+                    <td >江苏分行</td>
+                    <td >江苏公安厅</td>
+                    <td >2007-04-10</td>
+                    </a>
+                      <td><a href="admPunishModify.htm"><img src="../../images/picture/edit2.gif" width="15" height="15" border="0"></a></td>
+                   <td > <a href="#" onClick="confirm('你确定要删除数据吗？');"><img src="../../images/picture/delete.gif" width="15" height="15" border="0"></a></td>
+				  </tr>
+                </table>
+              </fieldset>            </td>
+          </tr>
+       </table>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

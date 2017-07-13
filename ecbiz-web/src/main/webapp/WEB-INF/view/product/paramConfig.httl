@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+   <title>SKU设置</title>
+	<link href="http://mall.chexun.com:80/admin/css/main.css" rel="stylesheet" type="text/css" />
+	<link href="http://mall.chexun.com:80/admin/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="http://mall.chexun.com:80/admin/css/tipswindown.css" rel="stylesheet" type="text/css" />
+	<link href="http://mall.chexun.com:80/admin/css/sku.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://mall.chexun.com:80/admin/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="http://mall.chexun.com:80/admin/js/common.js"></script>
+	<script type="text/javascript" src="http://mall.chexun.com:80//admin/js/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="http://mall.chexun.com:80/admin/js/sku.js"></script>
+	<style>
+		#file4{ position:absolute;z-index:100; opacity:0;filter:alpha(opacity=0); left:-65px;}
+		#uploadImg{ font-size:12px; overflow:hidden; position:relative}
+		.upfile_text{ width:100px; text-align:center; top:0px; left:0px;}
+		.upfile_text_down{ color:#CCC;}
+		</style>
+		<style type="text/css"> 
+		#preview_wrapper{   
+		    display:inline-block;    
+		    background-color:#CCC;   
+		}   
+		#preview_fake{ /* 该对象用户在IE下显示预览图片 */   
+		    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);   
+		}   
+		#preview_size_fake{ /* 该对象只用来在IE下获得图片的原始尺寸，无其它用途 */   
+		    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);     
+		    visibility:hidden;   
+		}   
+	</style>
+	
+  </head>
+  
+  <body>
+    <h1 class="h1_caption">商家销售属性值管理</h1>
+<form action="" method="post" name="brand_add" id="brand_add" onsubmit="return validate();" enctype="multipart/form-data">
+
+ <div class="shop_main">
+ <div class="shop_ordout">
+ <div class="tbl_box2">
+                        
+<div style="margin: 5px 0 10px 0" class="tbl-n">
+    <select style="width:150px" class="catselect" onchange="skuAddPag.catLev1changths(this.value)" name="catLev_1" id="catLev_1"> </select>&nbsp;
+    <select style="width:150px" class="catselect" name="catLev_2" id="catLev_2" onchange="skuAddPag.trimselect()"><option value="">请选择</option></select>&nbsp;	
+        
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+   </table>
+</div>
+ 
+     
+</div>
+
+        <div class="tbl_box2">
+            <table border="0" cellspacing="0" cellpadding="0" class="tbl_type2 tt_v2" id="attrValueId">
+                <thead>
+                <tr>
+                    <th><p>类目名称</p></th>
+                    <th><p>第一类属性<input id="is_Color" type="checkbox" name="addColor" />COLOR属性</p></th>
+                    <th><p>第二类属性</p></th>
+                    <th><p>操作</p></th>
+                </tr>
+                </thead>
+                <tbody id="addattr"></tbody>
+            </table>
+        </div>
+    </div>
+ </div>
+</form>
+	
+  </body>
+
+</html>
