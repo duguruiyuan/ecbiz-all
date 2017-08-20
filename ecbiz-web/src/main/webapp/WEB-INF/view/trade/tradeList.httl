@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>订单信息</title>
+<script language="javascript" src="../../statics/js/plugin/jq/jq.js"></script>
+<script language="javascript" src="../../statics/js/sys/product/tradeList.js"></script>
+<!--菜单-->
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<!--菜单-->
+<script language="javascript" src="../../statics/js/aml.js"></script>
+<script language="JavaScript" src="../../statics/js/selecttime.js"></script>
+
+<!--#set(com.chexun.base.framework.core.entity.PageEntity page)-->
+</head>
+
+<body style="overflow-x:hidden">
+<div align="center">
+<form action="list" method="post" id="searchForm">
+  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height=25 align="left" id=location ><img src="../../statics/images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation">您的位置：订单信息 &gt;&gt; 订单列表 </span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="95%"  border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td><fieldset>
+                <legend>查询过滤器</legend>
+                <TABLE width="100%" border="0" align="center" cellpadding="2" cellspacing="2"  >
+                  <TBODY>
+                    <TR>
+					  <TD width="18%" align="right">分类：
+					  	<select class="select_aaaaaa"  name="letter" size="1" id="letter">
+							<option value="" selected="selected">商品分类</option>
+						</select>
+					  </TD>
+					  <TD width="18%" align="right">
+					     上下/架:
+					     <select class="select_aaaaaa"  name="seachType" size="1" id="seachType">
+		                    <option value="0" selected="selected">上下/架</option>
+		                    <option value="1">上架</option>
+							<option value="2">下架</option>
+						 </select>
+					   </TD>
+					   
+                      <TD align="right" >选项：
+                         <select class="select_aaaaaa"  name="seachType" size="1" id="seachType">
+		                    <option value="1" selected="selected">品牌名称</option>
+							<option value="2">商品编码</option>
+						 </select>
+                      </TD>  
+                      <TD align="left" nowrap>
+                     <input type="text" name="keyword" id="keyword" class="input-text" style="width: 200px" size="20">
+                      </TD>
+                      <TD align="left" nowrap >
+                     
+                      </TD>
+                      <TD width="18%" align="right">
+					    
+					   </TD>
+                    </TR>
+                  </TBODY>
+                </TABLE>
+              </fieldset>
+              </td>
+            </tr>
+        </table>
+        <br>
+        <table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td align="right">
+			<input onMouseOver=msover(event); style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut=msout(event); type="button" name="Submit" value="查 询" onclick="brandList.seach()">
+				<img src="../../statics/images/line.gif" width="5" height="15" align="absmiddle">
+               <input onMouseOver="msover(event)"; style="border:1px solid #cc9966; FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #fff6dc; COLOR: #000000; LINE-HEIGHT: normal; FONT-STYLE: normal; HEIGHT: 20px; FONT-VARIANT: normal" onMouseOut="msout(event)"; type="button" name="Frist2" value="补单" onClick="location.href='add'">
+               </td>
+          </tr>
+        </table>
+         
+         <input type="hidden" id="pageCurrentPage" name="currentPage" value="${page.currentPage}"/>
+        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left"><fieldset>
+                <legend>品牌信息 </legend>
+                ${include("/common/page.httl")}
+                <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
+                  <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                    <td width="12%">订单号</td>
+                    <td width="12%">订单状态</td>
+                    <td width="12%">下单时间</td>
+                    <td width="12%">付款时间</td>
+                    <td width="12%">卖家发货时间</td>
+                    <td width="12%">配送方式</td>
+                    <td width="12%">邮费</td>
+                    <td width="12%">实付金额</td>
+                    <td width="12%">买家昵称</td>
+                    <td width="5%" nowrap="nowrap">修改状态</td>
+                  </tr>
+                  <!--#for(com.mlj.ecbiz.model.trade.TradeInfo trade : tradeInfoList)-->
+                  <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle"> <a href="infoReportRecView.htm">
+                    <td>${trade.tid }</td>
+                    <td>${trade.status }</td>
+			        <td>${trade.created }</td>
+			        <td>${trade.payTime }</td>
+			        <td>${trade.consignTime }</td>
+			        <td>${trade.payType }</td>
+			        <td>${trade.postFee }</td>
+			        <td>${trade.payment }</td>
+			        <td>${trade.buyerNick }</td>
+				    <td id="statusName_${trade.tid }">
+				           	<a href="javascript:brandList.toEdit('edit','${trade.tid }');">
+								<img class="active" src="../../statics/images/picture/edit2.gif" width="15" height="15" border="0">
+							</a>
+				    </td>   
+				        
+				  </tr>
+				   <!--#end--> 
+              </table>
+              
+              </fieldset>   </td>
+          </tr>
+       </table>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/**
+ * 添加商品品牌js
+ */
+
+var sysUserAdd = {};
+
+// 保存品牌
+sysUserAdd.save = function(url) {
+	var uname = $("#uname").val();
+	var password = $("#password").val();
+	var name = $("#name").val();
+	var organization = $('#organization').val();
+	var rId = $('#r_id').val();
+	var operator = $("#operator").val();
+	var tel = $("#tel").val();
+	var status = $("#status").val();	
+	var note = $("#note").val();
+	
+	var params = {
+			uname:uname,
+			password:password,
+			name:name,
+			organization:organization,
+			rId:rId,
+			operator:operator,
+			tel:tel,
+			status:status,
+			note:note
+	};
+	$.ajax({
+		url : "/permission/addsave",
+		dataType : 'json',
+		type : 'post',
+		scriptCharset :'utf-8',
+		data : params,
+		success : function(data) {
+			if (data != '-1') {
+				alert("保存成功！");
+				location.href = url;
+			} else {
+				alert("保存失败！");
+				location.href = url;
+			}
+		},error: function (data, status, e){
+			alert(e);
+		}
+	});
+}
+// 保存时使用
+sysUserAdd.MM_popupMsg = function(msg, url) {
+	var bool = confirm(msg);
+	if (bool) {
+		sysUserAdd.save(url);
+	}
+}
+sysUserAdd.opcal= function(){
+    $.calendar.Show();
+}
+// 页面初始化执行
+$(document).ready(function() {
+	$("#imgtr").hide();
+	// 编辑器
+	var editor = new UE.ui.Editor();
+	editor.render("editor");
+	$('#pay_time').calendar();
+	 
+	
+});

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.permission.SysRoleMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="SysRoleResult" type="com.mlj.ecbiz.model.permission.SysRole">
+        <result property="rId" column="r_id"/>
+        <result property="rName" column="r_name"/>
+        <result property="describe" column="describe"/>
+        <result property="operator" column="operator"/>
+        <result property="created" column="created"/>
+        <result property="permissions" column="permissions"/>
+        <result property="note" column="note"/>
+    </resultMap>
+
+    <sql id="sys_role_columns">
+        sys_role.r_id,
+        sys_role.r_name,
+        sys_role.describe,
+        sys_role.operator,
+        sys_role.created,
+        sys_role.permissions,
+        sys_role.note
+    </sql>
+    
+    <sql id="sys_role_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="rId != null">
+        	and r_id=#{rId} 
+        </if>
+        
+        <if test="rName != null and rName != ''">
+        	and r_name=#{rName} 
+        </if>
+        
+        <if test="describe != null and describe != ''">
+        	and describe=#{describe} 
+        </if>
+        
+        <if test="operator != null and operator != ''">
+        	and operator=#{operator} 
+        </if>
+        <if test="created != null">
+        	and created=#{created} 
+        </if>
+        
+        <if test="permissions != null and permissions != ''">
+        	and permissions=#{permissions} 
+        </if>
+        
+        <if test="note != null and note != ''">
+        	and note=#{note} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="sys_role_set_conditions">
+    	<set>
+        <if test="rId != null">
+        	r_id=#{rId},
+        </if>
+        <if test="rName != null">
+        	r_name=#{rName},
+        </if>
+        <if test="describe != null">
+        	describe=#{describe},
+        </if>
+        <if test="operator != null">
+        	operator=#{operator},
+        </if>
+        <if test="created != null">
+        	created=#{created},
+        </if>
+        <if test="permissions != null">
+        	permissions=#{permissions},
+        </if>
+        <if test="note != null">
+        	note=#{note},
+        </if>
+            r_id = r_id
+        </set>
+    </sql>
+
+    <sql id="sys_role_properties">
+        #{rId},
+        #{rName},
+        #{describe},
+        #{operator},
+        #{created},
+        #{permissions},
+        #{note}
+    </sql>
+
+    <insert id="createSysRole" parameterType="com.mlj.ecbiz.model.permission.SysRole" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO sys_role (<include refid="sys_role_columns"/>) VALUES (<include refid="sys_role_properties"/>)
+    </insert>
+	
+	<insert id="insertSysRole" parameterType="com.mlj.ecbiz.model.permission.SysRole" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into sys_role
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="rId != null" >
+        			r_id,
+    			</if>
+    			<if test="rName != null" >
+        			r_name,
+    			</if>
+    			<if test="describe != null" >
+        			describe,
+    			</if>
+    			<if test="operator != null" >
+        			operator,
+    			</if>
+    			<if test="created != null" >
+        			created,
+    			</if>
+    			<if test="permissions != null" >
+        			permissions,
+    			</if>
+    			<if test="note != null" >
+        			note
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="rId != null" >
+        		#{rId},
+    		</if>
+    			<if test="rName != null" >
+        		#{rName},
+    		</if>
+    			<if test="describe != null" >
+        		#{describe},
+    		</if>
+    			<if test="operator != null" >
+        		#{operator},
+    		</if>
+    			<if test="created != null" >
+        		#{created},
+    		</if>
+    			<if test="permissions != null" >
+        		#{permissions},
+    		</if>
+    			<if test="note != null" >
+        		#{note}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteSysRoleById" parameterType="Long">
+        delete from sys_role
+        where
+            		r_id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteSysRoleByObj" parameterType="com.mlj.ecbiz.model.permission.SysRole">
+        delete from sys_role
+        <include refid="sys_role_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteSysRoleByIdList" parameterType="java.util.List">
+    	delete from sys_role 
+        	where
+            r_id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateSysRole" parameterType="com.mlj.ecbiz.model.permission.SysRole">
+        update sys_role SET
+            r_id = #{rId},
+            r_name = #{rName},
+            describe = #{describe},
+            operator = #{operator},
+            created = #{created},
+            permissions = #{permissions},
+            note = #{note}
+        where
+            r_id = #{rId}
+    </update>
+    
+    <update id="updateSysRoleByObj" parameterType="com.mlj.ecbiz.model.permission.SysRole">
+        update sys_role 
+        <include refid="sys_role_set_conditions"/>
+        where
+            r_id = #{rId}
+    </update>
+    
+    <update id="updateSysRoleByObjAndConditions" parameterType="java.util.HashMap">
+        update sys_role 
+        <set>
+        <if test="s.rId != null">
+        	r_id=#{s.rId},
+        </if>
+        <if test="s.rName != null">
+        	r_name=#{s.rName},
+        </if>
+        <if test="s.describe != null">
+        	describe=#{s.describe},
+        </if>
+        <if test="s.operator != null">
+        	operator=#{s.operator},
+        </if>
+        <if test="s.created != null">
+        	created=#{s.created},
+        </if>
+        <if test="s.permissions != null">
+        	permissions=#{s.permissions},
+        </if>
+        <if test="s.note != null">
+        	note=#{s.note},
+        </if>
+        </set>
+        <where>
+        <if test="c.rId != null">
+        	r_id=#{c.rId} AND 
+        </if>
+        <if test="c.rName != null">
+        	r_name=#{c.rName} AND 
+        </if>
+        <if test="c.describe != null">
+        	describe=#{c.describe} AND 
+        </if>
+        <if test="c.operator != null">
+        	operator=#{c.operator} AND 
+        </if>
+        <if test="c.created != null">
+        	created=#{c.created} AND 
+        </if>
+        <if test="c.permissions != null">
+        	permissions=#{c.permissions} AND 
+        </if>
+        <if test="c.note != null">
+        	note=#{c.note} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateSysRole" parameterType="java.util.List">
+		update sys_role
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="r_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.rId!=null">
+						WHEN 
+            			r_id = #{i.rId}
+        				 THEN #{i.rId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="r_name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.rName!=null">
+						WHEN 
+            			r_id = #{i.rId}
+        				 THEN #{i.rName}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="describe=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.describe!=null">
+						WHEN 
+            			r_id = #{i.rId}
+        				 THEN #{i.describe}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="operator=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.operator!=null">
+						WHEN 
+            			r_id = #{i.rId}
+        				 THEN #{i.operator}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="created=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.created!=null">
+						WHEN 
+            			r_id = #{i.rId}
+        				 THEN #{i.created}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="permissions=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.permissions!=null">
+						WHEN 
+            			r_id = #{i.rId}
+        				 THEN #{i.permissions}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="note=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.note!=null">
+						WHEN 
+            			r_id = #{i.rId}
+        				 THEN #{i.note}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(r_id = #{i.rId})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getSysRoleById" resultMap="SysRoleResult" parameterType="Long">
+        select
+        <include refid="sys_role_columns"/>
+        from sys_role
+        where
+            r_id = #{value}
+    </select>
+    
+    <select id="getSysRoleByObj" resultMap="SysRoleResult" parameterType="com.mlj.ecbiz.model.permission.SysRole">
+        select
+        <include refid="sys_role_columns"/>
+        from sys_role
+        <include refid="sys_role_where_conditions"/>
+    </select>
+	
+    
+    <select id="getSysRoleListByObj" resultMap="SysRoleResult"  parameterType="com.mlj.ecbiz.model.permission.SysRole">
+        select
+        <include refid="sys_role_columns"/>
+        from sys_role 
+        <include refid="sys_role_where_conditions"/>
+    </select>
+    
+    <select id="getSysRoleListByMap" resultMap="SysRoleResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="sys_role_columns"/>
+        from sys_role 
+        <include refid="sys_role_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getSysRoleCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.permission.SysRole">
+        select count(1) from sys_role
+        <include refid="sys_role_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getSysRoleIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysRole">
+        select       r_id               
+        from sys_role
+        <include refid="sys_role_where_conditions"/>
+    </select>
+	
+    <select id="getSysRoleIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysRole">
+       select       r_id                from sys_role where 1=1 
+        r_id = #{value}
+    </select>
+    
+    <select id="getSysRoleIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.permission.SysRole">
+       select       r_id                from sys_role 
+        <include refid="sys_role_where_conditions"/>
+    </select>
+    
+    <select id="getSysRoleIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       r_id                from sys_role 
+        <include refid="sys_role_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

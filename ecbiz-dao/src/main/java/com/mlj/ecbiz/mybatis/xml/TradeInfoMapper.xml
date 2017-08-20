@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.trade.TradeInfoMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="TradeInfoResult" type="com.mlj.ecbiz.model.trade.TradeInfo">
+        <result property="tid" column="tid"/>
+        <result property="status" column="status"/>
+        <result property="created" column="created"/>
+        <result property="payTime" column="pay_time"/>
+        <result property="consignTime" column="consign_time"/>
+        <result property="payType" column="pay_type"/>
+        <result property="postFee" column="post_fee"/>
+        <result property="payment" column="payment"/>
+        <result property="buyerNick" column="buyer_nick"/>
+        <result property="receiverName" column="receiver_name"/>
+        <result property="receiverState" column="receiver_state"/>
+        <result property="receiverAddress" column="receiver_address"/>
+        <result property="receiverZip" column="receiver_zip"/>
+        <result property="receiverMobile" column="receiver_mobile"/>
+    </resultMap>
+
+    <sql id="trade_info_columns">
+        trade_info.tid,
+        trade_info.status,
+        trade_info.created,
+        trade_info.pay_time,
+        trade_info.consign_time,
+        trade_info.pay_type,
+        trade_info.post_fee,
+        trade_info.payment,
+        trade_info.buyer_nick,
+        trade_info.receiver_name,
+        trade_info.receiver_state,
+        trade_info.receiver_address,
+        trade_info.receiver_zip,
+        trade_info.receiver_mobile
+    </sql>
+    
+    <sql id="trade_info_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="tid != null">
+        	and tid=#{tid} 
+        </if>
+        <if test="status != null">
+        	and status=#{status} 
+        </if>
+        <if test="created != null">
+        	and created=#{created} 
+        </if>
+        <if test="payTime != null">
+        	and pay_time=#{payTime} 
+        </if>
+        <if test="consignTime != null">
+        	and consign_time=#{consignTime} 
+        </if>
+        <if test="payType != null">
+        	and pay_type=#{payType} 
+        </if>
+        <if test="postFee != null">
+        	and post_fee=#{postFee} 
+        </if>
+        <if test="payment != null">
+        	and payment=#{payment} 
+        </if>
+        
+        <if test="buyerNick != null and buyerNick != ''">
+        	and buyer_nick=#{buyerNick} 
+        </if>
+        
+        <if test="receiverName != null and receiverName != ''">
+        	and receiver_name=#{receiverName} 
+        </if>
+        
+        <if test="receiverState != null and receiverState != ''">
+        	and receiver_state=#{receiverState} 
+        </if>
+        
+        <if test="receiverAddress != null and receiverAddress != ''">
+        	and receiver_address=#{receiverAddress} 
+        </if>
+        <if test="receiverZip != null">
+        	and receiver_zip=#{receiverZip} 
+        </if>
+        <if test="receiverMobile != null">
+        	and receiver_mobile=#{receiverMobile} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="trade_info_set_conditions">
+    	<set>
+        <if test="tid != null">
+        	tid=#{tid},
+        </if>
+        <if test="status != null">
+        	status=#{status},
+        </if>
+        <if test="created != null">
+        	created=#{created},
+        </if>
+        <if test="payTime != null">
+        	pay_time=#{payTime},
+        </if>
+        <if test="consignTime != null">
+        	consign_time=#{consignTime},
+        </if>
+        <if test="payType != null">
+        	pay_type=#{payType},
+        </if>
+        <if test="postFee != null">
+        	post_fee=#{postFee},
+        </if>
+        <if test="payment != null">
+        	payment=#{payment},
+        </if>
+        <if test="buyerNick != null">
+        	buyer_nick=#{buyerNick},
+        </if>
+        <if test="receiverName != null">
+        	receiver_name=#{receiverName},
+        </if>
+        <if test="receiverState != null">
+        	receiver_state=#{receiverState},
+        </if>
+        <if test="receiverAddress != null">
+        	receiver_address=#{receiverAddress},
+        </if>
+        <if test="receiverZip != null">
+        	receiver_zip=#{receiverZip},
+        </if>
+        <if test="receiverMobile != null">
+        	receiver_mobile=#{receiverMobile},
+        </if>
+            tid = tid
+        </set>
+    </sql>
+
+    <sql id="trade_info_properties">
+        #{tid},
+        #{status},
+        #{created},
+        #{payTime},
+        #{consignTime},
+        #{payType},
+        #{postFee},
+        #{payment},
+        #{buyerNick},
+        #{receiverName},
+        #{receiverState},
+        #{receiverAddress},
+        #{receiverZip},
+        #{receiverMobile}
+    </sql>
+
+    <insert id="createTradeInfo" parameterType="com.mlj.ecbiz.model.trade.TradeInfo" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO trade_info (<include refid="trade_info_columns"/>) VALUES (<include refid="trade_info_properties"/>)
+    </insert>
+	
+	<insert id="insertTradeInfo" parameterType="com.mlj.ecbiz.model.trade.TradeInfo" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into trade_info
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="tid != null" >
+        			tid,
+    			</if>
+    			<if test="status != null" >
+        			status,
+    			</if>
+    			<if test="created != null" >
+        			created,
+    			</if>
+    			<if test="payTime != null" >
+        			pay_time,
+    			</if>
+    			<if test="consignTime != null" >
+        			consign_time,
+    			</if>
+    			<if test="payType != null" >
+        			pay_type,
+    			</if>
+    			<if test="postFee != null" >
+        			post_fee,
+    			</if>
+    			<if test="payment != null" >
+        			payment,
+    			</if>
+    			<if test="buyerNick != null" >
+        			buyer_nick,
+    			</if>
+    			<if test="receiverName != null" >
+        			receiver_name,
+    			</if>
+    			<if test="receiverState != null" >
+        			receiver_state,
+    			</if>
+    			<if test="receiverAddress != null" >
+        			receiver_address,
+    			</if>
+    			<if test="receiverZip != null" >
+        			receiver_zip,
+    			</if>
+    			<if test="receiverMobile != null" >
+        			receiver_mobile
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="tid != null" >
+        		#{tid},
+    		</if>
+    			<if test="status != null" >
+        		#{status},
+    		</if>
+    			<if test="created != null" >
+        		#{created},
+    		</if>
+    			<if test="payTime != null" >
+        		#{payTime},
+    		</if>
+    			<if test="consignTime != null" >
+        		#{consignTime},
+    		</if>
+    			<if test="payType != null" >
+        		#{payType},
+    		</if>
+    			<if test="postFee != null" >
+        		#{postFee},
+    		</if>
+    			<if test="payment != null" >
+        		#{payment},
+    		</if>
+    			<if test="buyerNick != null" >
+        		#{buyerNick},
+    		</if>
+    			<if test="receiverName != null" >
+        		#{receiverName},
+    		</if>
+    			<if test="receiverState != null" >
+        		#{receiverState},
+    		</if>
+    			<if test="receiverAddress != null" >
+        		#{receiverAddress},
+    		</if>
+    			<if test="receiverZip != null" >
+        		#{receiverZip},
+    		</if>
+    			<if test="receiverMobile != null" >
+        		#{receiverMobile}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteTradeInfoById" parameterType="Long">
+        delete from trade_info
+        where
+            		tid = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteTradeInfoByObj" parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+        delete from trade_info
+        <include refid="trade_info_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteTradeInfoByIdList" parameterType="java.util.List">
+    	delete from trade_info 
+        	where
+            tid
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateTradeInfo" parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+        update trade_info SET
+            tid = #{tid},
+            status = #{status},
+            created = #{created},
+            pay_time = #{payTime},
+            consign_time = #{consignTime},
+            pay_type = #{payType},
+            post_fee = #{postFee},
+            payment = #{payment},
+            buyer_nick = #{buyerNick},
+            receiver_name = #{receiverName},
+            receiver_state = #{receiverState},
+            receiver_address = #{receiverAddress},
+            receiver_zip = #{receiverZip},
+            receiver_mobile = #{receiverMobile}
+        where
+            tid = #{tid}
+    </update>
+    
+    <update id="updateTradeInfoByObj" parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+        update trade_info 
+        <include refid="trade_info_set_conditions"/>
+        where
+            tid = #{tid}
+    </update>
+    
+    <update id="updateTradeInfoByObjAndConditions" parameterType="java.util.HashMap">
+        update trade_info 
+        <set>
+        <if test="s.tid != null">
+        	tid=#{s.tid},
+        </if>
+        <if test="s.status != null">
+        	status=#{s.status},
+        </if>
+        <if test="s.created != null">
+        	created=#{s.created},
+        </if>
+        <if test="s.payTime != null">
+        	pay_time=#{s.payTime},
+        </if>
+        <if test="s.consignTime != null">
+        	consign_time=#{s.consignTime},
+        </if>
+        <if test="s.payType != null">
+        	pay_type=#{s.payType},
+        </if>
+        <if test="s.postFee != null">
+        	post_fee=#{s.postFee},
+        </if>
+        <if test="s.payment != null">
+        	payment=#{s.payment},
+        </if>
+        <if test="s.buyerNick != null">
+        	buyer_nick=#{s.buyerNick},
+        </if>
+        <if test="s.receiverName != null">
+        	receiver_name=#{s.receiverName},
+        </if>
+        <if test="s.receiverState != null">
+        	receiver_state=#{s.receiverState},
+        </if>
+        <if test="s.receiverAddress != null">
+        	receiver_address=#{s.receiverAddress},
+        </if>
+        <if test="s.receiverZip != null">
+        	receiver_zip=#{s.receiverZip},
+        </if>
+        <if test="s.receiverMobile != null">
+        	receiver_mobile=#{s.receiverMobile},
+        </if>
+        </set>
+        <where>
+        <if test="c.tid != null">
+        	tid=#{c.tid} AND 
+        </if>
+        <if test="c.status != null">
+        	status=#{c.status} AND 
+        </if>
+        <if test="c.created != null">
+        	created=#{c.created} AND 
+        </if>
+        <if test="c.payTime != null">
+        	pay_time=#{c.payTime} AND 
+        </if>
+        <if test="c.consignTime != null">
+        	consign_time=#{c.consignTime} AND 
+        </if>
+        <if test="c.payType != null">
+        	pay_type=#{c.payType} AND 
+        </if>
+        <if test="c.postFee != null">
+        	post_fee=#{c.postFee} AND 
+        </if>
+        <if test="c.payment != null">
+        	payment=#{c.payment} AND 
+        </if>
+        <if test="c.buyerNick != null">
+        	buyer_nick=#{c.buyerNick} AND 
+        </if>
+        <if test="c.receiverName != null">
+        	receiver_name=#{c.receiverName} AND 
+        </if>
+        <if test="c.receiverState != null">
+        	receiver_state=#{c.receiverState} AND 
+        </if>
+        <if test="c.receiverAddress != null">
+        	receiver_address=#{c.receiverAddress} AND 
+        </if>
+        <if test="c.receiverZip != null">
+        	receiver_zip=#{c.receiverZip} AND 
+        </if>
+        <if test="c.receiverMobile != null">
+        	receiver_mobile=#{c.receiverMobile} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateTradeInfo" parameterType="java.util.List">
+		update trade_info
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="tid=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.tid!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.tid}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="status=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.status!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.status}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="created=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.created!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.created}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="pay_time=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.payTime!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.payTime}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="consign_time=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.consignTime!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.consignTime}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="pay_type=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.payType!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.payType}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="post_fee=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.postFee!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.postFee}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="payment=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.payment!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.payment}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="buyer_nick=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.buyerNick!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.buyerNick}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="receiver_name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.receiverName!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.receiverName}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="receiver_state=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.receiverState!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.receiverState}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="receiver_address=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.receiverAddress!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.receiverAddress}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="receiver_zip=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.receiverZip!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.receiverZip}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="receiver_mobile=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.receiverMobile!=null">
+						WHEN 
+            			tid = #{i.tid}
+        				 THEN #{i.receiverMobile}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(tid = #{i.tid})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getTradeInfoById" resultMap="TradeInfoResult" parameterType="Long">
+        select
+        <include refid="trade_info_columns"/>
+        from trade_info
+        where
+            tid = #{value}
+    </select>
+    
+    <select id="getTradeInfoByObj" resultMap="TradeInfoResult" parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+        select
+        <include refid="trade_info_columns"/>
+        from trade_info
+        <include refid="trade_info_where_conditions"/>
+    </select>
+	
+    
+    <select id="getTradeInfoListByObj" resultMap="TradeInfoResult"  parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+        select
+        <include refid="trade_info_columns"/>
+        from trade_info 
+        <include refid="trade_info_where_conditions"/>
+    </select>
+    
+    <select id="getTradeInfoListByMap" resultMap="TradeInfoResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="trade_info_columns"/>
+        from trade_info 
+        <include refid="trade_info_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getTradeInfoCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+        select count(1) from trade_info
+        <include refid="trade_info_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getTradeInfoIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+        select       tid                             
+        from trade_info
+        <include refid="trade_info_where_conditions"/>
+    </select>
+	
+    <select id="getTradeInfoIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+       select       tid                              from trade_info where 1=1 
+        tid = #{value}
+    </select>
+    
+    <select id="getTradeInfoIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.trade.TradeInfo">
+       select       tid                              from trade_info 
+        <include refid="trade_info_where_conditions"/>
+    </select>
+    
+    <select id="getTradeInfoIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       tid                              from trade_info 
+        <include refid="trade_info_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

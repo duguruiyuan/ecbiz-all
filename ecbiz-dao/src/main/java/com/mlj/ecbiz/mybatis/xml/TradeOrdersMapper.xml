@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.trade.TradeOrdersMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="TradeOrdersResult" type="com.mlj.ecbiz.model.trade.TradeOrders">
+        <result property="oid" column="oid"/>
+        <result property="tid" column="tid"/>
+        <result property="productsn" column="productsn"/>
+        <result property="title" column="title"/>
+        <result property="price" column="price"/>
+        <result property="num" column="num"/>
+        <result property="sellerNick" column="seller_nick"/>
+    </resultMap>
+
+    <sql id="trade_orders_columns">
+        trade_orders.oid,
+        trade_orders.tid,
+        trade_orders.productsn,
+        trade_orders.title,
+        trade_orders.price,
+        trade_orders.num,
+        trade_orders.seller_nick
+    </sql>
+    
+    <sql id="trade_orders_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="oid != null">
+        	and oid=#{oid} 
+        </if>
+        <if test="tid != null">
+        	and tid=#{tid} 
+        </if>
+        <if test="productsn != null">
+        	and productsn=#{productsn} 
+        </if>
+        
+        <if test="title != null and title != ''">
+        	and title=#{title} 
+        </if>
+        
+        <if test="price != null and price != ''">
+        	and price=#{price} 
+        </if>
+        <if test="num != null">
+        	and num=#{num} 
+        </if>
+        
+        <if test="sellerNick != null and sellerNick != ''">
+        	and seller_nick=#{sellerNick} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="trade_orders_set_conditions">
+    	<set>
+        <if test="oid != null">
+        	oid=#{oid},
+        </if>
+        <if test="tid != null">
+        	tid=#{tid},
+        </if>
+        <if test="productsn != null">
+        	productsn=#{productsn},
+        </if>
+        <if test="title != null">
+        	title=#{title},
+        </if>
+        <if test="price != null">
+        	price=#{price},
+        </if>
+        <if test="num != null">
+        	num=#{num},
+        </if>
+        <if test="sellerNick != null">
+        	seller_nick=#{sellerNick},
+        </if>
+            oid = oid
+        </set>
+    </sql>
+
+    <sql id="trade_orders_properties">
+        #{oid},
+        #{tid},
+        #{productsn},
+        #{title},
+        #{price},
+        #{num},
+        #{sellerNick}
+    </sql>
+
+    <insert id="createTradeOrders" parameterType="com.mlj.ecbiz.model.trade.TradeOrders" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO trade_orders (<include refid="trade_orders_columns"/>) VALUES (<include refid="trade_orders_properties"/>)
+    </insert>
+	
+	<insert id="insertTradeOrders" parameterType="com.mlj.ecbiz.model.trade.TradeOrders" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into trade_orders
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="oid != null" >
+        			oid,
+    			</if>
+    			<if test="tid != null" >
+        			tid,
+    			</if>
+    			<if test="productsn != null" >
+        			productsn,
+    			</if>
+    			<if test="title != null" >
+        			title,
+    			</if>
+    			<if test="price != null" >
+        			price,
+    			</if>
+    			<if test="num != null" >
+        			num,
+    			</if>
+    			<if test="sellerNick != null" >
+        			seller_nick
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="oid != null" >
+        		#{oid},
+    		</if>
+    			<if test="tid != null" >
+        		#{tid},
+    		</if>
+    			<if test="productsn != null" >
+        		#{productsn},
+    		</if>
+    			<if test="title != null" >
+        		#{title},
+    		</if>
+    			<if test="price != null" >
+        		#{price},
+    		</if>
+    			<if test="num != null" >
+        		#{num},
+    		</if>
+    			<if test="sellerNick != null" >
+        		#{sellerNick}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteTradeOrdersById" parameterType="Long">
+        delete from trade_orders
+        where
+            		oid = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteTradeOrdersByObj" parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+        delete from trade_orders
+        <include refid="trade_orders_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteTradeOrdersByIdList" parameterType="java.util.List">
+    	delete from trade_orders 
+        	where
+            oid
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateTradeOrders" parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+        update trade_orders SET
+            oid = #{oid},
+            tid = #{tid},
+            productsn = #{productsn},
+            title = #{title},
+            price = #{price},
+            num = #{num},
+            seller_nick = #{sellerNick}
+        where
+            oid = #{oid}
+    </update>
+    
+    <update id="updateTradeOrdersByObj" parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+        update trade_orders 
+        <include refid="trade_orders_set_conditions"/>
+        where
+            oid = #{oid}
+    </update>
+    
+    <update id="updateTradeOrdersByObjAndConditions" parameterType="java.util.HashMap">
+        update trade_orders 
+        <set>
+        <if test="s.oid != null">
+        	oid=#{s.oid},
+        </if>
+        <if test="s.tid != null">
+        	tid=#{s.tid},
+        </if>
+        <if test="s.productsn != null">
+        	productsn=#{s.productsn},
+        </if>
+        <if test="s.title != null">
+        	title=#{s.title},
+        </if>
+        <if test="s.price != null">
+        	price=#{s.price},
+        </if>
+        <if test="s.num != null">
+        	num=#{s.num},
+        </if>
+        <if test="s.sellerNick != null">
+        	seller_nick=#{s.sellerNick},
+        </if>
+        </set>
+        <where>
+        <if test="c.oid != null">
+        	oid=#{c.oid} AND 
+        </if>
+        <if test="c.tid != null">
+        	tid=#{c.tid} AND 
+        </if>
+        <if test="c.productsn != null">
+        	productsn=#{c.productsn} AND 
+        </if>
+        <if test="c.title != null">
+        	title=#{c.title} AND 
+        </if>
+        <if test="c.price != null">
+        	price=#{c.price} AND 
+        </if>
+        <if test="c.num != null">
+        	num=#{c.num} AND 
+        </if>
+        <if test="c.sellerNick != null">
+        	seller_nick=#{c.sellerNick} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateTradeOrders" parameterType="java.util.List">
+		update trade_orders
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="oid=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.oid!=null">
+						WHEN 
+            			oid = #{i.oid}
+        				 THEN #{i.oid}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="tid=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.tid!=null">
+						WHEN 
+            			oid = #{i.oid}
+        				 THEN #{i.tid}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="productsn=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.productsn!=null">
+						WHEN 
+            			oid = #{i.oid}
+        				 THEN #{i.productsn}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="title=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.title!=null">
+						WHEN 
+            			oid = #{i.oid}
+        				 THEN #{i.title}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="price=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.price!=null">
+						WHEN 
+            			oid = #{i.oid}
+        				 THEN #{i.price}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="num=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.num!=null">
+						WHEN 
+            			oid = #{i.oid}
+        				 THEN #{i.num}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="seller_nick=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.sellerNick!=null">
+						WHEN 
+            			oid = #{i.oid}
+        				 THEN #{i.sellerNick}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(oid = #{i.oid})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getTradeOrdersById" resultMap="TradeOrdersResult" parameterType="Long">
+        select
+        <include refid="trade_orders_columns"/>
+        from trade_orders
+        where
+            oid = #{value}
+    </select>
+    
+    <select id="getTradeOrdersByObj" resultMap="TradeOrdersResult" parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+        select
+        <include refid="trade_orders_columns"/>
+        from trade_orders
+        <include refid="trade_orders_where_conditions"/>
+    </select>
+	
+    
+    <select id="getTradeOrdersListByObj" resultMap="TradeOrdersResult"  parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+        select
+        <include refid="trade_orders_columns"/>
+        from trade_orders 
+        <include refid="trade_orders_where_conditions"/>
+    </select>
+    
+    <select id="getTradeOrdersListByMap" resultMap="TradeOrdersResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="trade_orders_columns"/>
+        from trade_orders 
+        <include refid="trade_orders_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getTradeOrdersCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+        select count(1) from trade_orders
+        <include refid="trade_orders_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getTradeOrdersIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+        select       oid               
+        from trade_orders
+        <include refid="trade_orders_where_conditions"/>
+    </select>
+	
+    <select id="getTradeOrdersIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+       select       oid                from trade_orders where 1=1 
+        oid = #{value}
+    </select>
+    
+    <select id="getTradeOrdersIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.trade.TradeOrders">
+       select       oid                from trade_orders 
+        <include refid="trade_orders_where_conditions"/>
+    </select>
+    
+    <select id="getTradeOrdersIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       oid                from trade_orders 
+        <include refid="trade_orders_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>
