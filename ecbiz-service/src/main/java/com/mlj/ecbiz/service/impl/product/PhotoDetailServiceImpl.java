@@ -1,14 +1,14 @@
 package com.mlj.ecbiz.service.impl.product;
 
 import java.util.List;
-import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.mlj.ecbiz.model.product.PhotoDetail;
-import com.mlj.ecbiz.dao.product.PhotoDetailDao;
-import com.mlj.ecbiz.service.product.PhotoDetailService;
+
 import com.chexun.base.framework.core.entity.PageEntity;
-import com.chexun.base.cache.QueryProvider;
+import com.mlj.ecbiz.dao.product.PhotoDetailDao;
+import com.mlj.ecbiz.model.product.PhotoDetail;
+import com.mlj.ecbiz.service.product.PhotoDetailService;
 /**
  * PhotoDetail管理接口
  * User: 

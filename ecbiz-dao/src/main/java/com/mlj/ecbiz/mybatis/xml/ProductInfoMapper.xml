@@ -25,6 +25,8 @@
         <result property="creatTime" column="creat_time"/>
         <result property="updateTime" column="update_time"/>
         <result property="stock" column="stock"/>
+        <result property="productDesc" column="product_desc"/>
+        <result property="content" column="content"/>
     </resultMap>
 
     <sql id="product_info_columns">
@@ -46,7 +48,9 @@
         product_info.operator,
         product_info.creat_time,
         product_info.update_time,
-        product_info.stock
+        product_info.stock,
+        product_info.product_desc,
+        product_info.content
     </sql>
     
     <sql id="product_info_where_conditions">
@@ -122,6 +126,14 @@
         <if test="stock != null">
         	and stock=#{stock} 
         </if>
+        
+        <if test="productDesc != null and productDesc != ''">
+        	and product_desc=#{productDesc} 
+        </if>
+        
+        <if test="content != null and content != ''">
+        	and content=#{content} 
+        </if>
         </trim>
     </sql>
     
@@ -184,6 +196,12 @@
         <if test="stock != null">
         	stock=#{stock},
         </if>
+        <if test="productDesc != null">
+        	product_desc=#{productDesc},
+        </if>
+        <if test="content != null">
+        	content=#{content},
+        </if>
             id = id
         </set>
     </sql>
@@ -207,7 +225,9 @@
         #{operator},
         #{creatTime},
         #{updateTime},
-        #{stock}
+        #{stock},
+        #{productDesc},
+        #{content}
     </sql>
 
     <insert id="createProductInfo" parameterType="com.mlj.ecbiz.model.product.ProductInfo" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
@@ -272,7 +292,13 @@
         			update_time,
     			</if>
     			<if test="stock != null" >
-        			stock
+        			stock,
+    			</if>
+    			<if test="productDesc != null" >
+        			product_desc,
+    			</if>
+    			<if test="content != null" >
+        			content
     			</if>
     	</trim>
     	<trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -331,7 +357,13 @@
         		#{updateTime},
     		</if>
     			<if test="stock != null" >
-        		#{stock}
+        		#{stock},
+    		</if>
+    			<if test="productDesc != null" >
+        		#{productDesc},
+    		</if>
+    			<if test="content != null" >
+        		#{content}
     		</if>
     	</trim>
   	</insert>
@@ -378,7 +410,9 @@
             operator = #{operator},
             creat_time = #{creatTime},
             update_time = #{updateTime},
-            stock = #{stock}
+            stock = #{stock},
+            product_desc = #{productDesc},
+            content = #{content}
         where
             id = #{id}
     </update>
@@ -450,6 +484,12 @@
         <if test="s.stock != null">
         	stock=#{s.stock},
         </if>
+        <if test="s.productDesc != null">
+        	product_desc=#{s.productDesc},
+        </if>
+        <if test="s.content != null">
+        	content=#{s.content},
+        </if>
         </set>
         <where>
         <if test="c.id != null">
@@ -508,6 +548,12 @@
         </if>
         <if test="c.stock != null">
         	stock=#{c.stock} AND 
+        </if>
+        <if test="c.productDesc != null">
+        	product_desc=#{c.productDesc} AND 
+        </if>
+        <if test="c.content != null">
+        	content=#{c.content} AND 
         </if>
        (status!=2)
         </where>
@@ -687,6 +733,24 @@
 					</if>
 				</foreach>
 			</trim>
+      	 	<trim prefix="product_desc=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.productDesc!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.productDesc}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="content=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.content!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.content}
+					</if>
+				</foreach>
+			</trim>
 		</trim>
 		where
 		<foreach collection="list" separator="or" item="i" index="index">
@@ -735,23 +799,23 @@
     
     
     <select id="getProductInfoIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductInfo">
-        select       id                                       
+        select       id                                           
         from product_info
         <include refid="product_info_where_conditions"/>
     </select>
 	
     <select id="getProductInfoIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductInfo">
-       select       id                                        from product_info where 1=1 
+       select       id                                            from product_info where 1=1 
         id = #{value}
     </select>
     
     <select id="getProductInfoIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.product.ProductInfo">
-       select       id                                        from product_info 
+       select       id                                            from product_info 
         <include refid="product_info_where_conditions"/>
     </select>
     
     <select id="getProductInfoIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
-        select       id                                        from product_info 
+        select       id                                            from product_info 
         <include refid="product_info_where_conditions"/>
         limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
     </select>

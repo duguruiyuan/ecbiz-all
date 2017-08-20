@@ -6,28 +6,34 @@ var productAdd = {};
 
 // 保存品牌
 productAdd.save = function(url) {
+	var catId = $("#catId").val();
 	var productName = $("#product_name").val();
-	var englishName = $("#english_name").val();
-	var english = $('#english').val();
-	var productLogo = $('#logoImage').val();
-	var officialUrl = $("#official_url").val();
-	var telephone = $("#telephone").val();
+	var productSn = $("#product_sn").val();
+	var unit = $('#unit').val();
+	var weight = $('#weight').val();
+	var productNum = $("#product_num").val();
+	var shopPrice = $("#shop_price").val();
+	var marketPrice = $("#market_Price").val();
 	var isShow  = $('input[name=isshow]:checked').val();
+	var isOnSale  = $('input[name=isonSale]:checked').val();
 	var productDesc = $("#product_desc").val();
-	var content =UE.getEditor('editor').getContent();
+	var content =UE.getEditor('editor').getContent();alert(isOnSale);
 	var params = {
+			catId:catId,
 			productName : productName,
-			englishName : englishName,
-			english : english,
-			productLogo : productLogo,
-			officialUrl : officialUrl,
-			telephone : telephone,
-			isShow : isShow,
+			productSn : productSn,
+			unit : unit,
+			weight : weight,
+			productNum : productNum,
+			shopPrice : shopPrice,
+			isShow:isShow,
+			isOnSale:isOnSale,
+			marketPrice : marketPrice,
 			productDesc : productDesc,
 			content : content
 	};
 	$.ajax({
-		url : "/productproduct/addsave",
+		url : "/productinfo/addsave",
 		dataType : 'json',
 		type : 'post',
 		scriptCharset : 'utf-8',

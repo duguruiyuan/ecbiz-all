@@ -12,7 +12,7 @@ import com.chexun.base.cache.QueryProvider;
 /**
  * SysUser管理接口
  * User: 
- * Date: 2017-06-13
+ * Date: 2017-08-20
  */
 @Service("sysUserService")
 public class SysUserServiceImpl implements SysUserService{
@@ -35,10 +35,10 @@ public class SysUserServiceImpl implements SysUserService{
 	}
     /**
      * 根据id删除一个SysUser
-     * @param id 要删除的id
+     * @param uid 要删除的id
      */
-    public Long deleteSysUserById(Long id){
-    	return sysUserDao.deleteSysUserById(id);
+    public Long deleteSysUserById(Long uid){
+    	return sysUserDao.deleteSysUserById(uid);
     }
 	public Long deleteSysUserByObj(SysUser sysUser){
         return sysUserDao.deleteSysUserByObj(sysUser);
@@ -67,7 +67,7 @@ public class SysUserServiceImpl implements SysUserService{
 	}
     /**
      * 根据id获取单个SysUser对象
-     * @param id 要查询的id
+     * @param uid 要查询的id
      * @return SysUser
      */
     
@@ -77,8 +77,8 @@ public class SysUserServiceImpl implements SysUserService{
     
 
 
-    public SysUser getSysUserById(Long id){
-    	return sysUserDao.getSysUserById( id);
+    public SysUser getSysUserById(Long uid){
+    	return sysUserDao.getSysUserById( uid);
     }
     
      public SysUser getSysUserByObj(SysUser sysUser) {

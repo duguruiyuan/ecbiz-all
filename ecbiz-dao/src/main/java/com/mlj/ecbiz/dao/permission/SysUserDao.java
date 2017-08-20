@@ -5,7 +5,7 @@ import com.chexun.base.framework.core.entity.PageEntity;
 /**
  * SysUser管理接口
  * User: 
- * Date: 2017-06-13
+ * Date: 2017-08-20
  */
 public interface SysUserDao {
 
@@ -18,9 +18,9 @@ public interface SysUserDao {
 	public Long insertSysUser(SysUser sysUser);
     /**
      * 根据id删除一个SysUser
-     * @param id 要删除的id
+     * @param uid 要删除的id
      */
-    public Long deleteSysUserById(Long id);
+    public Long deleteSysUserById(Long uid);
     
     public Long deleteSysUserByObj(SysUser sysUser);
 
@@ -39,10 +39,10 @@ public interface SysUserDao {
 
     /**
      * 根据id获取单个SysUser对象
-     * @param id 要查询的id
+     * @param uid 要查询的id
      * @return SysUser
      */
-    public SysUser getSysUserById(Long id);
+    public SysUser getSysUserById(Long uid);
 	public SysUser getSysUserByObj(SysUser sysUser);
     /**
      * 根据条件获取SysUser列表

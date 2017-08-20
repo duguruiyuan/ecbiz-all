@@ -60,7 +60,7 @@
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">所属商品分类：</TD>
                   <TD align="left" >
-						<select class="select_aaaaaa"  name="seachType" size="1" id="seachType">
+						<select class="select_aaaaaa"  name="catId" size="1" id="catId">
 		                    <option value="1" selected="selected">服务商品</option>
 							<option value="2">用品商品</option>
 						 </select>
@@ -70,43 +70,43 @@
                 </TR>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">商品名称：</TD>
-                  <TD align="left" ><INPUT name="brand_name" id="brand_name" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="brand_name" id="product_name" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
                  <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">商品编号：</TD>
-                  <TD align="left" ><INPUT name="english_name" id="english_name" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="english_name" id="product_sn" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">单位：</TD>
-                  <TD align="left" ><INPUT name="english" id="english" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="english" id="unit" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">重量：</TD>
-                  <TD align="left" ><INPUT name="english" id="english" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="english" id="weight" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">库存数量：</TD>
-                  <TD align="left" ><INPUT name="official_url" id="official_url" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="official_url" id="product_num" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">售价：</TD>
-                  <TD align="left" ><INPUT name="telephone" id="telephone" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="telephone" id="shop_price" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">参考价：</TD>
-                  <TD align="left" ><INPUT name="telephone" id="telephone" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="telephone" id="market_Price" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR> 
@@ -115,7 +115,7 @@
                   <TD align="left" >
 					<input type="radio" name="istop" id="is_show" value="1" checked />
 		            <span>是</span>
-					<input type="radio" name="istop" id="no_show" value="0"   />
+					<input type="radio" name="istop" id="is_show" value="0"   />
 		            <span>否</span>
 				  </TD>
                   <TD width="18%" align="right" ></TD>
@@ -124,9 +124,9 @@
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">上下架：</TD>
                   <TD align="left" >
-					<input type="radio" name="istop" id="is_show" value="1" checked />
+					<input type="radio" name="isonSale" id="is_onSale" value="1" checked />
 		            <span>是</span>
-					<input type="radio" name="istop" id="no_show" value="0"   />
+					<input type="radio" name="isonSale" id="is_onSale" value="0"   />
 		            <span>否</span>
 				  </TD>
                   <TD width="18%" align="right" ></TD>
@@ -136,7 +136,7 @@
                  <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">品牌简介：</TD>
                   <TD align="left" >
-					<textarea name="brand_desc" id="brand_desc" cols="60" rows="5" ></textarea>
+					<textarea name="brand_desc" id="product_desc" cols="60" rows="5" ></textarea>
 					</TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
@@ -168,7 +168,7 @@
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td height=25 id=operation><div align="right">
-	          <input name="Submit2" type="button" class="input-button" value="保 存" onClick="javascrip:brandAdd.MM_popupMsg('你确定保存此信息嘛?','list')">
+	          <input name="Submit2" type="button" class="input-button" value="保 存" onClick="javascrip:productAdd.MM_popupMsg('你确定保存此信息嘛1?','list')">
 	          <!--
 	          <img src="../../statics/images/line.gif" width="5" height="15" align="absmiddle">
 			  <input name="Submit2" type="button" class="input-button" value="提 交" onClick="location.href='inquestcluelist.htm'">

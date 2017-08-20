@@ -35,8 +35,6 @@ public class UploadParam implements Serializable{
 	private Code typeText = UploadParaType.type.getDefaultValue();
 	//参数描述
 	private String description;
-	//添加时间
-	private Date createTime;
 	//是否加水印,0不加，1加
 	private String addpic;
 	/**
@@ -72,9 +70,7 @@ public class UploadParam implements Serializable{
 	/**
 	 * @param value the value to set
 	 */
-	public void setValue(String value) {
-		this.value = value;
-	}
+	
 	/**
 	 * @return the type
 	 */
@@ -102,15 +98,7 @@ public class UploadParam implements Serializable{
 	/**
 	 * @return the createTime
 	 */
-	public Date getCreateTime() {
-		return createTime;
-	}
-	/**
-	 * @param createTime the createTime to set
-	 */
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+	
 	/**
 	 * @return the addpic
 	 */

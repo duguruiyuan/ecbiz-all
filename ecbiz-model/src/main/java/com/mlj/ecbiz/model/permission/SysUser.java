@@ -10,13 +10,16 @@ public class SysUser implements Serializable{
 	public static final int DEFAULT_STATUS = 0;// 默认状态
 	public static final int FREEZE_STATUS = 1;// 冻结
 	public static final int DELETE_STATUS = 2;// 伪删除
-    private Long id;
-    private String userName;
-    private String userPassword;
-    private String nickname;
-    private String email;
-    private String loginIp;
-    private java.util.Date addTime;
-    private java.util.Date loginTime;
-    private Long roleId;
+    private Long uid;
+    private String uname;
+    private String password;
+    private String name;
+    private String organization;
+    private String rId;
+    private String rName;
+    private String operator;
+    private String tel;
+    private String status;
+    private java.util.Date created;
+    private String note;
 }

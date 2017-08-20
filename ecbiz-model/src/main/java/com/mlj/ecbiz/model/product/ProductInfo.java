@@ -29,4 +29,6 @@ public class ProductInfo implements Serializable{
     private String creatTime;
     private String updateTime;
     private Long stock;
+    private String productDesc;
+    private String content;
 }

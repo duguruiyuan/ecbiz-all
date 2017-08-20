@@ -102,6 +102,7 @@
                   <!--#for(com.mlj.ecbiz.model.product.ProductInfo productinfo : productInfoList)-->
                   <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle"> <a href="infoReportRecView.htm">
                     <td>${productinfo.id }</td>
+                    <td>${productinfo.typeId }</td>
 			        <td>${productinfo.brandId }</td>
 			        <td>${productinfo.catId }</td>
 			        <td>${productinfo.productName }</td>

@@ -10,7 +10,7 @@ brandEdit.save=function(url){
 	var isShow  = $('input[name=isshow]:checked').val();
 	var parent_id=$("#parent_id").val();
 	var sort_order=$("#sort_order").val();
-	var id=$("#id").val();
+	var id=$("#id").val();alert(id);
 	var params = {
 			typeId:type_id,
 			catName:cat_name,

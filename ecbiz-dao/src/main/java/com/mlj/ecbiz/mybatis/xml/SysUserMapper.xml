@@ -6,109 +6,131 @@
     <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
     <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
     <resultMap id="SysUserResult" type="com.mlj.ecbiz.model.permission.SysUser">
-        <result property="id" column="id"/>
-        <result property="userName" column="user_name"/>
-        <result property="userPassword" column="user_password"/>
-        <result property="nickname" column="nickname"/>
-        <result property="email" column="email"/>
-        <result property="loginIp" column="login_ip"/>
-        <result property="addTime" column="add_time"/>
-        <result property="loginTime" column="login_time"/>
-        <result property="roleId" column="role_id"/>
+        <result property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="organization" column="organization"/>
+        <result property="rId" column="r_id"/>
+        <result property="rName" column="r_name"/>
+        <result property="operator" column="operator"/>
+        <result property="tel" column="tel"/>
+        <result property="status" column="status"/>
+        <result property="created" column="created"/>
     </resultMap>
 
     <sql id="sys_user_columns">
-        sys_user.id,
-        sys_user.user_name,
-        sys_user.user_password,
-        sys_user.nickname,
-        sys_user.email,
-        sys_user.login_ip,
-        sys_user.add_time,
-        sys_user.login_time,
-        sys_user.role_id
+        sys_user.uid,
+        sys_user.uname,
+        sys_user.password,
+        sys_user.name,
+        sys_user.organization,
+        sys_user.r_id,
+        sys_user.r_name,
+        sys_user.operator,
+        sys_user.tel,
+        sys_user.status,
+        sys_user.created
     </sql>
     
     <sql id="sys_user_where_conditions">
     	<trim prefix="where" prefixOverrides="and|or">
-        <if test="id != null">
-        	and id=#{id} 
+        <if test="uid != null">
+        	and uid=#{uid} 
         </if>
         
-        <if test="userName != null and userName != ''">
-        	and user_name=#{userName} 
+        <if test="uname != null and uname != ''">
+        	and uname=#{uname} 
         </if>
         
-        <if test="userPassword != null and userPassword != ''">
-        	and user_password=#{userPassword} 
+        <if test="password != null and password != ''">
+        	and password=#{password} 
         </if>
         
-        <if test="nickname != null and nickname != ''">
-        	and nickname=#{nickname} 
+        <if test="name != null and name != ''">
+        	and name=#{name} 
         </if>
         
-        <if test="email != null and email != ''">
-        	and email=#{email} 
+        <if test="organization != null and organization != ''">
+        	and organization=#{organization} 
         </if>
         
-        <if test="loginIp != null and loginIp != ''">
-        	and login_ip=#{loginIp} 
+        <if test="rId != null and rId != ''">
+        	and r_id=#{rId} 
         </if>
-        <if test="addTime != null">
-        	and add_time=#{addTime} 
+        
+        <if test="rName != null and rName != ''">
+        	and r_name=#{rName} 
         </if>
-        <if test="loginTime != null">
-        	and login_time=#{loginTime} 
+        
+        <if test="operator != null and operator != ''">
+        	and operator=#{operator} 
         </if>
-        <if test="roleId != null">
-        	and role_id=#{roleId} 
+        
+        <if test="tel != null and tel != ''">
+        	and tel=#{tel} 
+        </if>
+        
+        <if test="status != null and status != ''">
+        	and status=#{status} 
+        </if>
+        <if test="created != null">
+        	and created=#{created} 
         </if>
         </trim>
     </sql>
     
     <sql id="sys_user_set_conditions">
     	<set>
-        <if test="id != null">
-        	id=#{id},
+        <if test="uid != null">
+        	uid=#{uid},
         </if>
-        <if test="userName != null">
-        	user_name=#{userName},
+        <if test="uname != null">
+        	uname=#{uname},
         </if>
-        <if test="userPassword != null">
-        	user_password=#{userPassword},
+        <if test="password != null">
+        	password=#{password},
         </if>
-        <if test="nickname != null">
-        	nickname=#{nickname},
+        <if test="name != null">
+        	name=#{name},
         </if>
-        <if test="email != null">
-        	email=#{email},
+        <if test="organization != null">
+        	organization=#{organization},
         </if>
-        <if test="loginIp != null">
-        	login_ip=#{loginIp},
+        <if test="rId != null">
+        	r_id=#{rId},
         </if>
-        <if test="addTime != null">
-        	add_time=#{addTime},
+        <if test="rName != null">
+        	r_name=#{rName},
         </if>
-        <if test="loginTime != null">
-        	login_time=#{loginTime},
+        <if test="operator != null">
+        	operator=#{operator},
         </if>
-        <if test="roleId != null">
-        	role_id=#{roleId},
+        <if test="tel != null">
+        	tel=#{tel},
         </if>
-            id = id
+        <if test="status != null">
+        	status=#{status},
+        </if>
+        <if test="created != null">
+        	created=#{created},
+        </if>
+            uid = uid
         </set>
     </sql>
 
     <sql id="sys_user_properties">
-        #{id},
-        #{userName},
-        #{userPassword},
-        #{nickname},
-        #{email},
-        #{loginIp},
-        #{addTime},
-        #{loginTime},
-        #{roleId}
+        #{uid},
+        #{uname},
+        #{password},
+        #{name},
+        #{organization},
+        #{rId},
+        #{rName},
+        #{operator},
+        #{tel},
+        #{status},
+        #{created}
     </sql>
 
     <insert id="createSysUser" parameterType="com.mlj.ecbiz.model.permission.SysUser" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
@@ -118,61 +140,73 @@
 	<insert id="insertSysUser" parameterType="com.mlj.ecbiz.model.permission.SysUser" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
     	insert into sys_user
     	<trim prefix="(" suffix=")" suffixOverrides="," >
-    			<if test="id != null" >
-        			id,
+    			<if test="uid != null" >
+        			uid,
     			</if>
-    			<if test="userName != null" >
-        			user_name,
+    			<if test="uname != null" >
+        			uname,
     			</if>
-    			<if test="userPassword != null" >
-        			user_password,
+    			<if test="password != null" >
+        			password,
     			</if>
-    			<if test="nickname != null" >
-        			nickname,
+    			<if test="name != null" >
+        			name,
     			</if>
-    			<if test="email != null" >
-        			email,
+    			<if test="organization != null" >
+        			organization,
     			</if>
-    			<if test="loginIp != null" >
-        			login_ip,
+    			<if test="rId != null" >
+        			r_id,
     			</if>
-    			<if test="addTime != null" >
-        			add_time,
+    			<if test="rName != null" >
+        			r_name,
     			</if>
-    			<if test="loginTime != null" >
-        			login_time,
+    			<if test="operator != null" >
+        			operator,
     			</if>
-    			<if test="roleId != null" >
-        			role_id
+    			<if test="tel != null" >
+        			tel,
+    			</if>
+    			<if test="status != null" >
+        			status,
+    			</if>
+    			<if test="created != null" >
+        			created
     			</if>
     	</trim>
     	<trim prefix="values (" suffix=")" suffixOverrides="," >
-    			<if test="id != null" >
-        		#{id},
+    			<if test="uid != null" >
+        		#{uid},
     		</if>
-    			<if test="userName != null" >
-        		#{userName},
+    			<if test="uname != null" >
+        		#{uname},
     		</if>
-    			<if test="userPassword != null" >
-        		#{userPassword},
+    			<if test="password != null" >
+        		#{password},
     		</if>
-    			<if test="nickname != null" >
-        		#{nickname},
+    			<if test="name != null" >
+        		#{name},
     		</if>
-    			<if test="email != null" >
-        		#{email},
+    			<if test="organization != null" >
+        		#{organization},
     		</if>
-    			<if test="loginIp != null" >
-        		#{loginIp},
+    			<if test="rId != null" >
+        		#{rId},
     		</if>
-    			<if test="addTime != null" >
-        		#{addTime},
+    			<if test="rName != null" >
+        		#{rName},
     		</if>
-    			<if test="loginTime != null" >
-        		#{loginTime},
+    			<if test="operator != null" >
+        		#{operator},
     		</if>
-    			<if test="roleId != null" >
-        		#{roleId}
+    			<if test="tel != null" >
+        		#{tel},
+    		</if>
+    			<if test="status != null" >
+        		#{status},
+    		</if>
+    			<if test="created != null" >
+        		#{created}
     		</if>
     	</trim>
   	</insert>
@@ -180,7 +214,7 @@
     <delete id="deleteSysUserById" parameterType="Long">
         delete from sys_user
         where
-            		id = #{            			value
+            		uid = #{            			value
             		}
     </delete>
     
@@ -192,7 +226,7 @@
   	<delete id="deleteSysUserByIdList" parameterType="java.util.List">
     	delete from sys_user 
         	where
-            id
+            uid
     		IN 
     		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
 				#{item}
@@ -201,84 +235,98 @@
 
     <update id="updateSysUser" parameterType="com.mlj.ecbiz.model.permission.SysUser">
         update sys_user SET
-            id = #{id},
-            user_name = #{userName},
-            user_password = #{userPassword},
-            nickname = #{nickname},
-            email = #{email},
-            login_ip = #{loginIp},
-            add_time = #{addTime},
-            login_time = #{loginTime},
-            role_id = #{roleId}
+            uid = #{uid},
+            uname = #{uname},
+            password = #{password},
+            name = #{name},
+            organization = #{organization},
+            r_id = #{rId},
+            r_name = #{rName},
+            operator = #{operator},
+            tel = #{tel},
+            status = #{status},
+            created = #{created}
         where
-            id = #{id}
+            uid = #{uid}
     </update>
     
     <update id="updateSysUserByObj" parameterType="com.mlj.ecbiz.model.permission.SysUser">
         update sys_user 
         <include refid="sys_user_set_conditions"/>
         where
-            id = #{id}
+            uid = #{uid}
     </update>
     
     <update id="updateSysUserByObjAndConditions" parameterType="java.util.HashMap">
         update sys_user 
         <set>
-        <if test="s.id != null">
-        	id=#{s.id},
+        <if test="s.uid != null">
+        	uid=#{s.uid},
         </if>
-        <if test="s.userName != null">
-        	user_name=#{s.userName},
+        <if test="s.uname != null">
+        	uname=#{s.uname},
         </if>
-        <if test="s.userPassword != null">
-        	user_password=#{s.userPassword},
+        <if test="s.password != null">
+        	password=#{s.password},
         </if>
-        <if test="s.nickname != null">
-        	nickname=#{s.nickname},
+        <if test="s.name != null">
+        	name=#{s.name},
         </if>
-        <if test="s.email != null">
-        	email=#{s.email},
+        <if test="s.organization != null">
+        	organization=#{s.organization},
         </if>
-        <if test="s.loginIp != null">
-        	login_ip=#{s.loginIp},
+        <if test="s.rId != null">
+        	r_id=#{s.rId},
         </if>
-        <if test="s.addTime != null">
-        	add_time=#{s.addTime},
+        <if test="s.rName != null">
+        	r_name=#{s.rName},
         </if>
-        <if test="s.loginTime != null">
-        	login_time=#{s.loginTime},
+        <if test="s.operator != null">
+        	operator=#{s.operator},
         </if>
-        <if test="s.roleId != null">
-        	role_id=#{s.roleId},
+        <if test="s.tel != null">
+        	tel=#{s.tel},
+        </if>
+        <if test="s.status != null">
+        	status=#{s.status},
+        </if>
+        <if test="s.created != null">
+        	created=#{s.created},
         </if>
         </set>
         <where>
-        <if test="c.id != null">
-        	id=#{c.id} AND 
+        <if test="c.uid != null">
+        	uid=#{c.uid} AND 
         </if>
-        <if test="c.userName != null">
-        	user_name=#{c.userName} AND 
+        <if test="c.uname != null">
+        	uname=#{c.uname} AND 
         </if>
-        <if test="c.userPassword != null">
-        	user_password=#{c.userPassword} AND 
+        <if test="c.password != null">
+        	password=#{c.password} AND 
         </if>
-        <if test="c.nickname != null">
-        	nickname=#{c.nickname} AND 
+        <if test="c.name != null">
+        	name=#{c.name} AND 
         </if>
-        <if test="c.email != null">
-        	email=#{c.email} AND 
+        <if test="c.organization != null">
+        	organization=#{c.organization} AND 
         </if>
-        <if test="c.loginIp != null">
-        	login_ip=#{c.loginIp} AND 
+        <if test="c.rId != null">
+        	r_id=#{c.rId} AND 
         </if>
-        <if test="c.addTime != null">
-        	add_time=#{c.addTime} AND 
+        <if test="c.rName != null">
+        	r_name=#{c.rName} AND 
         </if>
-        <if test="c.loginTime != null">
-        	login_time=#{c.loginTime} AND 
+        <if test="c.operator != null">
+        	operator=#{c.operator} AND 
         </if>
-        <if test="c.roleId != null">
-        	role_id=#{c.roleId} AND 
+        <if test="c.tel != null">
+        	tel=#{c.tel} AND 
+        </if>
+        <if test="c.status != null">
+        	status=#{c.status} AND 
+        </if>
+        <if test="c.created != null">
+        	created=#{c.created} AND 
         </if>
        (status!=2)
         </where>
@@ -287,91 +335,109 @@
     <update id="batchUpdateSysUser" parameterType="java.util.List">
 		update sys_user
 		<trim prefix="set" suffixOverrides=",">
-      	 	<trim prefix="id=CASE" suffix="end,">
+      	 	<trim prefix="uid=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.id!=null">
+					<if test="i.uid!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.id}
+            			uid = #{i.uid}
+        				 THEN #{i.uid}
 					</if>
 				</foreach>
 			</trim>
-      	 	<trim prefix="user_name=CASE" suffix="end,">
+      	 	<trim prefix="uname=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.userName!=null">
+					<if test="i.uname!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.userName}
+            			uid = #{i.uid}
+        				 THEN #{i.uname}
 					</if>
 				</foreach>
 			</trim>
-      	 	<trim prefix="user_password=CASE" suffix="end,">
+      	 	<trim prefix="password=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.userPassword!=null">
+					<if test="i.password!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.userPassword}
+            			uid = #{i.uid}
+        				 THEN #{i.password}
 					</if>
 				</foreach>
 			</trim>
-      	 	<trim prefix="nickname=CASE" suffix="end,">
+      	 	<trim prefix="name=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.nickname!=null">
+					<if test="i.name!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.nickname}
+            			uid = #{i.uid}
+        				 THEN #{i.name}
 					</if>
 				</foreach>
 			</trim>
-      	 	<trim prefix="email=CASE" suffix="end,">
+      	 	<trim prefix="organization=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.email!=null">
+					<if test="i.organization!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.email}
+            			uid = #{i.uid}
+        				 THEN #{i.organization}
 					</if>
 				</foreach>
 			</trim>
-      	 	<trim prefix="login_ip=CASE" suffix="end,">
+      	 	<trim prefix="r_id=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.loginIp!=null">
+					<if test="i.rId!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.loginIp}
+            			uid = #{i.uid}
+        				 THEN #{i.rId}
 					</if>
 				</foreach>
 			</trim>
-      	 	<trim prefix="add_time=CASE" suffix="end,">
+      	 	<trim prefix="r_name=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.addTime!=null">
+					<if test="i.rName!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.addTime}
+            			uid = #{i.uid}
+        				 THEN #{i.rName}
 					</if>
 				</foreach>
 			</trim>
-      	 	<trim prefix="login_time=CASE" suffix="end,">
+      	 	<trim prefix="operator=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.loginTime!=null">
+					<if test="i.operator!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.loginTime}
+            			uid = #{i.uid}
+        				 THEN #{i.operator}
 					</if>
 				</foreach>
 			</trim>
-      	 	<trim prefix="role_id=CASE" suffix="end,">
+      	 	<trim prefix="tel=CASE" suffix="end,">
 				<foreach collection="list" item="i" index="index">
-					<if test="i.roleId!=null">
+					<if test="i.tel!=null">
 						WHEN 
-            			id = #{i.id}
-        				 THEN #{i.roleId}
+            			uid = #{i.uid}
+        				 THEN #{i.tel}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="status=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.status!=null">
+						WHEN 
+            			uid = #{i.uid}
+        				 THEN #{i.status}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="created=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.created!=null">
+						WHEN 
+            			uid = #{i.uid}
+        				 THEN #{i.created}
 					</if>
 				</foreach>
 			</trim>
 		</trim>
 		where
 		<foreach collection="list" separator="or" item="i" index="index">
-            	(id = #{i.id})
+            	(uid = #{i.uid})
 		</foreach>
 	</update>
     
@@ -382,7 +448,7 @@
         <include refid="sys_user_columns"/>
         from sys_user
         where
-            id = #{value}
+            uid = #{value}
     </select>
     
     <select id="getSysUserByObj" resultMap="SysUserResult" parameterType="com.mlj.ecbiz.model.permission.SysUser">
@@ -416,23 +482,23 @@
     
     
     <select id="getSysUserIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysUser">
-        select       id                   
+        select       uid                       
         from sys_user
         <include refid="sys_user_where_conditions"/>
     </select>
 	
     <select id="getSysUserIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysUser">
-       select       id                    from sys_user where 1=1 
-        id = #{value}
+       select       uid                        from sys_user where 1=1 
+        uid = #{value}
     </select>
     
     <select id="getSysUserIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.permission.SysUser">
-       select       id                    from sys_user 
+       select       uid                        from sys_user 
         <include refid="sys_user_where_conditions"/>
     </select>
     
     <select id="getSysUserIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
-        select       id                    from sys_user 
+        select       uid                        from sys_user 
         <include refid="sys_user_where_conditions"/>
         limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
     </select>

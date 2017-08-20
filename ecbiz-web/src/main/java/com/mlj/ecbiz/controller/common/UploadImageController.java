@@ -1,6 +1,4 @@
 package  com.mlj.ecbiz.controller.common;
-
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.PrintWriter;
@@ -8,13 +6,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
+import org.ferrari.utils.upload.CallName;
+import org.ferrari.utils.upload.DirectoryFactory;
+import org.ferrari.utils.upload.FtpBean;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.ferrari.utils.upload.CallName;
-import org.ferrari.utils.upload.DirectoryFactory;
-import org.ferrari.utils.upload.FtpBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;

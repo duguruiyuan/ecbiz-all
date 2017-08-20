@@ -15,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  * SysUser
  * User:
- * Date: 2017-06-13
+ * Date: 2017-08-20
  */
  @Repository("sysUserDao")
 public class SysUserDaoImpl extends GenericDaoImpl implements SysUserDao{
@@ -26,8 +26,8 @@ public class SysUserDaoImpl extends GenericDaoImpl implements SysUserDao{
 	public Long insertSysUser(SysUser sysUser){
 		return this.insert("com.mlj.ecbiz.model.permission.SysUserMapper.insertSysUser",sysUser);
 	}
-    public Long deleteSysUserById(Long id){
-        return this.delete("com.mlj.ecbiz.model.permission.SysUserMapper.deleteSysUserById",id);
+    public Long deleteSysUserById(Long uid){
+        return this.delete("com.mlj.ecbiz.model.permission.SysUserMapper.deleteSysUserById",uid);
     }
     public Long deleteSysUserByObj(SysUser sysUser){
         return this.delete("com.mlj.ecbiz.model.permission.SysUserMapper.deleteSysUserByObj",sysUser);
@@ -53,8 +53,8 @@ public class SysUserDaoImpl extends GenericDaoImpl implements SysUserDao{
 	public void batchUpdateSysUser(List<SysUser> records){
 		this.update("com.mlj.ecbiz.model.permission.SysUserMapper.batchUpdateSysUser",records);
 	}
-    public SysUser getSysUserById(Long id) {
-        return this.selectOne("com.mlj.ecbiz.model.permission.SysUserMapper.getSysUserById",id);
+    public SysUser getSysUserById(Long uid) {
+        return this.selectOne("com.mlj.ecbiz.model.permission.SysUserMapper.getSysUserById",uid);
     }
     
     public SysUser getSysUserByObj(SysUser sysUser) {
@@ -99,6 +99,9 @@ public class SysUserDaoImpl extends GenericDaoImpl implements SysUserDao{
             return getSysUserListPage(sysUser,(page.getCurrentPage() - 1) * page.getPageSize(),page.getPageSize());
         }
     }
+    
+    
+    
      /**
     *以下为缓存查询用
     */
