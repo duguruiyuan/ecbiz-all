@@ -10,7 +10,7 @@
 <meta HTTP-EQUIV="expires" CONTENT="-1">
 <title>用户管理 </title>
 <link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
-<link href="../../statics/css/sys/product/product.css" rel="stylesheet" type="text/css"
+<link href="../../statics/css/sys/product/product.css" rel="stylesheet" type="text/css"/>
 <link href="../../statics/js/plugin/ueditor/themes/default/css/ueditor.css" rel="stylesheet" type="text/css" />
 <link href="../../statics/js/plugin/lhgcalendar/lhgcalendar.css" type="text/css" rel="stylesheet"/>
 <script language="javascript" src="../../statics/js/plugin/ueditor/ueditor.config.js"></script>

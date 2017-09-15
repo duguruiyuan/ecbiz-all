@@ -84,7 +84,7 @@
                     <td width="12%">创建人员</td>
                     <td width="12%">联系电话</td>
                     <td width="12%">状态</td>
-                    <td width="5%" nowrap="nowrap">修改状态</td>
+                    <td width="15%" nowrap="nowrap">操作</td>
                   </tr>
                   <!--#for(com.mlj.ecbiz.model.permission.SysUser sysUser : sysUserList)-->
                   <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle"> <a href="infoReportRecView.htm">
@@ -95,12 +95,11 @@
 			        <td>${sysUser.operator }</td>
 			        <td>${sysUser.tel }</td>
 			        <td>${sysUser.status }</td>
-				    <td id="statusName_${sysUser.uid }">
-				           	<a href="javascript:brandList.toEdit('edit','${sysUser.uid }');">
-								<img class="active" src="../../statics/images/picture/edit2.gif" width="15" height="15" border="0">
-							</a>
-				    </td>   
-				        
+				    <td >
+				    	<span >编辑</span>
+				    	<span>分配角色</span> |
+				    	<span>密码重置</span>
+				    </td>     
 				  </tr>
 				   <!--#end--> 
               </table>
