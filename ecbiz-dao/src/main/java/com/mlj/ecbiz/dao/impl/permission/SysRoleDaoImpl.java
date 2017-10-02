@@ -1,16 +1,18 @@
 package com.mlj.ecbiz.dao.impl.permission;
 
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import com.mlj.ecbiz.model.permission.SysRole;
-import com.mlj.ecbiz.dao.permission.SysRoleDao;
-import org.springframework.stereotype.Repository;
-import com.chexun.base.framework.core.dao.impl.common.GenericDaoImpl;
-import com.chexun.base.common.util.BeanMapConvertor;
-import com.chexun.base.framework.core.entity.PageEntity;
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+
+import com.chexun.base.common.util.BeanMapConvertor;
+import com.chexun.base.framework.core.dao.impl.common.GenericDaoImpl;
+import com.chexun.base.framework.core.entity.PageEntity;
+import com.mlj.ecbiz.dao.permission.SysRoleDao;
+import com.mlj.ecbiz.model.permission.SysRole;
 /**
  *
  * SysRole
@@ -146,4 +148,8 @@ public class SysRoleDaoImpl extends GenericDaoImpl implements SysRoleDao{
             return getSysRoleIdListPage(sysRole,(page.getCurrentPage() - 1) * page.getPageSize(),page.getPageSize());
         }
     }
+	@Override
+	public List<SysRole> findALLRole(SysRole sysRole) {
+		return this.selectList("com.mlj.ecbiz.model.permission.SysRoleMapper.getSysRoleAllList",sysRole);
+	}
 }

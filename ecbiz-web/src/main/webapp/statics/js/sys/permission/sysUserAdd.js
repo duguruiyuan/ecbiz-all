@@ -1,13 +1,15 @@
 /**
- * 添加商品品牌js
+ * 添加用户js
  */
 
 var sysUserAdd = {};
 
-// 保存品牌
+// 保存用户
 sysUserAdd.save = function(url) {
 	var uname = $("#uname").val();
-	var password = $("#password").val();
+	var password1 = $("#password1").val();
+	var password2 = $("#password2").val();
+	var password;
 	var name = $("#name").val();
 	var organization = $('#organization').val();
 	var rId = $('#r_id').val();
@@ -15,6 +17,11 @@ sysUserAdd.save = function(url) {
 	var tel = $("#tel").val();
 	var status = $("#status").val();	
 	var note = $("#note").val();
+	if(password1!=password2){
+		alert("两个密码不一致!");
+	}else{
+		password=password1;
+	}
 	
 	var params = {
 			uname:uname,
@@ -28,7 +35,7 @@ sysUserAdd.save = function(url) {
 			note:note
 	};
 	$.ajax({
-		url : "/permission/addsave",
+		url : "/sysuser/addsave",
 		dataType : 'json',
 		type : 'post',
 		scriptCharset :'utf-8',

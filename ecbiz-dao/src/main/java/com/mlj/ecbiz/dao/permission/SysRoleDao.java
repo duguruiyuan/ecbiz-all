@@ -67,4 +67,9 @@ public interface SysRoleDao {
     public List<Long> getSysRoleIdListByObj(SysRole sysRole);
     public List<Long> getSysRoleIdListPage(SysRole sysRole,Integer offset,Integer limit);
     public List<Long> getSysRoleIdPage(SysRole sysRole,PageEntity page);
+    
+    /**
+     * 查询全部角色
+     */
+    public List<SysRole> findALLRole(SysRole sysRole);
 }

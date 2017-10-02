@@ -49,4 +49,9 @@ public interface SysRoleService {
     public Integer getSysRoleCountByObj(SysRole sysRole);
     public List<SysRole> getSysRolePage(SysRole sysRole,PageEntity page);
     
+    /**
+     * 查询全部角色
+     */
+    public List<SysRole> findALLRole(SysRole sysRole);
+    
 }

@@ -97,4 +97,9 @@ public class SysRoleServiceImpl implements SysRoleService{
     public List<SysRole> getSysRolePage(SysRole sysRole,PageEntity page) {
         return sysRoleDao.getSysRolePage(sysRole,page);
     }
+	@Override
+	public List<SysRole> findALLRole(SysRole sysRole) {
+		// TODO Auto-generated method stub
+		return sysRoleDao.findALLRole(sysRole);
+	}
 }

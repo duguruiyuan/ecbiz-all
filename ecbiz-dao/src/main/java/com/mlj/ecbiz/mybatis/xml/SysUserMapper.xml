@@ -17,6 +17,7 @@
         <result property="tel" column="tel"/>
         <result property="status" column="status"/>
         <result property="created" column="created"/>
+        <result property="note" column="note"/>
     </resultMap>
 
     <sql id="sys_user_columns">
@@ -30,7 +31,8 @@
         sys_user.operator,
         sys_user.tel,
         sys_user.status,
-        sys_user.created
+        sys_user.created,
+        sys_user.note
     </sql>
     
     <sql id="sys_user_where_conditions">
@@ -77,6 +79,10 @@
         <if test="created != null">
         	and created=#{created} 
         </if>
+        
+        <if test="note != null and note != ''">
+        	and note=#{note} 
+        </if>
         </trim>
     </sql>
     
@@ -115,6 +121,9 @@
         <if test="created != null">
         	created=#{created},
         </if>
+        <if test="note != null">
+        	note=#{note},
+        </if>
             uid = uid
         </set>
     </sql>
@@ -130,7 +139,8 @@
         #{operator},
         #{tel},
         #{status},
-        #{created}
+        #{created},
+        #{note}
     </sql>
 
     <insert id="createSysUser" parameterType="com.mlj.ecbiz.model.permission.SysUser" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
@@ -171,7 +181,10 @@
         			status,
     			</if>
     			<if test="created != null" >
-        			created
+        			created,
+    			</if>
+    			<if test="note != null" >
+        			note
     			</if>
     	</trim>
     	<trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -206,7 +219,10 @@
         		#{status},
     		</if>
     			<if test="created != null" >
-        		#{created}
+        		#{created},
+    		</if>
+    			<if test="note != null" >
+        		#{note}
     		</if>
     	</trim>
   	</insert>
@@ -245,7 +261,8 @@
             operator = #{operator},
             tel = #{tel},
             status = #{status},
-            created = #{created}
+            created = #{created},
+            note = #{note}
         where
             uid = #{uid}
     </update>
@@ -293,6 +310,9 @@
         <if test="s.created != null">
         	created=#{s.created},
         </if>
+        <if test="s.note != null">
+        	note=#{s.note},
+        </if>
         </set>
         <where>
         <if test="c.uid != null">
@@ -327,6 +347,9 @@
         </if>
         <if test="c.created != null">
         	created=#{c.created} AND 
+        </if>
+        <if test="c.note != null">
+        	note=#{c.note} AND 
         </if>
        (status!=2)
         </where>
@@ -434,6 +457,15 @@
 					</if>
 				</foreach>
 			</trim>
+      	 	<trim prefix="note=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.note!=null">
+						WHEN 
+            			uid = #{i.uid}
+        				 THEN #{i.note}
+					</if>
+				</foreach>
+			</trim>
 		</trim>
 		where
 		<foreach collection="list" separator="or" item="i" index="index">
@@ -482,23 +514,23 @@
     
     
     <select id="getSysUserIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysUser">
-        select       uid                       
+        select       uid                         
         from sys_user
         <include refid="sys_user_where_conditions"/>
     </select>
 	
     <select id="getSysUserIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysUser">
-       select       uid                        from sys_user where 1=1 
+       select       uid                          from sys_user where 1=1 
         uid = #{value}
     </select>
     
     <select id="getSysUserIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.permission.SysUser">
-       select       uid                        from sys_user 
+       select       uid                          from sys_user 
         <include refid="sys_user_where_conditions"/>
     </select>
     
     <select id="getSysUserIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
-        select       uid                        from sys_user 
+        select       uid                          from sys_user 
         <include refid="sys_user_where_conditions"/>
         limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
     </select>

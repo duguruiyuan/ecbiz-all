@@ -68,7 +68,7 @@ body {
 					webFXTreeConfig.tIcon			= "../../statics/images/tree/T.png";
 					webFXTreeConfig.blankIcon       = "../../statics/images/tree/blank.png";
 					var tree;
-					tree = new WebFXLoadTree("资源","/system/resource/loadResourceTree.do");
+					tree = new WebFXLoadTree("资源","/power/list");
 					document.getElementById('ResourceTree').innerHTML = tree;
 				</script>
               </fieldset>

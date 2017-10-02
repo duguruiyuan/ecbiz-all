@@ -313,7 +313,11 @@
 		</foreach>
 	</update>
     
-    
+    <select id="getSysRoleAllList" resultMap="SysRoleResult" parameterType="com.mlj.ecbiz.model.permission.SysRole">
+        select
+        <include refid="sys_role_columns"/>
+        from sys_role
+    </select>
 
     <select id="getSysRoleById" resultMap="SysRoleResult" parameterType="Long">
         select
