@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.permission.SysUserRoleMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="SysUserRoleResult" type="com.mlj.ecbiz.model.permission.SysUserRole">
+        <result property="rUId" column="r_u_id"/>
+        <result property="rId" column="r_id"/>
+        <result property="uId" column="u_id"/>
+        <result property="rName" column="r_name"/>
+    </resultMap>
+
+    <sql id="sys_user_role_columns">
+        sys_user_role.r_u_id,
+        sys_user_role.r_id,
+        sys_user_role.u_id,
+        sys_user_role.r_name
+    </sql>
+    
+    <sql id="sys_user_role_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="rUId != null">
+        	and r_u_id=#{rUId} 
+        </if>
+        <if test="rId != null">
+        	and r_id=#{rId} 
+        </if>
+        <if test="uId != null">
+        	and u_id=#{uId} 
+        </if>
+        
+        <if test="rName != null and rName != ''">
+        	and r_name=#{rName} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="sys_user_role_set_conditions">
+    	<set>
+        <if test="rUId != null">
+        	r_u_id=#{rUId},
+        </if>
+        <if test="rId != null">
+        	r_id=#{rId},
+        </if>
+        <if test="uId != null">
+        	u_id=#{uId},
+        </if>
+        <if test="rName != null">
+        	r_name=#{rName},
+        </if>
+            r_u_id = r_u_id
+        </set>
+    </sql>
+
+    <sql id="sys_user_role_properties">
+        #{rUId},
+        #{rId},
+        #{uId},
+        #{rName}
+    </sql>
+
+    <insert id="createSysUserRole" parameterType="com.mlj.ecbiz.model.permission.SysUserRole" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO sys_user_role (<include refid="sys_user_role_columns"/>) VALUES (<include refid="sys_user_role_properties"/>)
+    </insert>
+	
+	<insert id="insertSysUserRole" parameterType="com.mlj.ecbiz.model.permission.SysUserRole" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into sys_user_role
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="rUId != null" >
+        			r_u_id,
+    			</if>
+    			<if test="rId != null" >
+        			r_id,
+    			</if>
+    			<if test="uId != null" >
+        			u_id,
+    			</if>
+    			<if test="rName != null" >
+        			r_name
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="rUId != null" >
+        		#{rUId},
+    		</if>
+    			<if test="rId != null" >
+        		#{rId},
+    		</if>
+    			<if test="uId != null" >
+        		#{uId},
+    		</if>
+    			<if test="rName != null" >
+        		#{rName}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteSysUserRoleById" parameterType="Long">
+        delete from sys_user_role
+        where
+            		r_u_id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteSysUserRoleByObj" parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+        delete from sys_user_role
+        <include refid="sys_user_role_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteSysUserRoleByIdList" parameterType="java.util.List">
+    	delete from sys_user_role 
+        	where
+            r_u_id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateSysUserRole" parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+        update sys_user_role SET
+            r_u_id = #{rUId},
+            r_id = #{rId},
+            u_id = #{uId},
+            r_name = #{rName}
+        where
+            r_u_id = #{rUId}
+    </update>
+    
+    <update id="updateSysUserRoleByObj" parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+        update sys_user_role 
+        <include refid="sys_user_role_set_conditions"/>
+        where
+            r_u_id = #{rUId}
+    </update>
+    
+    <update id="updateSysUserRoleByObjAndConditions" parameterType="java.util.HashMap">
+        update sys_user_role 
+        <set>
+        <if test="s.rUId != null">
+        	r_u_id=#{s.rUId},
+        </if>
+        <if test="s.rId != null">
+        	r_id=#{s.rId},
+        </if>
+        <if test="s.uId != null">
+        	u_id=#{s.uId},
+        </if>
+        <if test="s.rName != null">
+        	r_name=#{s.rName},
+        </if>
+        </set>
+        <where>
+        <if test="c.rUId != null">
+        	r_u_id=#{c.rUId} AND 
+        </if>
+        <if test="c.rId != null">
+        	r_id=#{c.rId} AND 
+        </if>
+        <if test="c.uId != null">
+        	u_id=#{c.uId} AND 
+        </if>
+        <if test="c.rName != null">
+        	r_name=#{c.rName} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateSysUserRole" parameterType="java.util.List">
+		update sys_user_role
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="r_u_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.rUId!=null">
+						WHEN 
+            			r_u_id = #{i.rUId}
+        				 THEN #{i.rUId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="r_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.rId!=null">
+						WHEN 
+            			r_u_id = #{i.rUId}
+        				 THEN #{i.rId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="u_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.uId!=null">
+						WHEN 
+            			r_u_id = #{i.rUId}
+        				 THEN #{i.uId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="r_name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.rName!=null">
+						WHEN 
+            			r_u_id = #{i.rUId}
+        				 THEN #{i.rName}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(r_u_id = #{i.rUId})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getSysUserRoleById" resultMap="SysUserRoleResult" parameterType="Long">
+        select
+        <include refid="sys_user_role_columns"/>
+        from sys_user_role
+        where
+            r_u_id = #{value}
+    </select>
+    
+    <select id="getSysUserRoleByObj" resultMap="SysUserRoleResult" parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+        select
+        <include refid="sys_user_role_columns"/>
+        from sys_user_role
+        <include refid="sys_user_role_where_conditions"/>
+    </select>
+	
+    
+    <select id="getSysUserRoleListByObj" resultMap="SysUserRoleResult"  parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+        select
+        <include refid="sys_user_role_columns"/>
+        from sys_user_role 
+        <include refid="sys_user_role_where_conditions"/>
+    </select>
+    
+    <select id="getSysUserRoleListByMap" resultMap="SysUserRoleResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="sys_user_role_columns"/>
+        from sys_user_role 
+        <include refid="sys_user_role_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getSysUserRoleCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+        select count(1) from sys_user_role
+        <include refid="sys_user_role_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getSysUserRoleIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+        select       r_u_id         
+        from sys_user_role
+        <include refid="sys_user_role_where_conditions"/>
+    </select>
+	
+    <select id="getSysUserRoleIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+       select       r_u_id          from sys_user_role where 1=1 
+        r_u_id = #{value}
+    </select>
+    
+    <select id="getSysUserRoleIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.permission.SysUserRole">
+       select       r_u_id          from sys_user_role 
+        <include refid="sys_user_role_where_conditions"/>
+    </select>
+    
+    <select id="getSysUserRoleIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       r_u_id          from sys_user_role 
+        <include refid="sys_user_role_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

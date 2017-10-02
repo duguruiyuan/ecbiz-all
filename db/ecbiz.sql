@@ -2,7 +2,8 @@
 SQLyog Enterprise - MySQL GUI v7.15 
 MySQL - 5.5.45-log : Database - ecbiz
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -163,7 +164,7 @@ CREATE TABLE `sys_resource` (
   `STATE` char(1) DEFAULT NULL,
   `OTHER_PARENT_ID` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=100402 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=100401 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_resource` */
 
@@ -220,11 +221,27 @@ CREATE TABLE `sys_user` (
   `created` date DEFAULT NULL COMMENT '创建时间',
   `note` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_user` */
 
-insert  into `sys_user`(`uid`,`uname`,`password`,`name`,`organization`,`r_id`,`r_name`,`operator`,`tel`,`status`,`created`,`note`) values (1,'111',NULL,'11','山东省','总局人员',NULL,'11',NULL,'启用','2017-08-20',NULL),(2,'222',NULL,'22','山东省','总局人员',NULL,'22','22','启用','2017-08-20',NULL),(3,'111',NULL,'11','山东省','业务人员',NULL,'111','111111','注销','2017-08-20',NULL),(4,'111',NULL,'11','山东省','业务人员',NULL,'111','111','启用','2017-08-20',NULL),(5,'122',NULL,'22','山东省','总局人员',NULL,'22','222','启用','2017-08-20',NULL),(6,'214324',NULL,'234','山东省','业务人员',NULL,'234234','23432','启用','2017-08-20',NULL),(7,'24242',NULL,'2424','山东省','业务人员',NULL,'24242','24242','启用','2017-08-20',NULL),(8,'2232',NULL,'232','山东省','业务人员',NULL,'23232','232323','启用','2017-08-20',NULL),(9,'23232',NULL,'232','山东省','总局人员',NULL,'23232','232323','启用','2017-08-20',NULL),(10,'232',NULL,'23232','山东省','业务人员',NULL,'232','23232','启用','2017-08-20',NULL),(11,'23232',NULL,'232','山东省','业务人员',NULL,'23232','23232','启用','2017-08-20',NULL),(12,'3434',NULL,'343','山东省','业务人员',NULL,'343','3434','启用','2017-08-20',NULL);
+insert  into `sys_user`(`uid`,`uname`,`password`,`name`,`organization`,`r_id`,`r_name`,`operator`,`tel`,`status`,`created`,`note`) values (1,'111','11','11','山东省','',NULL,'11','222','注销','2017-10-02','21'),(2,'222','111','22','山东省','',NULL,'22','22','','2017-10-02','221'),(3,'111',NULL,'11','山东省','业务人员',NULL,'111','111111','注销','2017-08-20','22'),(4,'111',NULL,'11','山东省','业务人员',NULL,'111','111','启用','2017-08-20','2'),(5,'122',NULL,'22','山东省','总局人员',NULL,'22','222','启用','2017-08-20','2'),(6,'214324',NULL,'234','山东省','业务人员',NULL,'234234','23432','启用','2017-08-20','2'),(7,'24242',NULL,'2424','山东省','业务人员',NULL,'24242','24242','启用','2017-08-20','2'),(8,'2232',NULL,'232','山东省','业务人员',NULL,'23232','232323','启用','2017-08-20','2'),(9,'23232',NULL,'232','山东省','总局人员',NULL,'23232','232323','启用','2017-08-20','22'),(10,'232',NULL,'23232','山东省','业务人员',NULL,'232','23232','启用','2017-08-20','2'),(11,'23232',NULL,'232','山东省','业务人员',NULL,'23232','23232','启用','2017-08-20','2'),(12,'3434',NULL,'343','山东省','业务人员',NULL,'343','3434','启用','2017-08-20','2'),(13,'11','11','11','山东省','业务人员',NULL,'11','11','启用','2017-10-02','2'),(14,'11','11','11','山东省','总局人员',NULL,'11','11','启用','2017-10-02','2'),(15,'11','11','11','山东省','',NULL,'11','11','','2017-10-02',NULL),(16,'23232','11','232','山东省','',NULL,'23232','23232','','2017-10-02','2'),(17,'111',NULL,'11','山东省','',NULL,'11','','','2017-10-02','2'),(18,'111','11','11','山东省','',NULL,'11','','','2017-10-02','2'),(19,'111','11','11','山东省','',NULL,'11','','','2017-10-02','2'),(20,'111',NULL,'11','山东省','',NULL,'11','11','注销','2017-10-02','211'),(21,'111','11','11','山东省','',NULL,'11','','','2017-10-02','2'),(22,'111','','11','山东省','',NULL,'11','','','2017-10-02','2');
+
+/*Table structure for table `sys_user_role` */
+
+DROP TABLE IF EXISTS `sys_user_role`;
+
+CREATE TABLE `sys_user_role` (
+  `r_u_id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `r_id` bigint(10) DEFAULT NULL,
+  `u_id` bigint(10) DEFAULT NULL,
+  `r_name` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`r_u_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+/*Data for the table `sys_user_role` */
+
+insert  into `sys_user_role`(`r_u_id`,`r_id`,`u_id`,`r_name`) values (11,1,1,NULL),(12,2,1,NULL),(13,1,2,NULL),(14,2,2,NULL),(15,3,1,NULL),(16,1,3,NULL),(17,2,3,NULL),(18,3,3,NULL);
 
 /*Table structure for table `system_users` */
 
@@ -265,11 +282,11 @@ CREATE TABLE `trade_info` (
   `receiver_zip` int(11) DEFAULT NULL COMMENT '收件人邮编',
   `receiver_mobile` bigint(11) DEFAULT NULL COMMENT '收货人的手机号码',
   PRIMARY KEY (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `trade_info` */
 
-insert  into `trade_info`(`tid`,`status`,`created`,`pay_time`,`consign_time`,`pay_type`,`post_fee`,`payment`,`buyer_nick`,`receiver_name`,`receiver_state`,`receiver_address`,`receiver_zip`,`receiver_mobile`) values (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,NULL,NULL,NULL,'11',NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,NULL,NULL,'11','11','11',NULL,NULL,NULL,NULL),(5,NULL,NULL,NULL,NULL,NULL,NULL,'11','11','11','11','111',NULL,NULL),(6,NULL,NULL,NULL,NULL,NULL,'11','11','11','11','11','11',11,11),(7,NULL,NULL,NULL,NULL,NULL,NULL,'11','11','11','1','1',1,1),(8,NULL,NULL,NULL,NULL,NULL,'22','22','22','22','22','22',22,22),(9,NULL,NULL,NULL,NULL,11,'11','11','11','11','11','11',11,11),(10,NULL,NULL,NULL,NULL,1,'1','11','11','11','11','1',11,1),(11,NULL,NULL,'2017-08-16',NULL,11,'11','11','11','11','11','11',11,11),(12,1,'2017-08-19','2017-08-09',NULL,1,'1','1','1','1','1','1',1,1),(13,1,'2017-08-19','2017-08-24',NULL,22,'22','22','22','2','22','22',22,22);
+insert  into `trade_info`(`tid`,`status`,`created`,`pay_time`,`consign_time`,`pay_type`,`post_fee`,`payment`,`buyer_nick`,`receiver_name`,`receiver_state`,`receiver_address`,`receiver_zip`,`receiver_mobile`) values (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,NULL,NULL,NULL,'11',NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,NULL,NULL,NULL,NULL,'11','11','11',NULL,NULL,NULL,NULL),(5,NULL,NULL,NULL,NULL,NULL,NULL,'11','11','11','11','111',NULL,NULL),(6,NULL,NULL,NULL,NULL,NULL,'11','11','11','11','11','11',11,11),(7,NULL,NULL,NULL,NULL,NULL,NULL,'11','11','11','1','1',1,1),(8,NULL,NULL,NULL,NULL,NULL,'22','22','22','22','22','22',22,22),(9,NULL,NULL,NULL,NULL,11,'11','11','11','11','11','11',11,11),(10,NULL,NULL,NULL,NULL,1,'1','11','11','11','11','1',11,1),(11,NULL,NULL,'2017-08-16',NULL,11,'11','11','11','11','11','11',11,11),(12,1,'2017-08-19','2017-08-09',NULL,1,'1','1','1','1','1','1',1,1),(13,1,'2017-08-19','2017-08-24',NULL,22,'22','22','22','2','22','22',22,22),(14,1,'2017-10-02','2017-10-05',NULL,2,'2','2','2','2','2','2',2,2);
 
 /*Table structure for table `trade_orders` */
 
@@ -284,11 +301,11 @@ CREATE TABLE `trade_orders` (
   `num` int(11) DEFAULT NULL COMMENT '数量',
   `seller_nick` varchar(20) DEFAULT NULL COMMENT '卖家昵称',
   PRIMARY KEY (`oid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `trade_orders` */
 
-insert  into `trade_orders`(`oid`,`tid`,`productSn`,`title`,`price`,`num`,`seller_nick`) values (1,NULL,NULL,'11',NULL,NULL,NULL),(2,NULL,NULL,'11','11',11,NULL),(3,NULL,NULL,'11','11',11,NULL),(4,NULL,NULL,'11','11',11,NULL),(5,NULL,NULL,'11','11',11,NULL),(6,NULL,NULL,'11','11',11,NULL),(7,NULL,NULL,'22','22',22,NULL),(8,NULL,NULL,'11','11',11,NULL),(9,NULL,NULL,'11','11',11,NULL),(10,NULL,NULL,'11','11',11,NULL),(11,NULL,NULL,'11','11',11,NULL),(12,NULL,NULL,'222','22',22,NULL);
+insert  into `trade_orders`(`oid`,`tid`,`productSn`,`title`,`price`,`num`,`seller_nick`) values (1,NULL,NULL,'11',NULL,NULL,NULL),(2,NULL,NULL,'11','11',11,NULL),(3,NULL,NULL,'11','11',11,NULL),(4,NULL,NULL,'11','11',11,NULL),(5,NULL,NULL,'11','11',11,NULL),(6,NULL,NULL,'11','11',11,NULL),(7,NULL,NULL,'22','22',22,NULL),(8,NULL,NULL,'11','11',11,NULL),(9,NULL,NULL,'11','11',11,NULL),(10,NULL,NULL,'11','11',11,NULL),(11,NULL,NULL,'11','11',11,NULL),(12,NULL,NULL,'222','22',22,NULL),(13,NULL,NULL,'22','22',22,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
