@@ -1,6 +1,7 @@
 package com.mlj.ecbiz.service.permission;
 
 import java.util.List;
+
 import com.mlj.ecbiz.model.permission.SysOperation;
 import com.chexun.base.framework.core.entity.PageEntity; 
 /**
@@ -48,5 +49,5 @@ public interface SysOperationService {
     public List<SysOperation> getSysOperationListPage(SysOperation sysOperation,Integer offset,Integer limit);
     public Integer getSysOperationCountByObj(SysOperation sysOperation);
     public List<SysOperation> getSysOperationPage(SysOperation sysOperation,PageEntity page);
-    
+    public List<SysOperation> batchSelect(String ids);
 }

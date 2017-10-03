@@ -1,5 +1,6 @@
 package com.mlj.ecbiz.dao.permission;
 import java.util.List;
+
 import com.mlj.ecbiz.model.permission.SysOperation;
 import com.chexun.base.framework.core.entity.PageEntity;
 /**
@@ -67,4 +68,7 @@ public interface SysOperationDao {
     public List<Long> getSysOperationIdListByObj(SysOperation sysOperation);
     public List<Long> getSysOperationIdListPage(SysOperation sysOperation,Integer offset,Integer limit);
     public List<Long> getSysOperationIdPage(SysOperation sysOperation,PageEntity page);
+    
+    
+    public List<?>  systemOperation_batchSelect(String ids);
 }

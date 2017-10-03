@@ -92,7 +92,7 @@
         #{permissions},
         #{note}
     </sql>
-
+	
     <insert id="createSysRole" parameterType="com.mlj.ecbiz.model.permission.SysRole" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
         insert INTO sys_role (<include refid="sys_role_columns"/>) VALUES (<include refid="sys_role_properties"/>)
     </insert>

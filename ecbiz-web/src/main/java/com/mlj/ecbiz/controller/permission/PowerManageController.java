@@ -12,15 +12,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.util.Set;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.ferrari.exception.DaoException;
@@ -37,15 +37,15 @@ import org.springframework.web.servlet.view.RedirectView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-
-
 import com.chexun.base.framework.core.entity.PageEntity;
 import com.mlj.ecbiz.model.permission.SysOperation;
 import com.mlj.ecbiz.model.permission.SysResource;
 import com.mlj.ecbiz.model.permission.SysRole;
 import com.mlj.ecbiz.model.permission.SysUser;
 import com.mlj.ecbiz.service.permission.SysOperationService;
+import com.mlj.ecbiz.service.permission.SysPermissionService;
 import com.mlj.ecbiz.service.permission.SysResourceService;
+import com.mlj.ecbiz.service.permission.SysRolePermissionService;
 import com.mlj.ecbiz.service.permission.SysRoleService;
 import com.mlj.ecbiz.service.permission.SysUserService;
 
@@ -65,59 +65,132 @@ public class PowerManageController {
 	
 	@Autowired
 	private SysRoleService sysRoleService;
+	
+	@Autowired
+	private SysPermissionService sysPermissionService;
+	
+	@Autowired
+	private SysRolePermissionService sysRolePermissionService;
 
 	// 路径
 	private String toList = "/permission/powermanage.httl";// 列表页
 	private String toAdd = "/permission/sysUserAdd.httl";// 添加页面
 	private String toEdit = "/permission/sysuser_edit.httl";// 修改页
-
 	@RequestMapping("/list")
-	public ModelAndView listAll(HttpServletRequest request, HttpServletResponse response, SysUser query, @ModelAttribute("page") PageEntity page) {
-		ModelAndView modelAndView = new ModelAndView(toList);
+	public ModelAndView list(HttpServletRequest request, HttpServletResponse response, SysUser query, @ModelAttribute("page") PageEntity page) {
+		ModelAndView modelAndView =new ModelAndView(toList);
+		return modelAndView;
+	}
+	@RequestMapping("/loadResourceTree")
+	public ModelAndView loadResourceTree(HttpServletRequest request, HttpServletResponse response, SysUser query, @ModelAttribute("page") PageEntity page) {
+		
 		try {
 			List<SysUser> list = sysUserService.getSysUserPage(query,page);
-			
 			HttpSession session = request.getSession();
 			SysUser sysUser=new SysUser();
 			sysUser.setName("master");
 			session.setAttribute("user", sysUser);
 			SysUser systemUser = (SysUser)session.getAttribute("user");
-			
-			//用户所有权限
-			Map<SysResource,List<SysOperation>> allResourceOperationMap= null;
-			//单个角色的权限
-			Map<SysResource,List<SysOperation>> singleResourceOperationMap = null;
-			
+			String roleId = request.getParameter("roleId")==null?"1":request.getParameter("roleId");
+			Map<SysResource,List<SysOperation>> resourceOperationMap;
 			if(!systemUser.getName().equals("master")){
 				List<SysRole> roleList =(List<SysRole>) session.getAttribute("roleList");
-				allResourceOperationMap = this.getRolePermissionIsNotAdmin(roleList);
+				resourceOperationMap = this.getRolePermissionIsNotAdmin(roleList);
 			}else{
-				allResourceOperationMap=this.getAllPermission();
+				resourceOperationMap = this.getAllPermission();
 			}
-			
-			response.setHeader("Cache-Control", "no-store");
-			response.setDateHeader("Expires", 0);
-			response.setContentType("text/xml; charset=UTF-8");
-			Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-			Element root = document.createElement("tree");
-			if(singleResourceOperationMap==null){
-				singleResourceOperationMap = new HashMap<SysResource,List<SysOperation>>();
+			Set<SysResource> resourceSet = resourceOperationMap.keySet();
+			if(resourceSet.size()>0){
+				response.setHeader("Cache-Control", "no-store");
+				response.setDateHeader("Expires", 0);
+				response.setContentType("text/xml; charset=UTF-8");
+				Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+				Element root = document.createElement("tree");
+				
+				List<SysResource> resourceList = new ArrayList<SysResource>();
+				resourceList.addAll(resourceSet);
+				//排序
+				Collections.sort(resourceList,new SystemResourceComparator());
+				root = recursiveResource(resourceList,root,Long.valueOf(0),document);							
+				document.appendChild(root);
+				DOMSource doms = new DOMSource(document);
+				StreamResult sr = new StreamResult(response.getOutputStream());
+				TransformerFactory tf = TransformerFactory.newInstance();
+				Transformer t = tf.newTransformer();
+				t.setOutputProperty("encoding", "UTF-8");
+				t.transform(doms, sr);
 			}
-			root = recursiveRolePermission(allResourceOperationMap,singleResourceOperationMap,root,0,document);		
-			document.appendChild(root);
-			DOMSource doms = new DOMSource(document);
-			StreamResult sr = new StreamResult(response.getOutputStream());
-			
-			TransformerFactory tf = TransformerFactory.newInstance();
-			Transformer t = tf.newTransformer();
-			t.setOutputProperty("encoding", "UTF-8");
-			t.transform(doms, sr);
-			modelAndView.addObject("sysUserList", list);
 		} catch (Exception e) {
 			logger.error("SysUserController.listAll", e);
 		}
-
-		return modelAndView;
+		return null;
+	}
+	/**
+	 * 
+	 * @comment: <p>资源树递归生成</p>  
+	 * @create.date: Aug 13, 2010 ( 2:29:31 PM )
+	 * @author: yuliang
+	 * @return:
+	 */
+	private Element recursiveResource(List<SysResource> resourceList,Element element,Long parentId,Document document)throws Exception{
+		
+		for(int i=0; i<resourceList.size(); i++){
+			   SysResource b = resourceList.get(i);
+		       if ((b!=null&&parentId==0 && b.getParentId()==0) 
+		    		   || (b!=null&&parentId!=0 && parentId.equals(b.getParentId()))){
+		    	   
+		    	   Element elementNew = document.createElement("tree");
+		    	   elementNew.setAttribute("text", b.getName().trim());
+		    	   elementNew.setAttribute("dataId", b.getId().toString());
+		    	   if(b.getParentId()==0){
+		    	   elementNew.setAttribute("style","style=\"font-weight:bold;\"");   
+		    	   }
+	               element.appendChild(elementNew);
+	               recursiveResource(resourceList,elementNew,b.getId(),document);
+		     }  
+		 }
+		return element;
+	}
+	public Map<SysResource, List<SysOperation>> getPermissionByRoleId(
+			String roleId) throws ServiceException, IntrospectionException, IllegalAccessException, InvocationTargetException {
+		
+		try{
+			if(roleId!=null&&!roleId.equals("")){
+//				SysRolePermission sysRolePermission=new SysRolePermission();
+//				sysRolePermission.setRoleId(Long.valueOf(roleId));
+				List<?> permissionList = sysRolePermissionService.getPermissionByRoleIds(roleId);
+				if(permissionList!=null&&permissionList.size()>0){
+					Map<String,String> permissionMap = new HashMap<String,String>();
+					
+					for(int i=0;i<permissionList.size();i++){
+						HashMap map = (HashMap)permissionList.get(i);
+						if(permissionMap.containsKey(map.get("resourceId").toString())){
+							String temp = permissionMap.get(map.get("resourceId").toString());
+							if(map.get("operationId")!=null&&temp.indexOf(map.get("operationId").toString())==-1){
+								temp = temp+","+map.get("operationId").toString();
+								permissionMap.put(map.get("resourceId").toString(), temp);
+							}
+						}else{	
+							permissionMap.put(map.get("resourceId").toString(), map.get("operationId")==null?"":map.get("operationId").toString());
+						}
+					}
+					
+					Map<SysResource, List<SysOperation>> result = new HashMap<SysResource, List<SysOperation>>();
+					for(String resourceId:permissionMap.keySet()){
+						SysResource systemResource =sysResourceService.getSysResourceById(Long.valueOf(resourceId));
+						List<SysOperation> operationList = null;
+						if(!permissionMap.get(resourceId).equals("")){
+							operationList =sysOperationService.batchSelect(permissionMap.get(resourceId));
+						}
+						result.put(systemResource, operationList);
+					}
+					return result;
+				}		
+			}
+			return null;
+		}catch(DaoException e){
+			throw new ServiceException(e);
+		}
 	}
 	private class SystemResourceComparator implements Comparator{
 
@@ -153,7 +226,8 @@ public class PowerManageController {
 		Element elementNew = document.createElement("tree");
 		elementNew.setAttribute("text", b.getName());
 		elementNew.setAttribute("value", b.getId().toString());
-		
+		System.out.println(elementNew.getAttribute("text"));
+		System.out.println(elementNew.getAttribute("value"));
 		if(singleResourceOperationMap.keySet().contains(b)){
 		elementNew.setAttribute("checked", "true");
 		}
@@ -296,31 +370,28 @@ public class PowerManageController {
 	public Map<SysResource, List<SysOperation>> getAllPermission()throws ServiceException, IntrospectionException, IllegalAccessException, InvocationTargetException {
 		
 		try{
-			SysResource sysResource=new SysResource();
-			List<SysResource> permissionList = sysResourceService.getSysResourceListByObj(sysResource);
+			List<?> permissionList = sysPermissionService.getAllPermission();
 			if(permissionList!=null&&permissionList.size()>0){
 				Map<String,String> permissionMap = new HashMap<String,String>();
 				for(int i=0;i<permissionList.size();i++){
-					Map map = convertBean(permissionList.get(i));
-					if(permissionMap.containsKey(map.get("id").toString())){
-						String temp = permissionMap.get(map.get("id").toString());
+					HashMap map = (HashMap)permissionList.get(i);
+					if(permissionMap.containsKey(map.get("resourceId").toString())){
+						String temp = permissionMap.get(map.get("resourceId").toString());
 						if(map.get("operationId")!=null&&temp.indexOf(map.get("operationId").toString())==-1){
 							temp = temp+","+map.get("operationId").toString();
-							permissionMap.put(map.get("id").toString(), temp);
+							permissionMap.put(map.get("resourceId").toString(), temp);
 						}
 					}else{	
-						permissionMap.put(map.get("id").toString(), map.get("operationId")==null?"":map.get("operationId").toString());
+						permissionMap.put(map.get("resourceId").toString(), map.get("operationId")==null?"":map.get("operationId").toString());
 					}
 				}
 				Map<SysResource, List<SysOperation>> result = new HashMap<SysResource, List<SysOperation>>();
 				for(String resourceId:permissionMap.keySet()){
 					SysResource systemResource = sysResourceService.getSysResourceById(Long.parseLong(resourceId));
-					List<SysOperation> operationList =new  ArrayList<SysOperation>();
-					SysOperation systemOperation=new SysOperation();
+					List<SysOperation> operationList =null;
 					if(!permissionMap.get(resourceId).equals(""))
-						systemOperation=sysOperationService.getSysOperationById(Long.valueOf(permissionMap.get(resourceId)));
-					operationList.add(systemOperation);
-					result.put(systemResource, operationList);
+						operationList=sysOperationService.batchSelect(permissionMap.get(resourceId));
+						result.put(systemResource, operationList);
 				}
 				return result;
 			}		

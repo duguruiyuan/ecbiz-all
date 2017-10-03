@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.permission.SysPermissionMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="SysPermissionResult" type="com.mlj.ecbiz.model.permission.SysPermission">
+        <result property="id" column="id"/>
+        <result property="resourceId" column="resource_id"/>
+        <result property="operationId" column="operation_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="isAdmin" column="is_admin"/>
+    </resultMap>
+	<resultMap id="result-map-permission" type="java.util.HashMap" >
+		<result property="resourceId" column="RESOURCE_ID" />
+		<result property="operationId" column="OPERATION_ID" />
+		<result property="isAdmin" column="IS_ADMIN" />
+	</resultMap>
+    <sql id="sys_permission_columns">
+        sys_permission.id,
+        sys_permission.resource_id,
+        sys_permission.operation_id,
+        sys_permission.create_time,
+        sys_permission.is_admin
+    </sql>
+    
+    <sql id="sys_permission_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="id != null">
+        	and id=#{id} 
+        </if>
+        <if test="resourceId != null">
+        	and resource_id=#{resourceId} 
+        </if>
+        <if test="operationId != null">
+        	and operation_id=#{operationId} 
+        </if>
+        <if test="createTime != null">
+        	and create_time=#{createTime} 
+        </if>
+        <if test="isAdmin != null">
+        	and is_admin=#{isAdmin} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="sys_permission_set_conditions">
+    	<set>
+        <if test="id != null">
+        	id=#{id},
+        </if>
+        <if test="resourceId != null">
+        	resource_id=#{resourceId},
+        </if>
+        <if test="operationId != null">
+        	operation_id=#{operationId},
+        </if>
+        <if test="createTime != null">
+        	create_time=#{createTime},
+        </if>
+        <if test="isAdmin != null">
+        	is_admin=#{isAdmin},
+        </if>
+            id = id
+        </set>
+    </sql>
+
+    <sql id="sys_permission_properties">
+        #{id},
+        #{resourceId},
+        #{operationId},
+        #{createTime},
+        #{isAdmin}
+    </sql>
+	<select id="getAllPermission"  resultMap="result-map-permission" parameterType="java.lang.String">
+		select b.RESOURCE_ID,b.OPERATION_ID,b.IS_ADMIN
+		from SYS_PERMISSION b
+	</select>
+    <insert id="createSysPermission" parameterType="com.mlj.ecbiz.model.permission.SysPermission" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO sys_permission (<include refid="sys_permission_columns"/>) VALUES (<include refid="sys_permission_properties"/>)
+    </insert>
+	
+	<insert id="insertSysPermission" parameterType="com.mlj.ecbiz.model.permission.SysPermission" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into sys_permission
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        			id,
+    			</if>
+    			<if test="resourceId != null" >
+        			resource_id,
+    			</if>
+    			<if test="operationId != null" >
+        			operation_id,
+    			</if>
+    			<if test="createTime != null" >
+        			create_time,
+    			</if>
+    			<if test="isAdmin != null" >
+        			is_admin
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        		#{id},
+    		</if>
+    			<if test="resourceId != null" >
+        		#{resourceId},
+    		</if>
+    			<if test="operationId != null" >
+        		#{operationId},
+    		</if>
+    			<if test="createTime != null" >
+        		#{createTime},
+    		</if>
+    			<if test="isAdmin != null" >
+        		#{isAdmin}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteSysPermissionById" parameterType="Long">
+        delete from sys_permission
+        where
+            		id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteSysPermissionByObj" parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+        delete from sys_permission
+        <include refid="sys_permission_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteSysPermissionByIdList" parameterType="java.util.List">
+    	delete from sys_permission 
+        	where
+            id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateSysPermission" parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+        update sys_permission SET
+            id = #{id},
+            resource_id = #{resourceId},
+            operation_id = #{operationId},
+            create_time = #{createTime},
+            is_admin = #{isAdmin}
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateSysPermissionByObj" parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+        update sys_permission 
+        <include refid="sys_permission_set_conditions"/>
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateSysPermissionByObjAndConditions" parameterType="java.util.HashMap">
+        update sys_permission 
+        <set>
+        <if test="s.id != null">
+        	id=#{s.id},
+        </if>
+        <if test="s.resourceId != null">
+        	resource_id=#{s.resourceId},
+        </if>
+        <if test="s.operationId != null">
+        	operation_id=#{s.operationId},
+        </if>
+        <if test="s.createTime != null">
+        	create_time=#{s.createTime},
+        </if>
+        <if test="s.isAdmin != null">
+        	is_admin=#{s.isAdmin},
+        </if>
+        </set>
+        <where>
+        <if test="c.id != null">
+        	id=#{c.id} AND 
+        </if>
+        <if test="c.resourceId != null">
+        	resource_id=#{c.resourceId} AND 
+        </if>
+        <if test="c.operationId != null">
+        	operation_id=#{c.operationId} AND 
+        </if>
+        <if test="c.createTime != null">
+        	create_time=#{c.createTime} AND 
+        </if>
+        <if test="c.isAdmin != null">
+        	is_admin=#{c.isAdmin} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateSysPermission" parameterType="java.util.List">
+		update sys_permission
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.id!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.id}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="resource_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.resourceId!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.resourceId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="operation_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.operationId!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.operationId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="create_time=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.createTime!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.createTime}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="is_admin=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.isAdmin!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.isAdmin}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(id = #{i.id})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getSysPermissionById" resultMap="SysPermissionResult" parameterType="Long">
+        select
+        <include refid="sys_permission_columns"/>
+        from sys_permission
+        where
+            id = #{value}
+    </select>
+    
+    <select id="getSysPermissionByObj" resultMap="SysPermissionResult" parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+        select
+        <include refid="sys_permission_columns"/>
+        from sys_permission
+        <include refid="sys_permission_where_conditions"/>
+    </select>
+	
+    
+    <select id="getSysPermissionListByObj" resultMap="SysPermissionResult"  parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+        select
+        <include refid="sys_permission_columns"/>
+        from sys_permission 
+        <include refid="sys_permission_where_conditions"/>
+    </select>
+    
+    <select id="getSysPermissionListByMap" resultMap="SysPermissionResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="sys_permission_columns"/>
+        from sys_permission 
+        <include refid="sys_permission_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getSysPermissionCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+        select count(1) from sys_permission
+        <include refid="sys_permission_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getSysPermissionIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+        select       id           
+        from sys_permission
+        <include refid="sys_permission_where_conditions"/>
+    </select>
+	
+    <select id="getSysPermissionIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+       select       id            from sys_permission where 1=1 
+        id = #{value}
+    </select>
+    
+    <select id="getSysPermissionIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.permission.SysPermission">
+       select       id            from sys_permission 
+        <include refid="sys_permission_where_conditions"/>
+    </select>
+    
+    <select id="getSysPermissionIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       id            from sys_permission 
+        <include refid="sys_permission_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

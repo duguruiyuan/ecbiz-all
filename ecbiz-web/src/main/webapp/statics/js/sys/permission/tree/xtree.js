@@ -64,6 +64,7 @@
 |-----------------------------------------------------------------------------|
 | Created 2000-12-11 | All changes are in the log above. | Updated 2003-03-16 |
 \----------------------------------------------------------------------------*/
+
 var webFXTreeConfig = {
 	rootIcon        : 'images/foldericon.png',
 	openRootIcon    : 'images/openfoldericon.png',
@@ -81,8 +82,12 @@ var webFXTreeConfig = {
 	defaultText     : 'Tree Item',
 	defaultAction   : 'javascript:void(0);',
 	defaultBehavior : 'classic',
-	usePersistence	: false,
-	dblclickEvent      : 'ondblclick'
+	usePersistence	: true,
+	dblclickEvent   : 'ondblclick',
+	textTypeAdd     : '添加',
+	textTypeEdit    : '修改',
+	textTypeDelete  : '删除',
+	textTypeMove    : '移动'
 };
 
 var webFXTreeHandler = {
@@ -361,11 +366,13 @@ WebFXTree.prototype.keydown = function(key) {
 }
 
 WebFXTree.prototype.toString = function() {
+	//add by kevin
+	var addText = "<a href=\"javascript:powrer.openDialogs('add', '0');\">["+webFXTreeConfig.textTypeAdd+"]</a>";
 	var str = "<div id=\"" + this.id + "\" ondblclick=\"webFXTreeHandler.toggle(this);\" class=\"webfx-tree-item\" onkeydown=\"return webFXTreeHandler.keydown(this, event)\">" +
 		"<img id=\"" + this.id + "-icon\" class=\"webfx-tree-icon\" src=\"" + ((webFXTreeHandler.behavior == 'classic' && this.open)?this.openIcon:this.icon) + "\" onclick=\"webFXTreeHandler.select(this);\">" +
 		"<a href=\"" + this.action + "\" id=\"" + this.id + "-anchor\" onfocus=\"webFXTreeHandler.focus(this);\" onblur=\"webFXTreeHandler.blur(this);\"" +
 		(this.target ? " target=\"" + this.target + "\"" : "") +
-		">" + this.text + "</a></div>" +
+		">" + this.text + "</a>"+addText+"</div>" +
 		"<div id=\"" + this.id + "-cont\" class=\"webfx-tree-container\" style=\"display: " + ((this.open)?'block':'none') + ";\">";
 	var sb = [];
 	for (var i = 0; i < this.childNodes.length; i++) {
@@ -379,7 +386,7 @@ WebFXTree.prototype.toString = function() {
  * WebFXTreeItem class
  */
 
-function WebFXTreeItem(sText, sAction, eParent, sIcon, sOpenIcon) {
+function WebFXTreeItem(sText, sAction, eParent, sIcon, sOpenIcon, dataId,style) {
 	this.base = WebFXTreeAbstractNode;
 	this.base(sText, sAction);
 	/* Defaults to close */
@@ -389,6 +396,8 @@ function WebFXTreeItem(sText, sAction, eParent, sIcon, sOpenIcon) {
 	if (sIcon) { this.icon = sIcon; }
 	if (sOpenIcon) { this.openIcon = sOpenIcon; }
 	if (eParent) { eParent.add(this); }
+	if (dataId) { this.dataId = dataId; }
+	if (style) { this.style = style; }
 }
 
 WebFXTreeItem.prototype = new WebFXTreeAbstractNode;
@@ -514,7 +523,6 @@ WebFXTreeItem.prototype.keydown = function(key) {
 }
 
 WebFXTreeItem.prototype.toString = function (nItem, nItemCount) {
-this.open =true;
 	var foo = this.parentNode;
 	var indent = '';
 	if (nItem + 1 == nItemCount) { this.parentNode._last = true; }
@@ -533,15 +541,23 @@ this.open =true;
 	}
 	else if (!this.icon) { this.icon = webFXTreeConfig.fileIcon;}
 	var label = this.text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-	var str = "<div id=\"" + this.id + "\"" 
-		+ " onclick=\"webFXTreeHandler.toggle(this);\" class=\"webfx-tree-item\" onkeydown=\"return webFXTreeHandler.keydown(this, event)\">" + indent +
-		"<img id=\"" + this.id + "-plus\" src=\"" + ((this.folder)?((this.open)?((this.parentNode._last)?webFXTreeConfig.lMinusIcon:webFXTreeConfig.tMinusIcon):((this.parentNode._last)?webFXTreeConfig.lPlusIcon:webFXTreeConfig.tPlusIcon)):((this.parentNode._last)?webFXTreeConfig.lIcon:webFXTreeConfig.tIcon)) + "\" >" +
-		"<img id=\"" + this.id + "-icon\" class=\"webfx-tree-icon\" src=\"" + ((webFXTreeHandler.behavior == 'classic' && this.open)?this.openIcon:this.icon) + "\" onclick=\"webFXTreeHandler.select(this);\">" +
-		"<a href=\"" + this.action + "\" id=\"" + this.id + "-anchor\" onfocus=\"webFXTreeHandler.focus(this);\" onblur=\"webFXTreeHandler.blur(this);\"" +
+	
+	//add by kevin 2009-05-19
+	var tempValue = this.dataId;
+	var style=this.style;
+	var addText = "<a href=\"javascript:powrer.openDialogs('add', "+tempValue+");\">["+webFXTreeConfig.textTypeAdd+"]</a>";
+	var editText = "<a href=\"javascript:powrer.openDialogs('edit', "+tempValue+");\">["+webFXTreeConfig.textTypeEdit+"]</a>";
+	var delText = "<a href=\"javascript:powrer.openDialogs('delete', "+tempValue+");\">["+webFXTreeConfig.textTypeDelete+"]</a>";
+	var moveText = "<a href=\"javascript:powrer.openDialogs('move', "+tempValue+");\">["+webFXTreeConfig.textTypeMove+"]</a>";
+	var actionText = "<a href=\"/system/operation/list.do?resourceId="+ tempValue +"\"><font color=#aaaaaa>[操作管理]</font></a>";
+	var opText = addText+editText+delText+moveText+actionText;
+	var str = "<div id=\"" + this.id + "\" ondblclick=\"webFXTreeHandler.toggle(this);\" class=\"webfx-tree-item\" onkeydown=\"return webFXTreeHandler.keydown(this, event)\">" +
+		indent +
+		"<img id=\"" + this.id + "-plus\" src=\"" + ((this.folder)?((this.open)?((this.parentNode._last)?webFXTreeConfig.lMinusIcon:webFXTreeConfig.tMinusIcon):((this.parentNode._last)?webFXTreeConfig.lPlusIcon:webFXTreeConfig.tPlusIcon)):((this.parentNode._last)?webFXTreeConfig.lIcon:webFXTreeConfig.tIcon)) + "\" onclick=\"webFXTreeHandler.toggle(this);\">" +
+		"<img id=\"" + this.id + "-icon\" class=\"webfx-tree-icon\" src=\"" + ((webFXTreeHandler.behavior == 'classic' && this.open)?this.openIcon:this.icon) + "\" onclick=\"webFXTreeHandler.select(this);\">" +	
+		"<a "+style+" href=\"" + this.action + "\" id=\"" + this.id + "-anchor\" onfocus=\"webFXTreeHandler.focus(this);\" onblur=\"webFXTreeHandler.blur(this);\"" +
 		(this.target ? " target=\"" + this.target + "\"" : "") +
-		// Add tooltip support 2006-03-19
-		(this.toolTip ? " title=\"" + this.toolTip + "\"" : "") +
-		">" + label + "</a></div>" +
+		" >" + label + "</a>"+opText+"</div>" +
 		"<div id=\"" + this.id + "-cont\" class=\"webfx-tree-container\" style=\"display: " + ((this.open)?'block':'none') + ";\">";
 	var sb = [];
 	for (var i = 0; i < this.childNodes.length; i++) {

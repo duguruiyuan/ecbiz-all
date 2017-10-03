@@ -64,7 +64,7 @@ webFXTreeConfig.emptyErrorTextTemplate = "Error \"%1%\" does not contain any tre
  * WebFXLoadTree class
  */
 
-function WebFXLoadTree(sText, sXmlSrc, sAction, sBehavior, sIcon, sOpenIcon) {
+function WebFXLoadTree(sText, sXmlSrc, sAction, sBehavior, sIcon, sOpenIcon, dataId,style) {
 	// call super
 	this.WebFXTree = WebFXTree;
 	this.WebFXTree(sText, sAction, sBehavior, sIcon, sOpenIcon);
@@ -74,7 +74,8 @@ function WebFXLoadTree(sText, sXmlSrc, sAction, sBehavior, sIcon, sOpenIcon) {
 	this.loading = false;
 	this.loaded = false;
 	this.errorText = "";
-
+	this.dataId = dataId;
+	this.style = style;
 	// check start state and load if open
 	if (this.open)
 		_startLoadXmlTree(this.src, this);
@@ -103,7 +104,7 @@ WebFXLoadTree.prototype.expand = function() {
 WebFXLoadTree.createLoadingItem = function () {
 	return new WebFXTreeItem(webFXTreeConfig.loadingText, null, null, webFXTreeConfig.loadingIcon);
 };
-function WebFXLoadTreeItem(sText, sXmlSrc, sAction, eParent, sIcon, sOpenIcon) {
+function WebFXLoadTreeItem(sText, sXmlSrc, sAction, eParent, sIcon, sOpenIcon, dataId,style) {
 	// call super
 	this.WebFXTreeItem = WebFXTreeItem;
 	this.WebFXTreeItem(sText, sAction, eParent, sIcon, sOpenIcon);
@@ -113,6 +114,8 @@ function WebFXLoadTreeItem(sText, sXmlSrc, sAction, eParent, sIcon, sOpenIcon) {
 	this.loading = false;
 	this.loaded = false;
 	this.errorText = "";
+	this.dataId = dataId;
+	this.style=style;
 
 	// check start state and load if open
 	if (this.open)
@@ -192,12 +195,14 @@ function _xmlTreeToJsTree(oNode) {
 	var openIcon = oNode.getAttribute("openIcon");
 	var src = oNode.getAttribute("src");
 	var target = oNode.getAttribute("target");
+	var dataId = oNode.getAttribute("dataId");
+	var style=oNode.getAttribute("style");
 	// create jsNode
 	var jsNode;
 	if (src != null && src != "")
-		jsNode = new WebFXLoadTreeItem(text, src, action, parent, icon, openIcon);
+		jsNode = new WebFXLoadTreeItem(text, src, action, parent, icon, openIcon, dataId,style);
 	else
-		jsNode = new WebFXTreeItem(text, action, parent, icon, openIcon);
+		jsNode = new WebFXTreeItem(text, action, parent, icon, openIcon, dataId,style);
 
 	if (target != "")
 		jsNode.target = target;

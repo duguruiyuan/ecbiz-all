@@ -2,8 +2,10 @@ package com.mlj.ecbiz.service.impl.permission;
 
 import java.util.List;
 import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.mlj.ecbiz.model.permission.SysOperation;
 import com.mlj.ecbiz.dao.permission.SysOperationDao;
 import com.mlj.ecbiz.service.permission.SysOperationService;
@@ -97,4 +99,9 @@ public class SysOperationServiceImpl implements SysOperationService{
     public List<SysOperation> getSysOperationPage(SysOperation sysOperation,PageEntity page) {
         return sysOperationDao.getSysOperationPage(sysOperation,page);
     }
+	@Override
+	public List<SysOperation> batchSelect(String ids) {
+		return (List<SysOperation>)sysOperationDao.systemOperation_batchSelect(ids);
+	}
+    
 }

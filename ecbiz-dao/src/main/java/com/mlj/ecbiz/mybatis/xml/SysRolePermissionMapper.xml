@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.permission.SysRolePermissionMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="SysRolePermissionResult" type="com.mlj.ecbiz.model.permission.SysRolePermission">
+        <result property="id" column="id"/>
+        <result property="roleId" column="role_id"/>
+        <result property="permissionId" column="permission_id"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+	
+    <sql id="sys_role_permission_columns">
+        sys_role_permission.id,
+        sys_role_permission.role_id,
+        sys_role_permission.permission_id,
+        sys_role_permission.create_time
+    </sql>
+    <resultMap id="result-map-permission" type="java.util.HashMap" >
+		<result property="resourceId" column="RESOURCE_ID" />
+		<result property="operationId" column="OPERATION_ID" />
+		<result property="isAdmin" column="IS_ADMIN" />
+	</resultMap>
+    <sql id="sys_role_permission_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="id != null">
+        	and id=#{id} 
+        </if>
+        <if test="roleId != null">
+        	and role_id=#{roleId} 
+        </if>
+        <if test="permissionId != null">
+        	and permission_id=#{permissionId} 
+        </if>
+        <if test="createTime != null">
+        	and create_time=#{createTime} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="sys_role_permission_set_conditions">
+    	<set>
+        <if test="id != null">
+        	id=#{id},
+        </if>
+        <if test="roleId != null">
+        	role_id=#{roleId},
+        </if>
+        <if test="permissionId != null">
+        	permission_id=#{permissionId},
+        </if>
+        <if test="createTime != null">
+        	create_time=#{createTime},
+        </if>
+            id = id
+        </set>
+    </sql>
+
+    <sql id="sys_role_permission_properties">
+        #{id},
+        #{roleId},
+        #{permissionId},
+        #{createTime}
+    </sql>
+	<select id="getPermissionByRoleIds" parameterType="java.lang.String" resultMap="result-map-permission">
+		select b.RESOURCE_ID,b.OPERATION_ID,b.IS_ADMIN
+		from SYS_ROLE_PERMISSION a,SYS_PERMISSION b
+		where a.ROLE_ID in (#{roleIds}) and a.PERMISSION_ID=b.ID
+	</select>
+    <insert id="createSysRolePermission" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO sys_role_permission (<include refid="sys_role_permission_columns"/>) VALUES (<include refid="sys_role_permission_properties"/>)
+    </insert>
+	
+	<insert id="insertSysRolePermission" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into sys_role_permission
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        			id,
+    			</if>
+    			<if test="roleId != null" >
+        			role_id,
+    			</if>
+    			<if test="permissionId != null" >
+        			permission_id,
+    			</if>
+    			<if test="createTime != null" >
+        			create_time
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        		#{id},
+    		</if>
+    			<if test="roleId != null" >
+        		#{roleId},
+    		</if>
+    			<if test="permissionId != null" >
+        		#{permissionId},
+    		</if>
+    			<if test="createTime != null" >
+        		#{createTime}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteSysRolePermissionById" parameterType="Long">
+        delete from sys_role_permission
+        where
+            		id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteSysRolePermissionByObj" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+        delete from sys_role_permission
+        <include refid="sys_role_permission_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteSysRolePermissionByIdList" parameterType="java.util.List">
+    	delete from sys_role_permission 
+        	where
+            id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateSysRolePermission" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+        update sys_role_permission SET
+            id = #{id},
+            role_id = #{roleId},
+            permission_id = #{permissionId},
+            create_time = #{createTime}
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateSysRolePermissionByObj" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+        update sys_role_permission 
+        <include refid="sys_role_permission_set_conditions"/>
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateSysRolePermissionByObjAndConditions" parameterType="java.util.HashMap">
+        update sys_role_permission 
+        <set>
+        <if test="s.id != null">
+        	id=#{s.id},
+        </if>
+        <if test="s.roleId != null">
+        	role_id=#{s.roleId},
+        </if>
+        <if test="s.permissionId != null">
+        	permission_id=#{s.permissionId},
+        </if>
+        <if test="s.createTime != null">
+        	create_time=#{s.createTime},
+        </if>
+        </set>
+        <where>
+        <if test="c.id != null">
+        	id=#{c.id} AND 
+        </if>
+        <if test="c.roleId != null">
+        	role_id=#{c.roleId} AND 
+        </if>
+        <if test="c.permissionId != null">
+        	permission_id=#{c.permissionId} AND 
+        </if>
+        <if test="c.createTime != null">
+        	create_time=#{c.createTime} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateSysRolePermission" parameterType="java.util.List">
+		update sys_role_permission
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.id!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.id}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="role_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.roleId!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.roleId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="permission_id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.permissionId!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.permissionId}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="create_time=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.createTime!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.createTime}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(id = #{i.id})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getSysRolePermissionById" resultMap="SysRolePermissionResult" parameterType="Long">
+        select
+        <include refid="sys_role_permission_columns"/>
+        from sys_role_permission
+        where
+            id = #{value}
+    </select>
+    
+    <select id="getSysRolePermissionByObj" resultMap="SysRolePermissionResult" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+        select
+        <include refid="sys_role_permission_columns"/>
+        from sys_role_permission
+        <include refid="sys_role_permission_where_conditions"/>
+    </select>
+	
+    
+    <select id="getSysRolePermissionListByObj" resultMap="SysRolePermissionResult"  parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+        select
+        <include refid="sys_role_permission_columns"/>
+        from sys_role_permission 
+        <include refid="sys_role_permission_where_conditions"/>
+    </select>
+    
+    <select id="getSysRolePermissionListByMap" resultMap="SysRolePermissionResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="sys_role_permission_columns"/>
+        from sys_role_permission 
+        <include refid="sys_role_permission_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getSysRolePermissionCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+        select count(1) from sys_role_permission
+        <include refid="sys_role_permission_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getSysRolePermissionIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+        select       id         
+        from sys_role_permission
+        <include refid="sys_role_permission_where_conditions"/>
+    </select>
+	
+    <select id="getSysRolePermissionIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+       select       id          from sys_role_permission where 1=1 
+        id = #{value}
+    </select>
+    
+    <select id="getSysRolePermissionIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.permission.SysRolePermission">
+       select       id          from sys_role_permission 
+        <include refid="sys_role_permission_where_conditions"/>
+    </select>
+    
+    <select id="getSysRolePermissionIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       id          from sys_role_permission 
+        <include refid="sys_role_permission_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

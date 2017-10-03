@@ -3,12 +3,16 @@ package com.mlj.ecbiz.dao.impl.permission;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+
 import com.mlj.ecbiz.model.permission.SysOperation;
 import com.mlj.ecbiz.dao.permission.SysOperationDao;
+
 import org.springframework.stereotype.Repository;
+
 import com.chexun.base.framework.core.dao.impl.common.GenericDaoImpl;
 import com.chexun.base.common.util.BeanMapConvertor;
 import com.chexun.base.framework.core.entity.PageEntity;
+
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
 /**
@@ -146,4 +150,7 @@ public class SysOperationDaoImpl extends GenericDaoImpl implements SysOperationD
             return getSysOperationIdListPage(sysOperation,(page.getCurrentPage() - 1) * page.getPageSize(),page.getPageSize());
         }
     }
+	public List<?> systemOperation_batchSelect(String ids) {
+		return this.selectList("com.mlj.ecbiz.model.permission.SysOperationMapper.systemOperation_batchSelect",ids);
+	}
 }

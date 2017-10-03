@@ -1,5 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -11,13 +10,25 @@ body {
     margin-top: 0px;
     background-image: url(../../images/seach_4.gif);
 }
+.show{
+	margin-left: 0px;
+    margin-top: 0px;
+    background-image: url(../../images/seach_4.gif);
+}
 -->
 </style>
 <link href="css/common.css" rel="stylesheet" type="text/css">
 <link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../../statics/js/plugin/jq/jquery.js"></script>
+<script type="text/javascript" src="../../statics/js/plugin/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="../../statics/js/plugin/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="../../statics/js/plugin/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 
-<!--菜单-->
 
+<link type="text/css" rel="stylesheet" href="../../statics/js/plugin/jquery-ui-1.12.1/jquery-ui.css" />
+<link type="text/css" rel="stylesheet" href="../../statics/js/plugin/jquery-ui-1.12.1/jquery-ui.min.css" />
+
+<script type="text/javascript" src="../../statics/js/sys/permission/power.js"></script>
 <script type="text/javascript" src="../../statics/js/sys/permission/tree/xtree.js"></script>
 <script type="text/javascript" src="../../statics/js/sys/permission/tree/xmlextras.js"></script>
 <script type="text/javascript" src="../../statics/js/sys/permission/tree/xloadtree.js"></script>
@@ -31,26 +42,11 @@ body {
 </head>
 
 <body style="overflow-x:hidden">
-<div align="center">
-  <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
-    <form name="form1" method="post" action="">
-    <tr>
-      <td height=25 id=location ><div align="left"><img src="../../statics/images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
-          <span class="navigation">您的位置：系统管理&gt;&gt; 权限管理</span></div></td>
-    </tr>
-    <tr>
-      <td><br>
-        <table width="95%"  border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td><fieldset>
-                <legend>权限管理</legend>
-                <table width="98%" border="0" align="center" cellspacing="0" >
-                    <tr>
-                      <td width="10%" align="left"><html:text property="currentPage" maxLength="10 " size="5" style="display:none"/></td>
-                      <td width="10%" align="left"><html:text property="totalPage" maxLength="10 " size="5" style="display:none"/></td>
-                      <td width="70%" align="right">&nbsp;</td>
-                    </tr>
-                </table>
+       	<fieldset>
+                <legend>
+                <img src="../../statics/images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          			<span class="navigation" style="font-size: 14px;">您的位置：系统管理&gt;&gt; 权限管理</span>
+          		</legend>
                 <div id="ResourceTree" align="left"></div>
                 <script type="text/javascript">
 		            oldObj = null;
@@ -68,20 +64,61 @@ body {
 					webFXTreeConfig.tIcon			= "../../statics/images/tree/T.png";
 					webFXTreeConfig.blankIcon       = "../../statics/images/tree/blank.png";
 					var tree;
-					tree = new WebFXLoadTree("资源","/power/list");
+					tree = new WebFXLoadTree("资源","/power/loadResourceTree");
 					document.getElementById('ResourceTree').innerHTML = tree;
 				</script>
-              </fieldset>
-              </td>
-          </tr>
-       </table>
-      </td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-    </tr>
-    </form>
+        </fieldset>
+  
+ 
+</body>
+
+<div id="dialog" title="资源添加" style="display:none;margin-left: 0px;margin-top: 0px;background-image: url(../../images/seach_4.gif);">
+	
+  <table style="border:0px solid red;width:550px">
+  	<tr>
+  		<td>资源名称</td><td><input id="name" class="input_biaj" name="name" value="" style="width:200px;color:#000" type="text"></td>
+  	</tr>
+  	<tr>
+  		<td>资源URL</td><td><input id="url" class="input_biaj" name="url" value="" style="width:200px;color:#000" type="text"></td>
+  	</tr>
+  	<tr>
+  		<td>选择部门</td>
+  		<td>
+			<input name="departmentIds" value="122" type="checkbox">
+			编辑部
+			<input name="departmentIds" value="124" type="checkbox">
+			销售部
+			<input name="departmentIds" value="125" type="checkbox">
+			市场部
+			<input name="departmentIds" value="127" type="checkbox">
+			SEO
+			<input name="departmentIds" value="128" type="checkbox">
+		</td>
+  	</tr>
+  		<tr>
+  		<td>选择业务</td>
+  		<td>
+  			<input name="businessIds" value="1" type="checkbox">
+			网站管理
+			<input name="businessIds" value="84" type="checkbox">
+			系统管理 
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>是否管理员许可</td>
+  		<td>
+  		<input value="0" name="isAdmin" checked="" type="radio">
+		否
+		<input value="1" name="isAdmin" type="radio">
+		是
+		<span style="color:red">(*一般为否)</span>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td>资源描述</td>
+  		<td><textarea id="description" name="description" cols="35" rows="6"></textarea></td>
+  	</tr>
   </table>
 </div>
-</body>
+
 </html>
