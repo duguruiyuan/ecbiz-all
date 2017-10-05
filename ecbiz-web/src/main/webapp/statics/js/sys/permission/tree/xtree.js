@@ -549,7 +549,7 @@ WebFXTreeItem.prototype.toString = function (nItem, nItemCount) {
 	var editText = "<a href=\"javascript:powrer.openDialogs('edit', "+tempValue+");\">["+webFXTreeConfig.textTypeEdit+"]</a>";
 	var delText = "<a href=\"javascript:powrer.openDialogs('delete', "+tempValue+");\">["+webFXTreeConfig.textTypeDelete+"]</a>";
 	var moveText = "<a href=\"javascript:powrer.openDialogs('move', "+tempValue+");\">["+webFXTreeConfig.textTypeMove+"]</a>";
-	var actionText = "<a href=\"/system/operation/list.do?resourceId="+ tempValue +"\"><font color=#aaaaaa>[操作管理]</font></a>";
+	var actionText = "<a href=\"../sysoperation/list?resourceId="+ tempValue +"\"><font color=#aaaaaa>[操作管理]</font></a>";
 	var opText = addText+editText+delText+moveText+actionText;
 	var str = "<div id=\"" + this.id + "\" ondblclick=\"webFXTreeHandler.toggle(this);\" class=\"webfx-tree-item\" onkeydown=\"return webFXTreeHandler.keydown(this, event)\">" +
 		indent +

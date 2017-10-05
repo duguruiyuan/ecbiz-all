@@ -5,8 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>订单信息</title>
 <script language="javascript" src="../../statics/js/plugin/jq/jq.js"></script>
+
 <script language="javascript" src="../../statics/js/sys/permission/roleList.js"></script>
-<!--菜单-->
+
 <link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
 <!--菜单-->
 <script language="javascript" src="../../statics/js/aml.js"></script>
@@ -40,7 +41,7 @@
                 <legend>品牌信息 </legend>
                 ${include("/common/page.httl")}
                 <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
-                  <tr bgcolor="#CCCCCC" align="center" valign="middle">
+                <tr bgcolor="#CCCCCC" align="center" valign="middle">
                     <td width="12%">角色名称</td>
                     <td width="12%">角色描述</td>
                     <td width="12%">登记人</td>
@@ -54,11 +55,10 @@
 			        <td>${sysRole.operator }</td>
 			        <td>${sysRole.created }</td>
 				    <td id="statusName_${sysRole.rId }">
-				           	<a href="">
-								分配权限
-							</a>
+				        <a onclick="">
+							分配权限
+						</a>
 				    </td>   
-				        
 				  </tr>
 				   <!--#end--> 
               </table>

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.product.ProductCompanyMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="ProductCompanyResult" type="com.mlj.ecbiz.model.product.ProductCompany">
+        <result property="id" column="id"/>
+        <result property="logo" column="logo"/>
+        <result property="brand" column="brand"/>
+        <result property="name" column="name"/>
+        <result property="english" column="english"/>
+        <result property="url" column="url"/>
+        <result property="tel" column="tel"/>
+        <result property="description" column="description"/>
+        <result property="isshow" column="isshow"/>
+    </resultMap>
+
+    <sql id="product_company_columns">
+        product_company.id,
+        product_company.logo,
+        product_company.brand,
+        product_company.name,
+        product_company.english,
+        product_company.url,
+        product_company.tel,
+        product_company.description,
+        product_company.isshow
+    </sql>
+    
+    <sql id="product_company_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="id != null">
+        	and id=#{id} 
+        </if>
+        
+        <if test="logo != null and logo != ''">
+        	and logo=#{logo} 
+        </if>
+        
+        <if test="brand != null and brand != ''">
+        	and brand=#{brand} 
+        </if>
+        
+        <if test="name != null and name != ''">
+        	and name=#{name} 
+        </if>
+        
+        <if test="english != null and english != ''">
+        	and english=#{english} 
+        </if>
+        
+        <if test="url != null and url != ''">
+        	and url=#{url} 
+        </if>
+        
+        <if test="tel != null and tel != ''">
+        	and tel=#{tel} 
+        </if>
+        
+        <if test="description != null and description != ''">
+        	and description=#{description} 
+        </if>
+        <if test="isshow != null">
+        	and isshow=#{isshow} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="product_company_set_conditions">
+    	<set>
+        <if test="id != null">
+        	id=#{id},
+        </if>
+        <if test="logo != null">
+        	logo=#{logo},
+        </if>
+        <if test="brand != null">
+        	brand=#{brand},
+        </if>
+        <if test="name != null">
+        	name=#{name},
+        </if>
+        <if test="english != null">
+        	english=#{english},
+        </if>
+        <if test="url != null">
+        	url=#{url},
+        </if>
+        <if test="tel != null">
+        	tel=#{tel},
+        </if>
+        <if test="description != null">
+        	description=#{description},
+        </if>
+        <if test="isshow != null">
+        	isshow=#{isshow},
+        </if>
+            id = id
+        </set>
+    </sql>
+
+    <sql id="product_company_properties">
+        #{id},
+        #{logo},
+        #{brand},
+        #{name},
+        #{english},
+        #{url},
+        #{tel},
+        #{description},
+        #{isshow}
+    </sql>
+
+    <insert id="createProductCompany" parameterType="com.mlj.ecbiz.model.product.ProductCompany" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO product_company (<include refid="product_company_columns"/>) VALUES (<include refid="product_company_properties"/>)
+    </insert>
+	
+	<insert id="insertProductCompany" parameterType="com.mlj.ecbiz.model.product.ProductCompany" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into product_company
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        			id,
+    			</if>
+    			<if test="logo != null" >
+        			logo,
+    			</if>
+    			<if test="brand != null" >
+        			brand,
+    			</if>
+    			<if test="name != null" >
+        			name,
+    			</if>
+    			<if test="english != null" >
+        			english,
+    			</if>
+    			<if test="url != null" >
+        			url,
+    			</if>
+    			<if test="tel != null" >
+        			tel,
+    			</if>
+    			<if test="description != null" >
+        			description,
+    			</if>
+    			<if test="isshow != null" >
+        			isshow
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        		#{id},
+    		</if>
+    			<if test="logo != null" >
+        		#{logo},
+    		</if>
+    			<if test="brand != null" >
+        		#{brand},
+    		</if>
+    			<if test="name != null" >
+        		#{name},
+    		</if>
+    			<if test="english != null" >
+        		#{english},
+    		</if>
+    			<if test="url != null" >
+        		#{url},
+    		</if>
+    			<if test="tel != null" >
+        		#{tel},
+    		</if>
+    			<if test="description != null" >
+        		#{description},
+    		</if>
+    			<if test="isshow != null" >
+        		#{isshow}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteProductCompanyById" parameterType="Long">
+        delete from product_company
+        where
+            		id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteProductCompanyByObj" parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+        delete from product_company
+        <include refid="product_company_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteProductCompanyByIdList" parameterType="java.util.List">
+    	delete from product_company 
+        	where
+            id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateProductCompany" parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+        update product_company SET
+            id = #{id},
+            logo = #{logo},
+            brand = #{brand},
+            name = #{name},
+            english = #{english},
+            url = #{url},
+            tel = #{tel},
+            description = #{description},
+            isshow = #{isshow}
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateProductCompanyByObj" parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+        update product_company 
+        <include refid="product_company_set_conditions"/>
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateProductCompanyByObjAndConditions" parameterType="java.util.HashMap">
+        update product_company 
+        <set>
+        <if test="s.id != null">
+        	id=#{s.id},
+        </if>
+        <if test="s.logo != null">
+        	logo=#{s.logo},
+        </if>
+        <if test="s.brand != null">
+        	brand=#{s.brand},
+        </if>
+        <if test="s.name != null">
+        	name=#{s.name},
+        </if>
+        <if test="s.english != null">
+        	english=#{s.english},
+        </if>
+        <if test="s.url != null">
+        	url=#{s.url},
+        </if>
+        <if test="s.tel != null">
+        	tel=#{s.tel},
+        </if>
+        <if test="s.description != null">
+        	description=#{s.description},
+        </if>
+        <if test="s.isshow != null">
+        	isshow=#{s.isshow},
+        </if>
+        </set>
+        <where>
+        <if test="c.id != null">
+        	id=#{c.id} AND 
+        </if>
+        <if test="c.logo != null">
+        	logo=#{c.logo} AND 
+        </if>
+        <if test="c.brand != null">
+        	brand=#{c.brand} AND 
+        </if>
+        <if test="c.name != null">
+        	name=#{c.name} AND 
+        </if>
+        <if test="c.english != null">
+        	english=#{c.english} AND 
+        </if>
+        <if test="c.url != null">
+        	url=#{c.url} AND 
+        </if>
+        <if test="c.tel != null">
+        	tel=#{c.tel} AND 
+        </if>
+        <if test="c.description != null">
+        	description=#{c.description} AND 
+        </if>
+        <if test="c.isshow != null">
+        	isshow=#{c.isshow} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateProductCompany" parameterType="java.util.List">
+		update product_company
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.id!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.id}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="logo=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.logo!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.logo}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="brand=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.brand!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.brand}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="name=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.name!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.name}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="english=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.english!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.english}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="url=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.url!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.url}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="tel=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.tel!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.tel}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="description=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.description!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.description}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="isshow=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.isshow!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.isshow}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(id = #{i.id})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getProductCompanyById" resultMap="ProductCompanyResult" parameterType="Long">
+        select
+        <include refid="product_company_columns"/>
+        from product_company
+        where
+            id = #{value}
+    </select>
+    
+    <select id="getProductCompanyByObj" resultMap="ProductCompanyResult" parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+        select
+        <include refid="product_company_columns"/>
+        from product_company
+        <include refid="product_company_where_conditions"/>
+    </select>
+	
+    
+    <select id="getProductCompanyListByObj" resultMap="ProductCompanyResult"  parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+        select
+        <include refid="product_company_columns"/>
+        from product_company 
+        <include refid="product_company_where_conditions"/>
+    </select>
+    
+    <select id="getProductCompanyListByMap" resultMap="ProductCompanyResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="product_company_columns"/>
+        from product_company 
+        <include refid="product_company_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getProductCompanyCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+        select count(1) from product_company
+        <include refid="product_company_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getProductCompanyIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+        select       id                   
+        from product_company
+        <include refid="product_company_where_conditions"/>
+    </select>
+	
+    <select id="getProductCompanyIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+       select       id                    from product_company where 1=1 
+        id = #{value}
+    </select>
+    
+    <select id="getProductCompanyIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.product.ProductCompany">
+       select       id                    from product_company 
+        <include refid="product_company_where_conditions"/>
+    </select>
+    
+    <select id="getProductCompanyIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       id                    from product_company 
+        <include refid="product_company_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

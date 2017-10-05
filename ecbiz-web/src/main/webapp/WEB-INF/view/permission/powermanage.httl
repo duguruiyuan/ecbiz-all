@@ -92,7 +92,6 @@ body {
 			市场部
 			<input name="departmentIds" value="127" type="checkbox">
 			SEO
-			<input name="departmentIds" value="128" type="checkbox">
 		</td>
   	</tr>
   		<tr>
@@ -116,9 +115,10 @@ body {
   	</tr>
   	<tr>
   		<td>资源描述</td>
-  		<td><textarea id="description" name="description" cols="35" rows="6"></textarea></td>
+  		<td><textarea id="description" name="description" cols="35" rows="6"></textarea>
+  		<input value="0" name="parentId" id="parentId">
+  		</td>
   	</tr>
   </table>
 </div>
-
 </html>

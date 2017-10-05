@@ -53,6 +53,13 @@
         <if test="state != null">
         	and state=#{state} 
         </if>
+        <if test="spid != null">
+        
+        	and id in 
+        	<foreach item="item" index="index" collection="spid" open="(" separator="," close=")">  
+            	#{item}  
+        	</foreach>  
+        </if>
         </trim>
     </sql>
     
