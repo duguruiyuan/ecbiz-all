@@ -19,7 +19,7 @@
 		<result property="url" column="URL" />
 		<result property="description" column="DESCRIPTION" />
 		<result property="createTime" column="CREATE_TIME" />
-		<result property="state.value" column="STATE" />
+		<result property="state" column="STATE" />
 	</resultMap>
     <sql id="sys_operation_columns">
         sys_operation.id,
@@ -95,9 +95,14 @@
         #{createTime},
         #{state}
     </sql>
-	<select id="systemOperation_batchSelect" parameterType="java.lang.String" resultMap="result-map-systemOperation">
-		select * from SYS_OPERATION where id in (#{ids} ) and state='1' order by ID ASC
+	<select id="systemOperation_batchSelect" parameterType="com.mlj.ecbiz.model.permission.SysOperation" resultMap="result-map-systemOperation">
+		select * from SYS_OPERATION where id in 
+		<foreach item="item" index="index" collection="spid" open="(" separator="," close=")">  
+            	#{item}  
+        	</foreach> 
+		and state='1' order by ID ASC
 	</select>
+	
     <insert id="createSysOperation" parameterType="com.mlj.ecbiz.model.permission.SysOperation" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
         insert INTO sys_operation (<include refid="sys_operation_columns"/>) VALUES (<include refid="sys_operation_properties"/>)
     </insert>

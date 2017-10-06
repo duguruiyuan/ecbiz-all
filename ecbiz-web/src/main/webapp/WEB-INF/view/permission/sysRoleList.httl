@@ -55,7 +55,7 @@
 			        <td>${sysRole.operator }</td>
 			        <td>${sysRole.created }</td>
 				    <td id="statusName_${sysRole.rId }">
-				        <a onclick="">
+				        <a href="../power/rolePermissionList?roleId=${sysRole.rId }">
 							分配权限
 						</a>
 				    </td>   

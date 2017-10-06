@@ -1,0 +1,97 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>系统管理</title>
+<style type="text/css">
+<!--
+body {
+    margin-left: 0px;
+    margin-top: 0px;
+    background-image: url(../../images/seach_4.gif);
+}
+.show{
+	margin-left: 0px;
+    margin-top: 0px;
+    background-image: url(../../images/seach_4.gif);
+}
+-->
+</style>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../../statics/js/plugin/jq/jquery.js"></script>
+<script type="text/javascript" src="../../statics/js/plugin/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="../../statics/js/plugin/jquery-ui-1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="../../statics/js/plugin/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+
+<link type="text/css" rel="stylesheet" href="../../statics/js/plugin/jquery-ui-1.12.1/jquery-ui.css" />
+<link type="text/css" rel="stylesheet" href="../../statics/js/plugin/jquery-ui-1.12.1/jquery-ui.min.css" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Pragma" contect="no-cache"/>
+	<meta http-equiv="Cache-Control" contect="no-store"/>
+	<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+	<meta HTTP-EQUIV="expires" CONTENT="-1">
+	<link type="text/css" rel="stylesheet" href="../../statics/js/sys/permission/tree/xtree.css" />
+	<script type="text/javascript" src="../../statics/js/sys/permission/popedom/jslibs.js"></script>
+	<script language="javascript" src="../../statics/js/sys/permission/popedom/map.js"></script>
+	<script language="javascript" src="../../statics/js/sys/permission/popedom/xtree.js"></script>
+	<script language="javascript" src="../../statics/js/sys/permission/popedom/xloadtree.js"></script>
+	<script language="javascript" src="../../statics/js/sys/permission/popedom/checkboxTreeItem.js"></script>
+	<script language="javascript" src="../../statics/js/sys/permission/popedom/xmlextras.js"></script>
+	<script language="javascript" src="../../statics/js/sys/permission/popedom/checkboxXLoadTree.js"></script>
+	<script type="text/javascript" src="../../statics/js/sys/permission/sysRolePermission.js"></script>
+	<script type="text/javascript">
+	function selected(flg){
+		var input = document.getElementsByTagName("input");
+		for(var i=0; i<input.length; i++){
+			if(input[i].type == "checkbox"){
+				input[i].checked = flg;
+			}
+		}
+	}
+</script>	
+
+</head>
+
+ <body style="background-color:#E7EEEF;">
+  <html:form action="/system/resource/saveRolePermission.do" onsubmit="return false">
+  	<fieldset>
+  	 <legend>
+          <img src="../../statics/images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
+          <span class="navigation" style="font-size: 14px;">您的位置：系统管理&gt;&gt;角色管理  &gt;&gt;分配权限</span>
+     </legend>
+    <div id="RolePermissionTree" align="left"></div>
+    <div align="center">
+    <!-- 
+    	<input type="image" src="/images/qued_button.jpg" width="54" height="20" onclick="saveRecord(this.form, '/system/resource/saveRolePermission.do?roleId=<%=roleId %>')"/>
+    	<input type="image" src="/images/quexiao_button.gif" width="54" height="20" onclick="javascript:history.go(-1);"/>
+    	 -->
+    	<input class="input-button" name="Submit2" value="保 存" onclick="javascrip:rolePermission.authorize(${roleId })" type="button">
+		<img src="../../statics/images/line.gif" width="5" height="15" align="absmiddle">
+		<input class="input-button" name="Submit2" value="返 回" onclick="javascrip:history.back()" type="button">
+    </div>
+    </fieldset>
+  </html:form>
+  </body>
+</html>
+<script type="text/javascript">
+        oldObj = null;
+		
+		webFXTreeConfig.rootIcon		= "../../statics/images/tree/tombs.gif";
+		webFXTreeConfig.openRootIcon	= "../../statics/images/tree/tombs.gif";
+		webFXTreeConfig.folderIcon		= "../../statics/images/tree/book.gif";
+		webFXTreeConfig.openFolderIcon	= "../../statics/images/tree/books_open.gif";
+		webFXTreeConfig.fileIcon		= "../../statics/images/tree/file.gif";
+		webFXTreeConfig.lMinusIcon		= "../../statics/images/tree/Lminus.png";
+		webFXTreeConfig.lPlusIcon		= "../../statics/images/tree/Lplus.png";
+		webFXTreeConfig.tMinusIcon		= "../../statics/images/tree/Tminus.png";
+		webFXTreeConfig.tPlusIcon		= "../../statics/images/tree/Tplus.png";
+		webFXTreeConfig.iIcon			= "../../statics/images/tree/I.png";
+		webFXTreeConfig.lIcon			= "../../statics/images/tree/L.png";
+		webFXTreeConfig.tIcon			= "../../statics/images/tree/T.png";
+		webFXTreeConfig.blankIcon       = "../../statics/images/tree/blank.png";
+		tree = new WebFXCheckBoxLoadTree("所有权限&nbsp;&nbsp;<input id=\"select\" type='checkbox' onclick='selected(this.checked)'/> ","/power/loadRolePermissionTree?roleId=${roleId }");
+		document.getElementById('RolePermissionTree').innerHTML = tree;
+</script>

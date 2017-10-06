@@ -1,20 +1,19 @@
 package com.mlj.ecbiz.dao.impl.permission;
 
+import java.beans.IntrospectionException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
-
-import com.mlj.ecbiz.model.permission.SysOperation;
-import com.mlj.ecbiz.dao.permission.SysOperationDao;
 
 import org.springframework.stereotype.Repository;
 
-import com.chexun.base.framework.core.dao.impl.common.GenericDaoImpl;
 import com.chexun.base.common.util.BeanMapConvertor;
+import com.chexun.base.framework.core.dao.impl.common.GenericDaoImpl;
 import com.chexun.base.framework.core.entity.PageEntity;
-
-import java.beans.IntrospectionException;
-import java.lang.reflect.InvocationTargetException;
+import com.mlj.ecbiz.dao.permission.SysOperationDao;
+import com.mlj.ecbiz.model.permission.SysOperation;
 /**
  *
  * SysOperation
@@ -151,6 +150,14 @@ public class SysOperationDaoImpl extends GenericDaoImpl implements SysOperationD
         }
     }
 	public List<?> systemOperation_batchSelect(String ids) {
-		return this.selectList("com.mlj.ecbiz.model.permission.SysOperationMapper.systemOperation_batchSelect",ids);
+		String str[]=ids.split(",");
+		Long str1[]=new Long[str.length];
+		int i=0;
+		for(String s:str){
+			str1[i]=Long.valueOf(s);i++;
+		}
+		SysOperation sysOperation=new SysOperation();
+		sysOperation.setSpid(str1);
+		return this.selectList("com.mlj.ecbiz.model.permission.SysOperationMapper.systemOperation_batchSelect",sysOperation);
 	}
 }

@@ -107,6 +107,7 @@ public class SysOperationController {
 		Long ret = -1L;
 		String resourceId=request.getParameter("resourceId");
 		sysOperation.setCreateTime(new Date());
+		sysOperation.setState('1');
 		Long num=sysOperationService.addSysOperation(sysOperation);
 		Long id=sysOperation.getId();
 		SysPermission sysPermission=new SysPermission();
@@ -114,6 +115,7 @@ public class SysOperationController {
 		sysPermission.setResourceId(Long.valueOf(resourceId));
 		List<SysPermission> list=sysPermissionService.getSysPermissionListByObj(sysPermission);
 		if(null!=list&&list.size()>0){
+			
 			sysPermissionService.updateSysPermission(sysPermission);
 		}else{
 			sysPermissionService.insertSysPermission(sysPermission);

@@ -1,34 +1,34 @@
 package  com.mlj.ecbiz.controller.permission;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.chexun.base.common.util.string.StringUtils;
-import com.chexun.base.framework.core.controller.BaseController;
+import org.apache.log4j.Logger;
+import org.ferrari.exception.ActionException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
+
 //import com.chexun.partner.constant.CoreConstant;
 import com.chexun.base.framework.core.entity.PageEntity;
+import com.mlj.ecbiz.model.permission.SysOperation;
+import com.mlj.ecbiz.model.permission.SysResource;
 //import com.chexun.partner.web.back.controllers.system.SysBaseController;
 import com.mlj.ecbiz.model.permission.SysRole;
 import com.mlj.ecbiz.model.permission.SysUser;
 //import com.chexun.partner.model.system.SysUser;
 import com.mlj.ecbiz.service.permission.SysRoleService;
-
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/sysrole")
@@ -43,6 +43,8 @@ public class SysRoleController {
 	private String toList = "/permission/sysRoleList.httl";// 列表页
 	private String toAdd = "/permission/sysRoleAdd.httl";// 添加页面
 	private String toEdit = "/permission/roleEdit.httl";// 修改页
+	
+	
 
 	@RequestMapping("/list")
 	public ModelAndView listAll(HttpServletRequest request, HttpServletResponse response, SysRole query, @ModelAttribute("page") PageEntity page) {
@@ -123,4 +125,7 @@ public class SysRoleController {
 		}
 		return rv;
 	}
+	
+	
+	
 }
