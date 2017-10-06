@@ -23,40 +23,83 @@ scrollbar-shadow-color: #ffffff;
 scrollbar-track-color: #E4F0F9; 
 } 
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-</head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body bgcolor="#D3E4F7" style="padding:5 0 0 5;margin:0px;">
+
+
 <nobr>
-<script language="JavaScript">
+<SCRIPT LANGUAGE="JavaScript">
 	var tree = new fulongTree('企业电商管理系统');
 	tree.setBehavior('classic');
 	tree.action = "javascript:loadTree('aml/default.htm')";
 
 	var c = new fulongTreeItem('商品信息');
 	tree.add(c);
+	//tree.add(c);
+  //c.icon = "statics/images/tong.gif"
 
 	var c11 = new fulongTreeItem('商品发布');
+	c.add(c11);
     c11.action = "javascript:loadTree('productinfo/list')";
-    c.add(c11);
-    
+	
     var c12 = new fulongTreeItem('基础数据',"javascript:loadTree('')",c,'statics/images/menu/foldericon2.gif','statics/images/menu/openfoldericon2.gif');
+	//c12.add(c12_1);
+    //c12_1.action = "javascript:loadTree('aml/synmanage/infoReportSend.htm')";
 	var c12_1 = new fulongTreeItem('商品分类',"javascript:loadTree('productcategory/list')",c12,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	var c12_2 = new fulongTreeItem('品牌管理',"javascript:loadTree('productbrand/list')",c12,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	var c12_3 = new fulongTreeItem('厂商信息',"javascript:loadTree('productcompany/list')",c12,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	var c12_4 = new fulongTreeItem('规格参数',"javascript:loadTree('paramConfig/edit')",c12,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	var c12_5 = new fulongTreeItem('商品图片',"javascript:loadTree('aml/synmanage/infoReportSend.htm')",c12,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	
+	//c12.add(c12_2);
+    //c12_2.action = "javascript:loadTree('aml/synmanage/infoReportRec.htm')";
+	
+	//var c12_3 = new fulongTreeItem('信息发送');
+	//c12.add(c12_3);
+    //c12_3.action = "javascript:loadTree('aml/synmanage/infoReportSend.htm')";
+	
+	//var c13 = new fulongTreeItem('信息交流');
+	//c.add(c13);
+    //c13.action = "javascript:loadTree('aml/synmanage/staffmanlist.htm')";
+	
+	//var c13 = new fulongTreeItem('经销商商品',"javascript:loadTree('')",c,'statics/images/menu/foldericon2.gif','statics/images/menu/openfoldericon2.gif');
+	//var c13_1 = new fulongTreeItem('商品发布',"javascript:loadTree('aml/synmanage/createMessage.htm')",c13,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
+	//c13.add(c13_1);
+    //c13_1.action = "javascript:loadTree('aml/synmanage/createMessage.htm')";
+	
+	//var c13_2 = new fulongTreeItem('经销商信息',"javascript:loadTree('aml/synmanage/acceptMessage.htm')",c13,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
+	//c13.add(c13_2);
+    //c13_2.action = "javascript:loadTree('aml/synmanage/acceptMessage.htm')";
+	
+	//var c13_3 = new fulongTreeItem('库存信息',"javascript:loadTree('aml/synmanage/sendMessage.htm')",c13,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
+	//c13.add(c13_3);
+    //c13_3.action = "javascript:loadTree('aml/synmanage/sendMessage.htm')";
+	
+	
+	//var c14 = new fulongTreeItem('库存信息管理');
+	//c.add(c14);
+   // c14.action = "javascript:loadTree('aml/synmanage/peopleManage.htm')";
 
 	var g = new fulongTreeItem('订单信息');
 	tree.add(g);
-	
+	//tree.add(c);
+    //c.icon = "statics/images/tong.gif"
 
 	var g1 = new fulongTreeItem('商城订单');
+	g.add(g1);
     g1.action = "javascript:loadTree('trade/list')";
-    g.add(g1);
+    
+	//var g2 = new fulongTreeItem('团购订单');
+	//g.add(g2);
+    //g2.action = "javascript:loadTree('aml/examadmin/adminiStrationPunish.htm')";
 	
+    //var g3 = new fulongTreeItem('拍卖订单');
+	//g.add(g3);
+   	//g3.action = "javascript:loadTree('aml/adminiStrationPunish.htm')";
+   	
+   // var g4= new fulongTreeItem('订单渠道');
+	//g.add(g4);
+   	//g4.action = "javascript:loadTree('aml/adminiStrationPunish.htm')";
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	var g5 = new fulongTreeItem('退换货处理',"javascript:loadTree('')",g,'statics/images/menu/foldericon2.gif','statics/images/menu/openfoldericon2.gif');
 	var g51 = new fulongTreeItem('退货单',"javascript:loadTree('aml/examadmin/nkzdlist.htm')",g5,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
@@ -71,20 +114,21 @@ scrollbar-track-color: #E4F0F9;
 	var g71 = new fulongTreeItem('服务码补发',"javascript:loadTree('aml/examadmin/nkzdlist.htm')",g7,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	//==================================================
 	var a = new fulongTreeItem('客户信息');
+	tree.add(a);
 	var a1 = new fulongTreeItem('会员管理',"javascript:loadTree(0)",a,'statics/images/menu/foldericon2.gif','statics/images/menu/openfoldericon2.gif');
 	var a11 = new fulongTreeItem('会员查询',"javascript:loadTree('aml/inquiryadmin/caseList.htm')",a1,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	var a12 = new fulongTreeItem('会员等级',"javascript:loadTree('aml/inquiryadmin/caseList.htm')",a1,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	var a13 = new fulongTreeItem('会员分组',"javascript:loadTree('aml/inquiryadmin/caseExa.htm')",a1,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
-	tree.add(a);
 	
 
+	
 	var a2 = new fulongTreeItem('咨询查询');
-	a2.action = "javascript:loadTree('aml/synmanage/peopleManage.htm')";
 	a.add(a2);
+	a2.action = "javascript:loadTree('aml/synmanage/peopleManage.htm')";
 	
 	var a3 = new fulongTreeItem('咨询查询');
-	a3.action = "javascript:loadTree('aml/synmanage/peopleManage.htm')";
 	a.add(a3);
+	a3.action = "javascript:loadTree('aml/synmanage/peopleManage.htm')";
 
 	var a4 = new fulongTreeItem('写消息',"javascript:loadTree(0)",a,'statics/images/menu/foldericon2.gif','statics/images/menu/openfoldericon2.gif');
 	var a41 = new fulongTreeItem('收件夹',"javascript:loadTree('aml/inquiryadmin/caseList.htm')",a4,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
@@ -98,50 +142,48 @@ scrollbar-track-color: #E4F0F9;
 	
 	var f = new fulongTreeItem('统计分析');
 	tree.add(f);
-	
 	var f0 = new fulongTreeItem('会员购买分析');
-	f0.action = "javascript:loadTree('aml/statistics/infoStat.htm')";
 	f.add(f0);
-	
-	
+	f0.action = "javascript:loadTree('aml/statistics/infoStat.htm')";
 	var f1 = new fulongTreeItem('会员购买排行');
-	f1.action = "javascript:loadTree('aml/statistics/personnelStat.htm')";
 	f.add(f1);
+	f1.action = "javascript:loadTree('aml/statistics/personnelStat.htm')";
 	
-    var f3 = new fulongTreeItem('商品信息统计',"javascript:loadTree(0)",f,'statics/images/menu/foldericon2.gif','statics/images/menu/openfoldericon2.gif');
+     var f3 = new fulongTreeItem('商品信息统计',"javascript:loadTree(0)",f,'statics/images/menu/foldericon2.gif','statics/images/menu/openfoldericon2.gif');
+
 	var f31 = new fulongTreeItem('商品销量排行',"javascript:loadTree('aml/statistics/nkzd.htm')",f3,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	var f32 = new fulongTreeItem('销售明细统计',"javascript:loadTree('aml/statistics/jggw.htm')",f3,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
 	
-	//====================================
+	
 	var d = new fulongTreeItem('系统管理');
 	tree.add(d);
 
 	var d2 = new fulongTreeItem('用户管理');
-	d2.action = "javascript:loadTree('sysuser/list')";
 	d.add(d2);
-	
+	d2.action = "javascript:loadTree('sysuser/list')";//permission/list
 	var d3 = new fulongTreeItem('角色管理');
-	d3.action = "javascript:loadTree('sysrole/list')";
 	d.add(d3);
-	
+	d3.action = "javascript:loadTree('sysrole/list')";
 	var d4 = new fulongTreeItem('菜单管理');
-	d4.action = "javascript:loadTree('power/list')";
 	d.add(d4);
-    
-    
+	d4.action = "javascript:loadTree('power/list')";
+//	var d3 = new fulongTreeItem('数据字典维护');
+//	d.add(d3);
+//	d3.action = "javascript:loadTree('aml/datevindicate.htm')";
+
 	var d5 = new fulongTreeItem('日志管理',"javascript:loadTree(0)",d,'statics/images/menu/foldericon2.gif','statics/images/menu/openfoldericon2.gif');
+
 	var d51 = new fulongTreeItem('系统日志',"javascript:loadTree('aml/sysmanage/logManage.htm')",d5,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
+
 	var d52 = new fulongTreeItem('清除日志',"javascript:loadTree('aml/sysmanage/logClear.htm')",d5,'statics/images/menu/file2.gif','statics/images/menu/file2.gif');
-	
-	
+
 	var d6 = new fulongTreeItem('系统监控');
-	d6.action = "javascript:loadTree('aml/sysmanage/systemControl.htm')";
 	d.add(d6);
-	
-	
+	d6.action = "javascript:loadTree('aml/sysmanage/systemControl.htm')";
 	document.write(tree);
 	tree.expandAll();
-</script>
+</SCRIPT>
 </nobr>
+
 </body>
 </html>

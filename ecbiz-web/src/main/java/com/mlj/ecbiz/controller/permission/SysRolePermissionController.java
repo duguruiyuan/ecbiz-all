@@ -1,5 +1,6 @@
 package  com.mlj.ecbiz.controller.permission;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,13 +52,17 @@ public class SysRolePermissionController {
 			sysRolePermissionService.deleteSysRolePermissionByObj(sysRolePermission);
 			for(String permission:pids){
 				String pid[]=permission.split(",");
-				if(pid.length>2){
+				if(pid.length==2){
 					SysPermission sysPermission=new SysPermission();
 					sysPermission.setResourceId(Long.valueOf(pid[0]));
 					sysPermission.setOperationId(Long.valueOf(pid[1]));
 					Long permissionId=sysPermissionService.getSysPermissionListByObj(sysPermission).get(0).getId();
-					sysRolePermission.setPermissionId(permissionId);
-					sysRolePermissionService.addSysRolePermission(sysRolePermission);
+					
+					SysRolePermission sysRolePer=new SysRolePermission();
+					sysRolePer.setRoleId(Long.valueOf(roleId));
+					sysRolePer.setPermissionId(permissionId);
+					sysRolePer.setCreateTime(new Date());
+					sysRolePermissionService.addSysRolePermission(sysRolePer);
 				}
 			}
 		}
