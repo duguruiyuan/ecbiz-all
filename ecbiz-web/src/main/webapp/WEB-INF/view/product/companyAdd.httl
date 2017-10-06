@@ -20,7 +20,7 @@
 
 <script language="javascript" src="../../statics/js/plugin/jq/jq.js"></script>
 <script language="javascript" src="../../statics/js/plugin/jq/ajaxfileupload.js"></script>
-<script language="javascript" src="../../statics/js/sys/product/brandAdd.js"></script>
+<script language="javascript" src="../../statics/js/sys/product/companyAdd.js"></script>
 </head>
 
 <body style="overflow-x:hidden">
@@ -34,7 +34,7 @@
     </tr>
     <tr>
       <td height=25 id=operation><div align="right">
-          <input name="Submit2" type="button" class="input-button" value="保 存" onClick="javascrip:brandAdd.MM_popupMsg('你确定保存此信息嘛?','list')">
+          <input name="Submit2" type="button" class="input-button" value="保 存" onClick="javascrip:companyAdd.MM_popupMsg('你确定保存此信息嘛?','list')">
           <!--
           <img src="../../statics/images/line.gif" width="5" height="15" align="absmiddle">
 		  <input name="Submit2" type="button" class="input-button" value="提 交" onClick="location.href='inquestcluelist.htm'">
@@ -58,19 +58,19 @@
               <TBODY>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">厂商名称：</TD>
-                  <TD align="left" ><INPUT name="brand_name" id="brand_name" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="name" id="name" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
                  <TR>
-                  <TD width="18%" align="right"  nowrap="nowrap">官方英文名：</TD>
-                  <TD align="left" ><INPUT name="english_name" id="english_name" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD width="18%" align="right"  nowrap="nowrap">英文名：</TD>
+                  <TD align="left" ><INPUT name="english" id="english" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">URL英文名：</TD>
-                  <TD align="left" ><INPUT name="english" id="english" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="url" id="url" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
@@ -90,7 +90,7 @@
                 <TR id="imgtr">
                   <TD width="18%" align="right"  nowrap="nowrap"></TD>
                   <TD align="left" >
-                  	<input name="logoImage" id="logoImage" type="hidden" value="${logoImage }" />
+                  	<input name="logoImage" id="logo" type="hidden" value="${logo }" />
                   	<img  id="imgshow_2" src="" style="height: 40px;width: 150px;"/>
                   </TD>
                   <TD width="18%" align="right" ></TD>
@@ -104,7 +104,7 @@
                 </TR>
                 <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">客服电话：</TD>
-                  <TD align="left" ><INPUT name="telephone" id="tel" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD align="left" ><INPUT name="tel" id="tel" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
@@ -122,7 +122,7 @@
                  <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">厂商简介：</TD>
                   <TD align="left" >
-					<textarea name="brand_desc" id="brand_desc" cols="60" rows="5" ></textarea>
+					<textarea name="description" id="description" cols="60" rows="5" ></textarea>
 					</TD>
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
@@ -143,7 +143,7 @@
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td height=25 id=operation><div align="right">
-	          <input name="Submit2" type="button" class="input-button" value="保 存" onClick="javascrip:brandAdd.MM_popupMsg('你确定保存此信息嘛?','list')">
+	          <input name="Submit2" type="button" class="input-button" value="保 存" onClick="javascrip:companyAdd.MM_popupMsg('你确定保存此信息嘛?','list')">
 	          <!--
 	          <img src="../../statics/images/line.gif" width="5" height="15" align="absmiddle">
 			  <input name="Submit2" type="button" class="input-button" value="提 交" onClick="location.href='inquestcluelist.htm'">

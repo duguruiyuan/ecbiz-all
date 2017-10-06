@@ -118,19 +118,20 @@
                   <tr onMouseOut="mOut(this,'#FFFFFF',event);" onMouseOver="mOvr(this,'#C0EFFF',event);"  bgcolor="#F8F8F8" align="center" valign="middle"> <a href="infoReportRecView.htm">
                     <td>${productCompany.id }</td>
 			        <td>${productCompany.logo }</td>
+			        <td>${productCompany.brand }</td>
 			        <td>${productCompany.name }</td>
 			        <td>${productCompany.english }</td>
 			        <td>${productCompany.url }</td>
 			        <td>${productCompany.tel }</td>
 			        <td>${productCompany.description }</td>
 			        <td><!--#if(productCompany.isshow.toInt==1)--> 是 <!--#else--><span style="color:red;">否</span><!--#end--></td>
-				    <td id="statusName_${productCompany.id }">
+				    <td id="statusName_${companyList.id }">
 				           	<a href="javascript:brandList.toEdit('edit','${productCompany.id }');">
 								<img class="active" src="../../statics/images/picture/edit2.gif" width="15" height="15" border="0">
 							</a>
 				    </td>   
 				    <td id="statusName_${productCompany.id }">
-				    		<a href="javascript:brandList.MM_popupMsg('你确删除此信息嘛?','list','${productCompany.id}');">
+				    		<a href="javascript:companyList.MM_popupMsg('你确删除此信息嘛?','list','${productCompany.id}');">
 				           		<img class="active" src="../../statics/images/picture/delete.gif" width="15" height="15">
 				   			</a>
 				    </td>      

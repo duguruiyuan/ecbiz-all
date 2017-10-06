@@ -2,32 +2,30 @@
  * 添加商品品牌js
  */
 
-var brandAdd = {};
+var companyAdd = {};
 
 // 保存品牌
-brandAdd.save = function(url) {
-	var brandName = $("#brand_name").val();
-	var englishName = $("#english_name").val();
+companyAdd.save = function(url) {
+	var name = $("#name").val();
+	var brand = $('#brand').val();
 	var english = $('#english').val();
-	var brandLogo = $('#logoImage').val();
-	var officialUrl = $("#official_url").val();
-	var telephone = $("#telephone").val();
+	var logo = $('#logo').val();
+	var url = $("#url").val();
+	var tel = $("#tel").val();
 	var isShow  = $('input[name=isshow]:checked').val();
-	var brandDesc = $("#brand_desc").val();
-	var content =UE.getEditor('editor').getContent();
+	var description = $("#description").val();
 	var params = {
-			brandName : brandName,
-			englishName : englishName,
+			name : name,
+			brand : brand,
 			english : english,
-			brandLogo : brandLogo,
-			officialUrl : officialUrl,
-			telephone : telephone,
-			isShow : isShow,
-			brandDesc : brandDesc,
-			content : content
+			logo : logo,
+			url : url,
+			tel : tel,
+			isshow : isShow,
+			description : description
 	};
 	$.ajax({
-		url : "/productbrand/addsave",
+		url : "/productcompany/addsave",
 		dataType : 'json',
 		type : 'post',
 		scriptCharset : 'utf-8',
@@ -44,10 +42,10 @@ brandAdd.save = function(url) {
 	});
 }
 // 保存时使用
-brandAdd.MM_popupMsg = function(msg, url) {
+companyAdd.MM_popupMsg = function(msg, url) {
 	var bool = confirm(msg);
 	if (bool) {
-		brandAdd.save(url);
+		companyAdd.save(url);
 	}
 }
 

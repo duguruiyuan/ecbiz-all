@@ -1,26 +1,26 @@
 /**
  * 商品分类列表js
  */
-var brandList={};
+var companyList={};
 //删除一个分类
-brandList.deletebyId=function(url,id){
-	$.post("/productbrand/del",{id:id},function(data){
+companyList.deletebyId=function(url,id){
+	$.post("/productcompany/del",{id:id},function(data){
 		location.href=url;
 	});
 };
 //删除使用弹出层
-brandList.MM_popupMsg=function(msg,url,id){
+companyList.MM_popupMsg=function(msg,url,id){
 	  var bool=confirm(msg);
 	  if(bool){
-		  brandList.deletebyId(url,id);
+		  companyList.deletebyId(url,id);
 	  }
 };
 //跳转修改页面
-brandList.toEdit=function(url,id){
+companyList.toEdit=function(url,id){
 	location.href=url+"?id="+id;
 };
 //查询
-brandList.seach=function(){
+companyList.seach=function(){
 	var letter=$("#letter").val();
 	var seachType=$("#seachType").val();
 	var keyword=$("#keyword").val();
