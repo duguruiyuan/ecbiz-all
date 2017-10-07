@@ -3,12 +3,17 @@ package com.mlj.ecbiz.dao.impl.permission;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+
 import com.mlj.ecbiz.model.permission.SysPermission;
+import com.mlj.ecbiz.model.permission.SysRolePermission;
 import com.mlj.ecbiz.dao.permission.SysPermissionDao;
+
 import org.springframework.stereotype.Repository;
+
 import com.chexun.base.framework.core.dao.impl.common.GenericDaoImpl;
 import com.chexun.base.common.util.BeanMapConvertor;
 import com.chexun.base.framework.core.entity.PageEntity;
+
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
 /**
@@ -150,5 +155,10 @@ public class SysPermissionDaoImpl extends GenericDaoImpl implements SysPermissio
 	public List<?> getAllPermission() {
 		// TODO Auto-generated method stub
 		 return this.selectList("com.mlj.ecbiz.model.permission.SysPermissionMapper.getAllPermission","");
+	}
+	@Override
+	public List<?> getAllPermissionByPids(List<SysRolePermission> list) {
+		// TODO Auto-generated method stub
+		 return this.selectList("com.mlj.ecbiz.model.permission.SysPermissionMapper.getAllPermissionByPids",list);
 	}
 }

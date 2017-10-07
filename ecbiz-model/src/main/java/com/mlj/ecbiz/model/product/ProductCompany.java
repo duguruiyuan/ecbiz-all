@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class ProductCompany implements Serializable{
+	private static final long serialVersionUID = 1L;
 	public static final int DEFAULT_STATUS = 0;// 默认状态
 	public static final int FREEZE_STATUS = 1;// 冻结
 	public static final int DELETE_STATUS = 2;// 伪删除

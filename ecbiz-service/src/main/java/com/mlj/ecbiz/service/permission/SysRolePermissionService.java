@@ -2,8 +2,9 @@ package com.mlj.ecbiz.service.permission;
 
 import java.util.List;
 
+import com.chexun.base.framework.core.entity.PageEntity;
+import com.mlj.ecbiz.model.permission.SysRole;
 import com.mlj.ecbiz.model.permission.SysRolePermission;
-import com.chexun.base.framework.core.entity.PageEntity; 
 /**
  * SysRolePermission管理接口
  * User: 
@@ -50,4 +51,6 @@ public interface SysRolePermissionService {
     public Integer getSysRolePermissionCountByObj(SysRolePermission sysRolePermission);
     public List<SysRolePermission> getSysRolePermissionPage(SysRolePermission sysRolePermission,PageEntity page);
     public List<?>  getPermissionByRoleIds(String roleIds);
+    public List<?> getRolePermissionByRoleIds(List<SysRole> list);
+    
 }

@@ -77,6 +77,13 @@
 		select b.RESOURCE_ID,b.OPERATION_ID,b.IS_ADMIN
 		from SYS_PERMISSION b
 	</select>
+	<select id="getAllPermissionByPids"  resultMap="result-map-permission" parameterType="java.util.List">
+		select b.RESOURCE_ID,b.OPERATION_ID,b.IS_ADMIN
+		from SYS_PERMISSION b where b.id  in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+            	#{item.permissionId}
+        </foreach> 
+	</select>
     <insert id="createSysPermission" parameterType="com.mlj.ecbiz.model.permission.SysPermission" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
         insert INTO sys_permission (<include refid="sys_permission_columns"/>) VALUES (<include refid="sys_permission_properties"/>)
     </insert>

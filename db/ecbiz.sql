@@ -104,9 +104,11 @@ CREATE TABLE `product_company` (
   `description` varchar(200) DEFAULT NULL,
   `isshow` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `product_company` */
+
+insert  into `product_company`(`id`,`logo`,`brand`,`name`,`english`,`url`,`tel`,`description`,`isshow`) values (1,'',NULL,'1','1','1','1','1',NULL),(2,'',NULL,'1','2','2','2','2',NULL),(3,'',NULL,'2','2','2','2','2',NULL),(4,'','1','11','1','1','1','1',NULL);
 
 /*Table structure for table `product_info` */
 
@@ -206,7 +208,7 @@ CREATE TABLE `sys_resource` (
 
 /*Data for the table `sys_resource` */
 
-insert  into `sys_resource`(`ID`,`NAME`,`URL`,`PARENT_ID`,`DESCRIPTION`,`CREATE_TIME`,`STATE`,`OTHER_PARENT_ID`) values (100000,'系统管理',NULL,0,NULL,'2017-09-15','1',0),(100001,'用户管理',NULL,100000,NULL,'2017-09-15','1',NULL),(100002,'角色管理',NULL,100000,NULL,'2017-09-15','1',NULL),(100003,'菜单管理',NULL,100000,NULL,'2017-09-15','1',NULL),(100004,'日志管理',NULL,100000,NULL,NULL,NULL,NULL),(100005,'系统日志',NULL,100004,NULL,NULL,NULL,NULL),(100006,'清除日志',NULL,100004,NULL,NULL,NULL,NULL),(100007,'系统监控',NULL,100000,NULL,NULL,NULL,NULL),(100100,'统计分析',NULL,0,NULL,'2017-09-15','1',0),(100101,'会员购买分析',NULL,100100,NULL,NULL,NULL,NULL),(100102,'会员购买排行',NULL,100100,NULL,NULL,NULL,NULL),(100103,'商品信息统计',NULL,100100,NULL,NULL,NULL,NULL),(100104,'商品销售排行',NULL,100103,NULL,NULL,NULL,NULL),(100105,'销售明细统计',NULL,100103,NULL,NULL,NULL,NULL),(100200,'客户信息',NULL,0,NULL,'2017-09-15','1',0),(100201,'会员管理',NULL,100200,NULL,NULL,NULL,NULL),(100202,'写信息',NULL,100200,NULL,NULL,NULL,NULL),(100203,'黑名单',NULL,100200,NULL,NULL,NULL,NULL),(100204,'会员查询',NULL,100201,NULL,NULL,NULL,NULL),(100205,'会员等级',NULL,100201,NULL,NULL,NULL,NULL),(100206,'会员分组',NULL,100201,NULL,NULL,NULL,NULL),(100207,'收件夹',NULL,100202,NULL,NULL,NULL,NULL),(100208,'发件夹',NULL,100202,NULL,NULL,NULL,NULL),(100209,'关注名单',NULL,100203,NULL,NULL,NULL,NULL),(100210,'重点关注名单',NULL,100203,NULL,NULL,NULL,NULL),(100211,'非法名单',NULL,100203,NULL,NULL,NULL,NULL),(100300,'订单信息',NULL,0,NULL,'2017-09-15','1',0),(100301,'商城订单',NULL,100300,NULL,NULL,NULL,NULL),(100302,'退换货处理',NULL,100300,NULL,NULL,NULL,NULL),(100303,'凭证管理',NULL,100300,NULL,NULL,NULL,NULL),(100304,'服务码管理',NULL,100300,NULL,NULL,NULL,NULL),(100305,'退货单',NULL,100302,NULL,NULL,NULL,NULL),(100306,'换货单',NULL,100302,NULL,NULL,NULL,NULL),(100307,'订单支付凭证',NULL,100303,NULL,NULL,NULL,NULL),(100308,'服务码查询',NULL,100304,NULL,NULL,NULL,NULL),(100309,'服务码补发',NULL,100304,NULL,NULL,NULL,NULL),(100400,'商品信息',NULL,0,NULL,'2017-09-15','1',0),(100401,'商品发布',NULL,100400,NULL,NULL,NULL,NULL),(100402,'基础信息',NULL,100400,NULL,NULL,NULL,NULL),(100403,'商品分类',NULL,100402,NULL,NULL,NULL,NULL),(100404,'品牌管理',NULL,100402,NULL,NULL,NULL,NULL),(100405,'厂商信息',NULL,100402,NULL,NULL,NULL,NULL),(100406,'规格管理',NULL,100402,NULL,NULL,NULL,NULL),(100407,'商品图片',NULL,100402,NULL,NULL,NULL,NULL),(100432,'测试菜单1','2221',0,'22221','2017-10-04',NULL,NULL),(100433,'测试菜单2','333',100432,'333','2017-10-04',NULL,NULL);
+insert  into `sys_resource`(`ID`,`NAME`,`URL`,`PARENT_ID`,`DESCRIPTION`,`CREATE_TIME`,`STATE`,`OTHER_PARENT_ID`) values (100000,'系统管理','',0,NULL,'2017-09-15','1',0),(100001,'用户管理','sysuser/list',100000,NULL,'2017-09-15','1',NULL),(100002,'角色管理','sysrole/list',100000,NULL,'2017-09-15','1',NULL),(100003,'菜单管理','power/list',100000,NULL,'2017-09-15','1',NULL),(100004,'日志管理','product/list',100000,NULL,NULL,NULL,NULL),(100005,'系统日志','aml/sysmanage/logManage.htm',100004,NULL,NULL,NULL,NULL),(100006,'清除日志','aml/sysmanage/logClear.htm',100004,NULL,NULL,NULL,NULL),(100007,'系统监控','aml/sysmanage/systemControl.htm',100000,NULL,NULL,NULL,NULL),(100100,'统计分析','',0,NULL,'2017-09-15','1',0),(100101,'会员购买分析','aml/statistics/infoStat.htm',100100,NULL,NULL,NULL,NULL),(100102,'会员购买排行','aml/statistics/personnelStat.htm',100100,NULL,NULL,NULL,NULL),(100103,'商品信息统计','product/list',100100,NULL,NULL,NULL,NULL),(100104,'商品销售排行','aml/statistics/nkzd.htm',100103,NULL,NULL,NULL,NULL),(100105,'销售明细统计','aml/statistics/jggw.htm',100103,NULL,NULL,NULL,NULL),(100200,'客户信息','',0,NULL,'2017-09-15','1',0),(100201,'会员管理','product/list',100200,NULL,NULL,NULL,NULL),(100202,'写信息','product/list',100200,NULL,NULL,NULL,NULL),(100203,'黑名单','product/list',100200,NULL,NULL,NULL,NULL),(100204,'会员查询','product/list',100201,NULL,NULL,NULL,NULL),(100205,'会员等级','product/list',100201,NULL,NULL,NULL,NULL),(100206,'会员分组','product/list',100201,NULL,NULL,NULL,NULL),(100207,'收件夹','product/list',100202,NULL,NULL,NULL,NULL),(100208,'发件夹','product/list',100202,NULL,NULL,NULL,NULL),(100209,'关注名单','product/list',100203,NULL,NULL,NULL,NULL),(100210,'重点关注名单','product/list',100203,NULL,NULL,NULL,NULL),(100211,'非法名单','product/list',100203,NULL,NULL,NULL,NULL),(100300,'订单信息','',0,NULL,'2017-09-15','1',0),(100301,'商城订单','trade/list',100300,NULL,NULL,NULL,NULL),(100302,'退换货处理','trade/list',100300,NULL,NULL,NULL,NULL),(100303,'凭证管理','product/list',100300,NULL,NULL,NULL,NULL),(100304,'服务码管理','product/list',100300,NULL,NULL,NULL,NULL),(100305,'退货单','trade/list',100302,NULL,NULL,NULL,NULL),(100306,'换货单','trade/list',100302,NULL,NULL,NULL,NULL),(100307,'订单支付凭证','product/list',100303,NULL,NULL,NULL,NULL),(100308,'服务码查询','product/list',100304,NULL,NULL,NULL,NULL),(100309,'服务码补发','product/list',100304,NULL,NULL,NULL,NULL),(100400,'商品信息','',0,NULL,'2017-09-15','1',0),(100401,'商品发布','productinfo/list',100400,NULL,NULL,NULL,NULL),(100402,'基础信息','',100400,NULL,NULL,NULL,NULL),(100403,'商品分类','productcategory/list',100402,NULL,NULL,NULL,NULL),(100404,'品牌管理','productbrand/list',100402,NULL,NULL,NULL,NULL),(100405,'厂商信息','productcompany/list',100402,NULL,NULL,NULL,NULL),(100406,'规格管理','paramConfig/edit',100402,NULL,NULL,NULL,NULL),(100407,'商品图片','product/list',100402,NULL,NULL,NULL,NULL),(100432,'测试菜单1','',0,'22221','2017-10-04',NULL,NULL),(100433,'测试菜单2','product/list',100432,'333','2017-10-04',NULL,NULL);
 
 /*Table structure for table `sys_role` */
 
@@ -237,9 +239,11 @@ CREATE TABLE `sys_role_permission` (
   `PERMISSION_ID` bigint(20) DEFAULT NULL,
   `CREATE_TIME` date DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_role_permission` */
+
+insert  into `sys_role_permission`(`ID`,`ROLE_ID`,`PERMISSION_ID`,`CREATE_TIME`) values (13,1,100001,NULL),(14,1,100002,NULL),(15,1,100003,NULL);
 
 /*Table structure for table `sys_user` */
 

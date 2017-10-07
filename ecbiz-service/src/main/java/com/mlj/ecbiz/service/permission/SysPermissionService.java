@@ -1,7 +1,9 @@
 package com.mlj.ecbiz.service.permission;
 
 import java.util.List;
+
 import com.mlj.ecbiz.model.permission.SysPermission;
+import com.mlj.ecbiz.model.permission.SysRolePermission;
 import com.chexun.base.framework.core.entity.PageEntity; 
 /**
  * SysPermission管理接口
@@ -49,4 +51,5 @@ public interface SysPermissionService {
     public Integer getSysPermissionCountByObj(SysPermission sysPermission);
     public List<SysPermission> getSysPermissionPage(SysPermission sysPermission,PageEntity page);
     public List<?> getAllPermission();
+    public List<?> getAllPermissionByPids(List<SysRolePermission> list);
 }

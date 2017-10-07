@@ -2,9 +2,12 @@ package com.mlj.ecbiz.service.impl.permission;
 
 import java.util.List;
 import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.mlj.ecbiz.model.permission.SysPermission;
+import com.mlj.ecbiz.model.permission.SysRolePermission;
 import com.mlj.ecbiz.dao.permission.SysPermissionDao;
 import com.mlj.ecbiz.service.permission.SysPermissionService;
 import com.chexun.base.framework.core.entity.PageEntity;
@@ -101,5 +104,10 @@ public class SysPermissionServiceImpl implements SysPermissionService{
 	public List<?> getAllPermission() {
 		// TODO Auto-generated method stub
 		return sysPermissionDao.getAllPermission();
+	}
+	@Override
+	public List<?> getAllPermissionByPids(List<SysRolePermission> list) {
+		// TODO Auto-generated method stub
+		return sysPermissionDao.getAllPermissionByPids(list);
 	}
 }

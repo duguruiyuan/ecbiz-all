@@ -62,6 +62,12 @@
                   <TD width="18%" align="right" ></TD>
                   <TD align="left" ></TD>
                 </TR>
+                <TR>
+                  <TD width="18%" align="right"  nowrap="nowrap">所含品牌：</TD>
+                  <TD align="left" ><INPUT name="brand" id="brand" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>
+                  <TD width="18%" align="right" ></TD>
+                  <TD align="left" ></TD>
+                </TR>
                  <TR>
                   <TD width="18%" align="right"  nowrap="nowrap">英文名：</TD>
                   <TD align="left" ><INPUT name="english" id="english" type="text" class="input-text" style="width: 200px" value="" size="20"></TD>

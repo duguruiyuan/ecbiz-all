@@ -1,11 +1,11 @@
 /**
- * 添加商品品牌js
+ * 添加商品厂商js
  */
 
 var companyAdd = {};
 
-// 保存品牌
-companyAdd.save = function(url) {
+// 保存厂商
+companyAdd.save = function(url1) {
 	var name = $("#name").val();
 	var brand = $('#brand').val();
 	var english = $('#english').val();
@@ -33,10 +33,10 @@ companyAdd.save = function(url) {
 		success : function(data) {
 			if (data != '-1') {
 				alert("保存成功！");
-				location.href = url;
+				location.href = url1;
 			} else {
 				alert("保存失败！");
-				location.href = url;
+				location.href = url1;
 			}
 		},
 	});

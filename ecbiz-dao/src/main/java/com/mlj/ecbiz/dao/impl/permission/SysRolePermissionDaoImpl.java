@@ -12,6 +12,7 @@ import com.chexun.base.common.util.BeanMapConvertor;
 import com.chexun.base.framework.core.dao.impl.common.GenericDaoImpl;
 import com.chexun.base.framework.core.entity.PageEntity;
 import com.mlj.ecbiz.dao.permission.SysRolePermissionDao;
+import com.mlj.ecbiz.model.permission.SysRole;
 import com.mlj.ecbiz.model.permission.SysRolePermission;
 /**
  *
@@ -148,8 +149,11 @@ public class SysRolePermissionDaoImpl extends GenericDaoImpl implements SysRoleP
             return getSysRolePermissionIdListPage(sysRolePermission,(page.getCurrentPage() - 1) * page.getPageSize(),page.getPageSize());
         }
     }
-	
+    
 	public List<?> getPermissionByRoleIds(String roleIds) {
 		return this.selectList("com.mlj.ecbiz.model.permission.SysRolePermissionMapper.getPermissionByRoleIds",roleIds);
+	}
+	public List<?> getRolePermissionByRoleIds(List<SysRole> list) {
+		return this.selectList("com.mlj.ecbiz.model.permission.SysRolePermissionMapper.getRolePermissionByRoleIds",list);
 	}
 }

@@ -22,6 +22,7 @@
 		<result property="resourceId" column="RESOURCE_ID" />
 		<result property="operationId" column="OPERATION_ID" />
 		<result property="isAdmin" column="IS_ADMIN" />
+		<result property="permissionId" column="PERMISSION_ID" />
 	</resultMap>
     <sql id="sys_role_permission_where_conditions">
     	<trim prefix="where" prefixOverrides="and|or">
@@ -64,10 +65,27 @@
         #{permissionId},
         #{createTime}
     </sql>
+    
+    <!-- 
+    <foreach item="item" index="index" collection="spid" open="(" separator="," close=")">  
+            	#{item}  
+        	</foreach> 
+     -->
+    <select id="getRolePermissionByRoleIds" parameterType="java.util.List" resultMap="result-map-permission">
+		select b.RESOURCE_ID,b.OPERATION_ID,b.IS_ADMIN,a.PERMISSION_ID
+		from SYS_ROLE_PERMISSION a,SYS_PERMISSION b
+		where a.ROLE_ID in 
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+            	#{item.rId}  
+        </foreach> 
+		and a.PERMISSION_ID=b.ID
+	</select>
 	<select id="getPermissionByRoleIds" parameterType="java.lang.String" resultMap="result-map-permission">
 		select b.RESOURCE_ID,b.OPERATION_ID,b.IS_ADMIN
 		from SYS_ROLE_PERMISSION a,SYS_PERMISSION b
-		where a.ROLE_ID in (#{roleIds}) and a.PERMISSION_ID=b.ID
+		where a.ROLE_ID in 
+		(#{roleIds}) 
+		and a.PERMISSION_ID=b.ID
 	</select>
     <insert id="createSysRolePermission" parameterType="com.mlj.ecbiz.model.permission.SysRolePermission" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
         insert INTO sys_role_permission (<include refid="sys_role_permission_columns"/>) VALUES (<include refid="sys_role_permission_properties"/>)

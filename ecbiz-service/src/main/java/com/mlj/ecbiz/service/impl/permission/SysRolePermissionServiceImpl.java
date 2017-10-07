@@ -1,16 +1,15 @@
 package com.mlj.ecbiz.service.impl.permission;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mlj.ecbiz.model.permission.SysRolePermission;
-import com.mlj.ecbiz.dao.permission.SysRolePermissionDao;
-import com.mlj.ecbiz.service.permission.SysRolePermissionService;
 import com.chexun.base.framework.core.entity.PageEntity;
-import com.chexun.base.cache.QueryProvider;
+import com.mlj.ecbiz.dao.permission.SysRolePermissionDao;
+import com.mlj.ecbiz.model.permission.SysRole;
+import com.mlj.ecbiz.model.permission.SysRolePermission;
+import com.mlj.ecbiz.service.permission.SysRolePermissionService;
 /**
  * SysRolePermission管理接口
  * User: 
@@ -103,4 +102,8 @@ public class SysRolePermissionServiceImpl implements SysRolePermissionService{
 	public List<?> getPermissionByRoleIds(String roleIds) {
 		return sysRolePermissionDao.getPermissionByRoleIds(roleIds);
 	}
+	public List<?> getRolePermissionByRoleIds(List<SysRole> list) {
+		return sysRolePermissionDao.getRolePermissionByRoleIds(list);
+	}
+	
 }

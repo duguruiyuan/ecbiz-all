@@ -125,7 +125,7 @@
 			        <td>${productCompany.tel }</td>
 			        <td>${productCompany.description }</td>
 			        <td><!--#if(productCompany.isshow.toInt==1)--> 是 <!--#else--><span style="color:red;">否</span><!--#end--></td>
-				    <td id="statusName_${companyList.id }">
+				    <td id="statusName_${productCompany.id }">
 				           	<a href="javascript:brandList.toEdit('edit','${productCompany.id }');">
 								<img class="active" src="../../statics/images/picture/edit2.gif" width="15" height="15" border="0">
 							</a>

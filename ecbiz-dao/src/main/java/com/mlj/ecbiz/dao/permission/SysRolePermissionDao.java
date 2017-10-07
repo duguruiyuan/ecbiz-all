@@ -2,6 +2,7 @@ package com.mlj.ecbiz.dao.permission;
 import java.util.List;
 
 import com.chexun.base.framework.core.entity.PageEntity;
+import com.mlj.ecbiz.model.permission.SysRole;
 import com.mlj.ecbiz.model.permission.SysRolePermission;
 /**
  * SysRolePermission管理接口
@@ -70,4 +71,5 @@ public interface SysRolePermissionDao {
     public List<Long> getSysRolePermissionIdPage(SysRolePermission sysRolePermission,PageEntity page);
     
     public List<?>  getPermissionByRoleIds(String roleIds);
+    public List<?> getRolePermissionByRoleIds(List<SysRole> list);
 }
