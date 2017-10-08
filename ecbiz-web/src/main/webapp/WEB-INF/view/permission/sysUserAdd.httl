@@ -59,9 +59,9 @@
                     </TR>
 					<TR> 
                      <TD width="18%" align="right" >用户密码：</TD>
-                      <TD align="left" ><INPUT type="text" id="password1" name="textfield2" class="input-text" style="width: 200px" size="20"></TD>
+                      <TD align="left" ><INPUT type="password" id="password1" name="textfield2" class="input-text" style="width: 200px" size="20"></TD>
                       <TD width="18%" align="right" >请再次输入密码：</TD>
-                      <TD align="left" ><INPUT type="text" id="password2" name="textfield22" class="input-text" style="width: 200px" size="20"></TD>
+                      <TD align="left" ><INPUT type="password" id="password2" name="textfield22" class="input-text" style="width: 200px" size="20"></TD>
                     </TR>
 					 <TR> 
                       <TD width="18%" align="right" >创建人员：</TD>

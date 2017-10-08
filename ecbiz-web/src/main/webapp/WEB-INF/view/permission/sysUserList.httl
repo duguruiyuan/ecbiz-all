@@ -73,7 +73,7 @@
         <table width="95%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td align="left"><fieldset>
-                <legend>品牌信息 </legend>
+                <legend>系统用户列表 </legend>
                 ${include("/common/page.httl")}
                 <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
                   <tr bgcolor="#CCCCCC" align="center" valign="middle">

@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>商品信息</title>
 <script language="javascript" src="../../statics/js/plugin/jq/jq.js"></script>
-<script language="javascript" src="../../statics/js/sys/product/brandList.js"></script>
+<script language="javascript" src="../../statics/js/sys/product/companyList.js"></script>
 <!--菜单-->
 <link href="../../statics/css/common.css" rel="stylesheet" type="text/css">
 <!--菜单-->

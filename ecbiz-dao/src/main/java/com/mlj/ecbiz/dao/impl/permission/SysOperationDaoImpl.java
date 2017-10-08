@@ -154,7 +154,9 @@ public class SysOperationDaoImpl extends GenericDaoImpl implements SysOperationD
 		Long str1[]=new Long[str.length];
 		int i=0;
 		for(String s:str){
-			str1[i]=Long.valueOf(s);i++;
+			if(!"".equals(s)){
+				str1[i]=Long.valueOf(s);i++;
+			}
 		}
 		SysOperation sysOperation=new SysOperation();
 		sysOperation.setSpid(str1);

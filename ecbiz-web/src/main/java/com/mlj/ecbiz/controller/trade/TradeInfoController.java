@@ -1,4 +1,4 @@
-package  com.mlj.ecbiz.controller.trade;
+package com.mlj.ecbiz.controller.trade;
 
 import java.util.Date;
 import java.util.List;

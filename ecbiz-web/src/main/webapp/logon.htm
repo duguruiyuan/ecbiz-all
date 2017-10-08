@@ -14,12 +14,14 @@ body {
 }
 -->
 </style>
+<script language="javascript" src="statics/js/plugin/jq/jq.js"></script>
+<script language="javascript" src="statics/js/sys/permission/sysLogin.js"></script>
 </head>
 
 <body>
 <table width="605" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td align="center"><img src="statics/images/logon/f_01.gif" width="605" height="95" /></td>
+    <td align="center"><img src="statics/images/logon/20171008005214.png" width="605" height="95" /></td>
   </tr>
   <tr>
     <td width="362" align="center"><table width="605" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -35,7 +37,7 @@ body {
               </tr>
               <tr>
                 <td align="right" class="c">机构代码：</td>
-                <td colspan="2" align="left"><input name="textfield4" type="text" size="13" /></td>
+                <td colspan="2" align="left"><input name="textfield4" type="text" size="13" readonly="true" value="100001" /></td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
@@ -45,7 +47,7 @@ body {
               </tr>
               <tr>
                 <td align="right" class="c">用户名：</td>
-                <td colspan="2" align="left"><input name="textfield22" type="text" size="13" /></td>
+                <td colspan="2" align="left"><input name="textfield22" id="username" type="text" size="13" />master</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
@@ -55,7 +57,7 @@ body {
               </tr>
               <tr>
                 <td align="right" class="c">密　码：</td>
-                <td colspan="2" align="left"><input name="textfield32" type="text" size="13" /></td>
+                <td colspan="2" align="left"><input name="textfield32" id="password1" type="password" size="13" />123</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
@@ -66,11 +68,11 @@ body {
               <tr>
                 <td align="right">&nbsp;</td>
                 <td width="10" align="center">&nbsp;</td>
-                <td align="left"><a href="index.htm"><img src="statics/images/logon/f_logon.gif" width="56" height="20" border="0" /></a></td>
+                <td align="left"><a href="javascript:sysLogin.toLogin(); "><img src="statics/images/logon/f_logon.gif" width="56" height="20" border="0" /></a></td>
                 <td align="right">&nbsp;</td>
               </tr>
               <tr>
-                <td height="30" colspan="4" align="left">&nbsp;&nbsp;<font color="#ff0000" class="c">您输入的用户名或密码有误！
+                <td height="30" colspan="4" align="left">&nbsp;&nbsp;<font color="#ff0000" class="c" id="msg" style="display:none">您输入的用户名或密码有误！
 </font></td>
               </tr>
             </table></td>

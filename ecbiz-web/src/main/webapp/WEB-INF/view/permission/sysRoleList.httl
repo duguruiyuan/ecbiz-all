@@ -22,7 +22,7 @@
   <table width="100%" height=100% border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td height=25 align="left" id=location ><img src="../../statics/images/picture/location_arrow.gif" width="8" height="11" align="absmiddle"> 
-         <span class="navigation">您的位置：系统管理 &gt;&gt; 用户管理</span></div></td>
+         <span class="navigation">您的位置：系统管理 &gt;&gt; 角色管理</span></div></td>
     </tr>
     <tr>
       <td>
@@ -38,7 +38,7 @@
         <table width="95%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td align="left"><fieldset>
-                <legend>品牌信息 </legend>
+                <legend>角色列表 </legend>
                 ${include("/common/page.httl")}
                 <table width="98%" border="0" align="center" cellspacing="1" bgcolor="#2062A6" >
                 <tr bgcolor="#CCCCCC" align="center" valign="middle">

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
 
 //import com.chexun.partner.constant.CoreConstant;
 import com.chexun.base.framework.core.entity.PageEntity;
@@ -201,5 +203,24 @@ public class SysUserController {
 			logger.error("SysUserController.delete", e);
 		}
 		return rv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/findSysUser",method=RequestMethod.POST)
+	public String findSysUser(SysUser sysUser,String payTimes, HttpServletRequest request) {
+		Long ret = -1L;
+		
+		SysUser user =sysUserService.getSysUserByObj(sysUser);
+		try {
+			if(null!=user&&user.getUid()>0){
+				ret = user.getUid();
+				HttpSession session = request.getSession();
+				session.setAttribute("user", sysUser);
+			}
+		} catch (Exception e) {
+			logger.error("ProductInfoController.save", e);
+			ret = -1L;
+		}
+		return String.valueOf(ret);
 	}
 }

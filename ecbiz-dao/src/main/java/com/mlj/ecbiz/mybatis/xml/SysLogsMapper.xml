@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlj.ecbiz.model.permission.SysLogsMapper">
+ 	<!-- 以下两个<cache>标签二选一,第一个可以输出日志,第二个不输出日志 -->  
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>  -->
+    <!--<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>   -->
+    <resultMap id="SysLogsResult" type="com.mlj.ecbiz.model.permission.SysLogs">
+        <result property="id" column="id"/>
+        <result property="userid" column="userid"/>
+        <result property="operUrl" column="oper_url"/>
+        <result property="describe" column="describe"/>
+        <result property="ip" column="ip"/>
+        <result property="created" column="created"/>
+        <result property="username" column="username"/>
+    </resultMap>
+
+    <sql id="sys_logs_columns">
+        sys_logs.id,
+        sys_logs.userid,
+        sys_logs.oper_url,
+        sys_logs.describe,
+        sys_logs.ip,
+        sys_logs.created,
+        sys_logs.username
+    </sql>
+    
+    <sql id="sys_logs_where_conditions">
+    	<trim prefix="where" prefixOverrides="and|or">
+        <if test="id != null">
+        	and id=#{id} 
+        </if>
+        <if test="userid != null">
+        	and userid=#{userid} 
+        </if>
+        
+        <if test="operUrl != null and operUrl != ''">
+        	and oper_url=#{operUrl} 
+        </if>
+        
+        <if test="describe != null and describe != ''">
+        	and describe=#{describe} 
+        </if>
+        
+        <if test="ip != null and ip != ''">
+        	and ip=#{ip} 
+        </if>
+        <if test="created != null">
+        	and created=#{created} 
+        </if>
+        
+        <if test="username != null and username != ''">
+        	and username=#{username} 
+        </if>
+        </trim>
+    </sql>
+    
+    <sql id="sys_logs_set_conditions">
+    	<set>
+        <if test="id != null">
+        	id=#{id},
+        </if>
+        <if test="userid != null">
+        	userid=#{userid},
+        </if>
+        <if test="operUrl != null">
+        	oper_url=#{operUrl},
+        </if>
+        <if test="describe != null">
+        	describe=#{describe},
+        </if>
+        <if test="ip != null">
+        	ip=#{ip},
+        </if>
+        <if test="created != null">
+        	created=#{created},
+        </if>
+        <if test="username != null">
+        	username=#{username},
+        </if>
+            id = id
+        </set>
+    </sql>
+
+    <sql id="sys_logs_properties">
+        #{id},
+        #{userid},
+        #{operUrl},
+        #{describe},
+        #{ip},
+        #{created},
+        #{username}
+    </sql>
+
+    <insert id="createSysLogs" parameterType="com.mlj.ecbiz.model.permission.SysLogs" keyColumn="id" keyProperty="id" useGeneratedKeys="true" >
+        insert INTO sys_logs (<include refid="sys_logs_columns"/>) VALUES (<include refid="sys_logs_properties"/>)
+    </insert>
+	
+	<insert id="insertSysLogs" parameterType="com.mlj.ecbiz.model.permission.SysLogs" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+    	insert into sys_logs
+    	<trim prefix="(" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        			id,
+    			</if>
+    			<if test="userid != null" >
+        			userid,
+    			</if>
+    			<if test="operUrl != null" >
+        			oper_url,
+    			</if>
+    			<if test="describe != null" >
+        			describe,
+    			</if>
+    			<if test="ip != null" >
+        			ip,
+    			</if>
+    			<if test="created != null" >
+        			created,
+    			</if>
+    			<if test="username != null" >
+        			username
+    			</if>
+    	</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    			<if test="id != null" >
+        		#{id},
+    		</if>
+    			<if test="userid != null" >
+        		#{userid},
+    		</if>
+    			<if test="operUrl != null" >
+        		#{operUrl},
+    		</if>
+    			<if test="describe != null" >
+        		#{describe},
+    		</if>
+    			<if test="ip != null" >
+        		#{ip},
+    		</if>
+    			<if test="created != null" >
+        		#{created},
+    		</if>
+    			<if test="username != null" >
+        		#{username}
+    		</if>
+    	</trim>
+  	</insert>
+	
+    <delete id="deleteSysLogsById" parameterType="Long">
+        delete from sys_logs
+        where
+            		id = #{            			value
+            		}
+    </delete>
+    
+    <delete id="deleteSysLogsByObj" parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+        delete from sys_logs
+        <include refid="sys_logs_where_conditions"/>
+    </delete>
+    
+  	<delete id="deleteSysLogsByIdList" parameterType="java.util.List">
+    	delete from sys_logs 
+        	where
+            id
+    		IN 
+    		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+
+    <update id="updateSysLogs" parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+        update sys_logs SET
+            id = #{id},
+            userid = #{userid},
+            oper_url = #{operUrl},
+            describe = #{describe},
+            ip = #{ip},
+            created = #{created},
+            username = #{username}
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateSysLogsByObj" parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+        update sys_logs 
+        <include refid="sys_logs_set_conditions"/>
+        where
+            id = #{id}
+    </update>
+    
+    <update id="updateSysLogsByObjAndConditions" parameterType="java.util.HashMap">
+        update sys_logs 
+        <set>
+        <if test="s.id != null">
+        	id=#{s.id},
+        </if>
+        <if test="s.userid != null">
+        	userid=#{s.userid},
+        </if>
+        <if test="s.operUrl != null">
+        	oper_url=#{s.operUrl},
+        </if>
+        <if test="s.describe != null">
+        	describe=#{s.describe},
+        </if>
+        <if test="s.ip != null">
+        	ip=#{s.ip},
+        </if>
+        <if test="s.created != null">
+        	created=#{s.created},
+        </if>
+        <if test="s.username != null">
+        	username=#{s.username},
+        </if>
+        </set>
+        <where>
+        <if test="c.id != null">
+        	id=#{c.id} AND 
+        </if>
+        <if test="c.userid != null">
+        	userid=#{c.userid} AND 
+        </if>
+        <if test="c.operUrl != null">
+        	oper_url=#{c.operUrl} AND 
+        </if>
+        <if test="c.describe != null">
+        	describe=#{c.describe} AND 
+        </if>
+        <if test="c.ip != null">
+        	ip=#{c.ip} AND 
+        </if>
+        <if test="c.created != null">
+        	created=#{c.created} AND 
+        </if>
+        <if test="c.username != null">
+        	username=#{c.username} AND 
+        </if>
+       (status!=2)
+        </where>
+    </update>
+    
+    <update id="batchUpdateSysLogs" parameterType="java.util.List">
+		update sys_logs
+		<trim prefix="set" suffixOverrides=",">
+      	 	<trim prefix="id=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.id!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.id}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="userid=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.userid!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.userid}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="oper_url=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.operUrl!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.operUrl}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="describe=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.describe!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.describe}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="ip=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.ip!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.ip}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="created=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.created!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.created}
+					</if>
+				</foreach>
+			</trim>
+      	 	<trim prefix="username=CASE" suffix="end,">
+				<foreach collection="list" item="i" index="index">
+					<if test="i.username!=null">
+						WHEN 
+            			id = #{i.id}
+        				 THEN #{i.username}
+					</if>
+				</foreach>
+			</trim>
+		</trim>
+		where
+		<foreach collection="list" separator="or" item="i" index="index">
+            	(id = #{i.id})
+		</foreach>
+	</update>
+    
+    
+
+    <select id="getSysLogsById" resultMap="SysLogsResult" parameterType="Long">
+        select
+        <include refid="sys_logs_columns"/>
+        from sys_logs
+        where
+            id = #{value}
+    </select>
+    
+    <select id="getSysLogsByObj" resultMap="SysLogsResult" parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+        select
+        <include refid="sys_logs_columns"/>
+        from sys_logs
+        <include refid="sys_logs_where_conditions"/>
+    </select>
+	
+    
+    <select id="getSysLogsListByObj" resultMap="SysLogsResult"  parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+        select
+        <include refid="sys_logs_columns"/>
+        from sys_logs 
+        <include refid="sys_logs_where_conditions"/>
+    </select>
+    
+    <select id="getSysLogsListByMap" resultMap="SysLogsResult"  parameterType="java.util.HashMap">
+        select
+        <include refid="sys_logs_columns"/>
+        from sys_logs 
+        <include refid="sys_logs_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+    
+    <select id="getSysLogsCountByObj" resultType="int" parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+        select count(1) from sys_logs
+        <include refid="sys_logs_where_conditions"/>
+    </select>
+    
+    
+    
+    <select id="getSysLogsIdByObj" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+        select       id               
+        from sys_logs
+        <include refid="sys_logs_where_conditions"/>
+    </select>
+	
+    <select id="getSysLogsIdList" resultType="Long" parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+       select       id                from sys_logs where 1=1 
+        id = #{value}
+    </select>
+    
+    <select id="getSysLogsIdListByObj" resultType="Long"  parameterType="com.mlj.ecbiz.model.permission.SysLogs">
+       select       id                from sys_logs 
+        <include refid="sys_logs_where_conditions"/>
+    </select>
+    
+    <select id="getSysLogsIdListByMap" resultType="Long"  parameterType="java.util.HashMap">
+        select       id                from sys_logs 
+        <include refid="sys_logs_where_conditions"/>
+        limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER} 
+    </select>
+</mapper>

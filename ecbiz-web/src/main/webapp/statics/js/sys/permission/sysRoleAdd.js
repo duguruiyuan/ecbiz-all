@@ -23,7 +23,7 @@ sysRoleAdd.save = function(url) {
 		data : params,
 		success : function(data) {
 			if (data != '-1') {
-				alert("保存成功！");
+				
 				location.href = url;
 			} else {
 				alert("保存失败！");
